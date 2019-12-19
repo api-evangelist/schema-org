@@ -1,0 +1,45 @@
+{
+    "name": "Schema.org",
+    "description": "<p>Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond. Schema.org vocabulary can be used with many different encodings, including RDFa, Microdata and JSON-LD.&nbsp;<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/schema-org-logo.jpeg",
+    "tags": [
+        "definitions",
+        "have api",
+        "schema"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/schema-org\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Schema.org",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/schema-org-logo.jpeg",
+            "humanURL": "http:\/\/schema.org",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/schema-org-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.schema.org\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.schema.org\/feeds\/posts\/default?alt=rss"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/schema.org"
+        }
+    ]
+}
