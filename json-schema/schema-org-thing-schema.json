@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/thing.json",
+  "title": "Schema.org Thing",
+  "description": "The most generic type of item in the Schema.org vocabulary. All other Schema.org types inherit from Thing.",
+  "type": "object",
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type of the item.",
+      "const": "Thing"
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the item."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the item."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the item."
+    },
+    "image": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of an image of the item."
+        },
+        {
+          "$ref": "#/$defs/ImageObject"
+        }
+      ],
+      "description": "An image of the item."
+    },
+    "identifier": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/$defs/PropertyValue"
+        }
+      ],
+      "description": "The identifier property represents any kind of identifier for any kind of Thing."
+    },
+    "sameAs": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "An alias for the item."
+    },
+    "additionalType": {
+      "type": "string",
+      "format": "uri",
+      "description": "An additional type for the item, typically used for adding more specific types from external vocabularies."
+    },
+    "mainEntityOfPage": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "$ref": "#/$defs/CreativeWork"
+        }
+      ],
+      "description": "Indicates a page for which this thing is the main entity being described."
+    },
+    "potentialAction": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Action"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Action"
+          }
+        }
+      ],
+      "description": "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role."
+    },
+    "subjectOf": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/CreativeWork"
+        },
+        {
+          "$ref": "#/$defs/Event"
+        }
+      ],
+      "description": "A CreativeWork or Event about this Thing."
+    }
+  },
+  "$defs": {
+    "ImageObject": {
+      "type": "object",
+      "description": "An image file.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ImageObject"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the image."
+        },
+        "width": {
+          "type": "integer",
+          "description": "The width of the image in pixels."
+        },
+        "height": {
+          "type": "integer",
+          "description": "The height of the image in pixels."
+        },
+        "caption": {
+          "type": "string",
+          "description": "The caption for this image."
+        }
+      }
+    },
+    "PropertyValue": {
+      "type": "object",
+      "description": "A property-value pair representing an explicit or inferred attribute of a Thing.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PropertyValue"
+        },
+        "propertyID": {
+          "type": "string",
+          "description": "A commonly used identifier for the characteristic represented by the property."
+        },
+        "value": {
+          "description": "The value of the property."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the property."
+        }
+      }
+    },
+    "CreativeWork": {
+      "type": "object",
+      "description": "The most generic kind of creative work, including books, movies, photographs, software programs, etc.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CreativeWork"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the creative work."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the creative work."
+        }
+      }
+    },
+    "Action": {
+      "type": "object",
+      "description": "An action performed by a direct agent and indirect participants upon a direct object.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "The type of action."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the action."
+        },
+        "target": {
+          "type": "string",
+          "format": "uri",
+          "description": "Indicates a target EntryPoint for an Action."
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "description": "An event happening at a certain time and location.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Event"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the event."
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start date and time of the event."
+        }
+      }
+    }
+  }
+}

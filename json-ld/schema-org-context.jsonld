@@ -1,0 +1,236 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+
+    "Thing": {
+      "@id": "schema:Thing",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "image": {
+          "@id": "schema:image",
+          "@type": "@id"
+        },
+        "identifier": "schema:identifier",
+        "sameAs": {
+          "@id": "schema:sameAs",
+          "@type": "@id"
+        },
+        "alternateName": "schema:alternateName",
+        "additionalType": {
+          "@id": "schema:additionalType",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "CreativeWork": {
+      "@id": "schema:CreativeWork",
+      "@context": {
+        "author": {
+          "@id": "schema:author",
+          "@type": "@id"
+        },
+        "datePublished": {
+          "@id": "schema:datePublished",
+          "@type": "xsd:date"
+        },
+        "dateCreated": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:date"
+        },
+        "dateModified": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:date"
+        },
+        "headline": "schema:headline",
+        "text": "schema:text",
+        "keywords": "schema:keywords",
+        "license": {
+          "@id": "schema:license",
+          "@type": "@id"
+        },
+        "publisher": {
+          "@id": "schema:publisher",
+          "@type": "@id"
+        },
+        "inLanguage": "schema:inLanguage",
+        "version": "schema:version"
+      }
+    },
+
+    "Organization": {
+      "@id": "schema:Organization",
+      "@context": {
+        "legalName": "schema:legalName",
+        "email": "schema:email",
+        "telephone": "schema:telephone",
+        "address": {
+          "@id": "schema:address",
+          "@type": "@id"
+        },
+        "member": {
+          "@id": "schema:member",
+          "@type": "@id"
+        },
+        "founder": {
+          "@id": "schema:founder",
+          "@type": "@id"
+        },
+        "foundingDate": {
+          "@id": "schema:foundingDate",
+          "@type": "xsd:date"
+        },
+        "numberOfEmployees": "schema:numberOfEmployees",
+        "logo": {
+          "@id": "schema:logo",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Person": {
+      "@id": "schema:Person",
+      "@context": {
+        "givenName": "schema:givenName",
+        "familyName": "schema:familyName",
+        "email": "schema:email",
+        "telephone": "schema:telephone",
+        "jobTitle": "schema:jobTitle",
+        "affiliation": {
+          "@id": "schema:affiliation",
+          "@type": "@id"
+        },
+        "birthDate": {
+          "@id": "schema:birthDate",
+          "@type": "xsd:date"
+        },
+        "address": {
+          "@id": "schema:address",
+          "@type": "@id"
+        },
+        "worksFor": {
+          "@id": "schema:worksFor",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Place": {
+      "@id": "schema:Place",
+      "@context": {
+        "address": {
+          "@id": "schema:address",
+          "@type": "@id"
+        },
+        "geo": {
+          "@id": "schema:geo",
+          "@type": "@id"
+        },
+        "latitude": {
+          "@id": "schema:latitude",
+          "@type": "xsd:float"
+        },
+        "longitude": {
+          "@id": "schema:longitude",
+          "@type": "xsd:float"
+        },
+        "containedInPlace": {
+          "@id": "schema:containedInPlace",
+          "@type": "@id"
+        },
+        "hasMap": {
+          "@id": "schema:hasMap",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Product": {
+      "@id": "schema:Product",
+      "@context": {
+        "brand": {
+          "@id": "schema:brand",
+          "@type": "@id"
+        },
+        "manufacturer": {
+          "@id": "schema:manufacturer",
+          "@type": "@id"
+        },
+        "model": "schema:model",
+        "sku": "schema:sku",
+        "gtin": "schema:gtin",
+        "category": "schema:category",
+        "color": "schema:color",
+        "material": "schema:material",
+        "offers": {
+          "@id": "schema:offers",
+          "@type": "@id"
+        },
+        "review": {
+          "@id": "schema:review",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Event": {
+      "@id": "schema:Event",
+      "@context": {
+        "startDate": {
+          "@id": "schema:startDate",
+          "@type": "xsd:dateTime"
+        },
+        "endDate": {
+          "@id": "schema:endDate",
+          "@type": "xsd:dateTime"
+        },
+        "location": {
+          "@id": "schema:location",
+          "@type": "@id"
+        },
+        "organizer": {
+          "@id": "schema:organizer",
+          "@type": "@id"
+        },
+        "performer": {
+          "@id": "schema:performer",
+          "@type": "@id"
+        },
+        "eventStatus": "schema:eventStatus",
+        "eventAttendanceMode": "schema:eventAttendanceMode",
+        "offers": {
+          "@id": "schema:offers",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "WebAPI": {
+      "@id": "schema:WebAPI",
+      "@context": {
+        "documentation": {
+          "@id": "schema:documentation",
+          "@type": "@id"
+        },
+        "termsOfService": {
+          "@id": "schema:termsOfService",
+          "@type": "@id"
+        },
+        "provider": {
+          "@id": "schema:provider",
+          "@type": "@id"
+        }
+      }
+    }
+  }
+}

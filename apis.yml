@@ -1,0 +1,93 @@
+aid: schema-org
+url: https://raw.githubusercontent.com/api-evangelist/schema-org/refs/heads/main/apis.yml
+apis:
+- aid: schema-org:schema-org-vocabulary
+  name: Schema.org Vocabulary
+  tags:
+  - Schema
+  - Vocabulary
+  - Structured Data
+  - Linked Data
+  - JSON-LD
+  - RDF
+  - Microdata
+  - RDFa
+  - SEO
+  - Web Standards
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://schema.org/docs/developers.html
+  baseURL: https://schema.org
+  properties:
+  - url: https://schema.org/docs/developers.html
+    type: Documentation
+  - url: https://schema.org/docs/schemas.html
+    type: Reference
+  - url: https://schema.org/docs/datamodel.html
+    type: Data Model
+  - url: https://schema.org/docs/releases.html
+    type: Change Log
+  - url: https://github.com/schemaorg/schemaorg
+    type: GitHub Repository
+  - url: json-schema/schema-org-thing-schema.json
+    type: JSONSchema
+  description: >-
+    Schema.org is a collaborative, community-driven vocabulary for structured data on the internet. It provides a collection of shared vocabularies that webmasters and developers can use to mark up pages in ways recognized by major search engines including Google, Microsoft, Yahoo, and Yandex. The vocabulary covers entities, relationships between entities, and actions, and can be used with many different encodings including RDFa, Microdata, and JSON-LD. Schema.org provides machine-readable definitions of its types and properties available for download in RDF/Turtle, JSON-LD, and other formats.
+
+- aid: schema-org:schema-org-json-ld-context
+  name: Schema.org JSON-LD Context
+  tags:
+  - JSON-LD
+  - Linked Data
+  - Context
+  - Vocabulary
+  - Structured Data
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://schema.org/docs/developers.html
+  baseURL: https://schema.org
+  properties:
+  - url: https://schema.org/docs/developers.html
+    type: Documentation
+  - url: https://schema.org/docs/jsonldcontext.json
+    type: JSON-LD Context
+  description: >-
+    The Schema.org JSON-LD Context provides the canonical JSON-LD context file for the Schema.org vocabulary. This context file maps Schema.org terms to their full IRIs, enabling JSON-LD processors to correctly interpret structured data markup. Developers use this context when embedding Schema.org annotations in JSON-LD format, which is the format recommended by Google for structured data implementation on websites and applications.
+
+- aid: schema-org:schema-org-validator
+  name: Schema.org Markup Validator
+  tags:
+  - Validation
+  - Structured Data
+  - Testing
+  - Schema
+  - Markup
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://validator.schema.org/
+  baseURL: https://validator.schema.org
+  properties:
+  - url: https://validator.schema.org/
+    type: Documentation
+  description: >-
+    The Schema.org Markup Validator is a tool for testing and validating structured data markup against the Schema.org vocabulary. It allows developers to check whether their Schema.org annotations are correctly formatted and conform to the expected types and properties defined in the vocabulary. The validator supports JSON-LD, Microdata, and RDFa formats and helps ensure that structured data will be properly interpreted by search engines and other consumers.
+
+- aid: schema-org:schema-org-web-api-type
+  name: Schema.org WebAPI Type
+  tags:
+  - WebAPI
+  - API Description
+  - Structured Data
+  - Linked Data
+  - Schema
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://schema.org/WebAPI
+  baseURL: https://schema.org
+  properties:
+  - url: https://schema.org/WebAPI
+    type: Documentation
+  - url: json-schema/schema-org-web-api-schema.json
+    type: JSONSchema
+  description: >-
+    The Schema.org WebAPI type defines an application programming interface accessible over Web and Internet technologies. It provides a standardized way to describe APIs using structured data, including properties for documentation, terms of service, provider information, and service channels. The WebAPI type enables search engines and automated tools to discover and understand APIs published on the web.
+
+common:
+- type: JSON-LD
+  url: json-ld/schema-org-context.jsonld

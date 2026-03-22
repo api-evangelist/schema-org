@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/web-api.json",
+  "title": "Schema.org WebAPI",
+  "description": "An application programming interface accessible over Web/Internet technologies, as defined by the Schema.org WebAPI type.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "const": "WebAPI"
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the API."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the API."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the API."
+    },
+    "documentation": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "$ref": "#/$defs/CreativeWork"
+        }
+      ],
+      "description": "Further documentation describing the Web API in more detail."
+    },
+    "termsOfService": {
+      "type": "string",
+      "format": "uri",
+      "description": "Human-readable terms of service documentation."
+    },
+    "provider": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Organization"
+        },
+        {
+          "$ref": "#/$defs/Person"
+        }
+      ],
+      "description": "The service provider, service operator, or service performer."
+    },
+    "availableChannel": {
+      "$ref": "#/$defs/ServiceChannel",
+      "description": "A means of accessing the service."
+    },
+    "category": {
+      "type": "string",
+      "description": "A category for the API."
+    },
+    "offers": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Offer"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Offer"
+          }
+        }
+      ],
+      "description": "An offer to provide this API, including pricing and access information."
+    },
+    "audience": {
+      "$ref": "#/$defs/Audience",
+      "description": "An intended audience for the API."
+    }
+  },
+  "$defs": {
+    "CreativeWork": {
+      "type": "object",
+      "description": "The most generic kind of creative work.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CreativeWork"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the documentation."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the documentation."
+        },
+        "encodingFormat": {
+          "type": "string",
+          "description": "Media type of the documentation (e.g., text/html, application/pdf)."
+        }
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "description": "An organization such as a company, institution, or NGO.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Organization"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the organization."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the organization."
+        }
+      }
+    },
+    "Person": {
+      "type": "object",
+      "description": "A person.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Person"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the person."
+        }
+      }
+    },
+    "ServiceChannel": {
+      "type": "object",
+      "description": "A means for accessing a service.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ServiceChannel"
+        },
+        "serviceUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "The website to access the service."
+        },
+        "providesService": {
+          "type": "string",
+          "description": "The service provided by this channel."
+        }
+      }
+    },
+    "Offer": {
+      "type": "object",
+      "description": "An offer to transfer some rights to an item or to provide a service.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Offer"
+        },
+        "price": {
+          "type": "number",
+          "description": "The offer price."
+        },
+        "priceCurrency": {
+          "type": "string",
+          "description": "The currency of the price (ISO 4217).",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the offer."
+        }
+      }
+    },
+    "Audience": {
+      "type": "object",
+      "description": "The target group associated with a given audience.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Audience"
+        },
+        "audienceType": {
+          "type": "string",
+          "description": "The target group associated with a given audience."
+        }
+      }
+    }
+  }
+}
