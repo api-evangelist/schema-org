@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/article.json",
+  "title": "Schema.org Article",
+  "description": "An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types.",
+  "type": "object",
+  "required": ["@type", "headline"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Article", "AdvertiserContentArticle", "NewsArticle", "Report", "SatiricalArticle", "ScholarlyArticle", "SocialMediaPosting", "TechArticle"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "headline": {
+      "type": "string",
+      "maxLength": 110,
+      "description": "Headline of the article."
+    },
+    "alternativeHeadline": {
+      "type": "string",
+      "description": "A secondary title of the article."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the article."
+    },
+    "description": {
+      "type": "string",
+      "description": "A short description of the article."
+    },
+    "articleBody": {
+      "type": "string",
+      "description": "The actual body of the article."
+    },
+    "articleSection": {
+      "type": "string",
+      "description": "Articles may belong to one or more sections in a magazine or newspaper."
+    },
+    "wordCount": {
+      "type": "integer",
+      "description": "The number of words in the text of the article."
+    },
+    "pageStart": {
+      "type": "string",
+      "description": "The page on which the work starts."
+    },
+    "pageEnd": {
+      "type": "string",
+      "description": "The page on which the work ends."
+    },
+    "pagination": {
+      "type": "string",
+      "description": "Any description of pages that is not separated into pageStart and pageEnd."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the article."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" },
+        { "type": "array", "items": { "oneOf": [{ "type": "string", "format": "uri" }, { "$ref": "schema-org-image-object-schema.json" }] } }
+      ],
+      "description": "An image for the article."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" },
+        { "type": "array", "items": { "oneOf": [{ "$ref": "schema-org-person-schema.json" }, { "$ref": "schema-org-organization-schema.json" }] } }
+      ],
+      "description": "The author of this article."
+    },
+    "publisher": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The publisher of this article."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date",
+      "description": "The date on which the article was created."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date",
+      "description": "The date on which the article was most recently modified."
+    },
+    "keywords": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Keywords or tags used to describe this content."
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the content."
+    },
+    "isPartOf": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "object", "properties": { "@type": { "type": "string" }, "name": { "type": "string" } } }
+      ],
+      "description": "Indicates an item or CreativeWork that this item is part of."
+    },
+    "mainEntityOfPage": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-web-page-schema.json" }
+      ],
+      "description": "Indicates a page for which this thing is the main entity being described."
+    },
+    "speakable": {
+      "type": "object",
+      "description": "Indicates sections of a Web page that are particularly speakable.",
+      "properties": {
+        "@type": { "type": "string", "const": "SpeakableSpecification" },
+        "cssSelector": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] },
+        "xpath": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] }
+      }
+    },
+    "backstory": {
+      "type": "string",
+      "description": "For an Article, typically a NewsArticle, the backstory property provides a textual summary of how and why this article was created."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

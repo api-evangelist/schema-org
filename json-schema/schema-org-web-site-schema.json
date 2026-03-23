@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/web-site.json",
+  "title": "Schema.org WebSite",
+  "description": "A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.",
+  "type": "object",
+  "required": ["@type", "name", "url"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "WebSite",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the website."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the website."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the website."
+    },
+    "potentialAction": {
+      "$ref": "schema-org-search-action-schema.json",
+      "description": "Indicates a potential Action, typically a SearchAction for site search."
+    },
+    "publisher": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The publisher of the website."
+    },
+    "inLanguage": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "The language(s) of the website content."
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "An alias for the website."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the website."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/property-value.json",
+  "title": "Schema.org PropertyValue",
+  "description": "A property-value pair, e.g. representing a feature of a product or place.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "PropertyValue",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the property."
+    },
+    "value": {
+      "description": "The value of the property."
+    },
+    "propertyID": {
+      "type": "string",
+      "description": "A commonly used identifier for the characteristic represented by the property."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "The unit of measurement given using the UN/CEFACT Common Code."
+    },
+    "unitText": {
+      "type": "string",
+      "description": "A string indicating the unit of measurement."
+    },
+    "minValue": {
+      "type": "number",
+      "description": "The lower value of some characteristic or property."
+    },
+    "maxValue": {
+      "type": "number",
+      "description": "The upper value of some characteristic or property."
+    },
+    "measurementTechnique": {
+      "type": "string",
+      "description": "A technique or technology used in a measurement."
+    },
+    "valueReference": {
+      "type": "object",
+      "description": "A pointer to a secondary value that provides additional information.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "value": {}
+      }
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the property value."
+    }
+  }
+}

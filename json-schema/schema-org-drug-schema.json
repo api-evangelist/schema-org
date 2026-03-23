@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/drug.json",
+  "title": "Schema.org Drug",
+  "description": "A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "Drug",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the drug."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the drug."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL with information about the drug."
+    },
+    "alternateName": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "An alias for the drug (e.g., brand names, generic names)."
+    },
+    "nonProprietaryName": {
+      "type": "string",
+      "description": "The generic name of this drug or supplement."
+    },
+    "proprietaryName": {
+      "type": "string",
+      "description": "The proprietary name of this drug."
+    },
+    "activeIngredient": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "An active ingredient, typically chemical compounds and/or biologic substances."
+    },
+    "drugClass": {
+      "type": "object",
+      "description": "The class of drug this belongs to.",
+      "properties": {
+        "@type": { "type": "string", "const": "DrugClass" },
+        "name": { "type": "string" }
+      }
+    },
+    "administrationRoute": {
+      "type": "string",
+      "description": "A route by which this drug may be administered (e.g., oral, intravenous, topical)."
+    },
+    "dosageForm": {
+      "type": "string",
+      "description": "A dosage form in which this drug/supplement is available (e.g., tablet, capsule, injection)."
+    },
+    "doseSchedule": {
+      "oneOf": [
+        { "$ref": "#/$defs/DoseSchedule" },
+        { "type": "array", "items": { "$ref": "#/$defs/DoseSchedule" } }
+      ],
+      "description": "A dosing schedule for the drug."
+    },
+    "maximumIntake": {
+      "$ref": "#/$defs/MaximumDoseSchedule",
+      "description": "Recommended intake of this supplement for a given population."
+    },
+    "mechanismOfAction": {
+      "type": "string",
+      "description": "The specific biochemical interaction through which this drug or supplement produces its pharmacological effect."
+    },
+    "interactingDrug": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "Another drug that is known to interact with this drug."
+    },
+    "foodWarning": {
+      "type": "string",
+      "description": "Any precaution, guidance, contraindication, etc. related to consumption of specific foods."
+    },
+    "alcoholWarning": {
+      "type": "string",
+      "description": "Any precaution, guidance, contraindication, etc. related to consumption of alcohol."
+    },
+    "pregnancyWarning": {
+      "type": "string",
+      "description": "Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy."
+    },
+    "breastfeedingWarning": {
+      "type": "string",
+      "description": "Any precaution, guidance, contraindication, etc. related to this drug's use by breastfeeding mothers."
+    },
+    "warning": {
+      "type": "string",
+      "description": "Any FDA or other warnings about the drug."
+    },
+    "overdosage": {
+      "type": "string",
+      "description": "Any information related to overdose on a drug."
+    },
+    "clinicalPharmacology": {
+      "type": "string",
+      "description": "Description of the absorption and elimination of drugs."
+    },
+    "availableStrength": {
+      "oneOf": [
+        { "$ref": "#/$defs/DrugStrength" },
+        { "type": "array", "items": { "$ref": "#/$defs/DrugStrength" } }
+      ],
+      "description": "An available dosage strength for the drug."
+    },
+    "isProprietary": {
+      "type": "boolean",
+      "description": "True if this item's name is a proprietary/brand name."
+    },
+    "isAvailableGenerically": {
+      "type": "boolean",
+      "description": "True if the drug is available in a generic form."
+    },
+    "prescriptionStatus": {
+      "type": "string",
+      "enum": ["OTC", "PrescriptionOnly"],
+      "description": "Indicates whether this drug is available by prescription or over-the-counter."
+    },
+    "legalStatus": {
+      "type": "string",
+      "description": "The drug or supplement's legal status."
+    },
+    "manufacturer": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "The manufacturer of the product."
+    },
+    "code": {
+      "type": "object",
+      "description": "A medical code for the drug.",
+      "properties": {
+        "@type": { "type": "string", "const": "MedicalCode" },
+        "codeValue": { "type": "string" },
+        "codingSystem": { "type": "string" }
+      }
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "DoseSchedule": {
+      "type": "object",
+      "description": "A specific dosing schedule for a drug or supplement.",
+      "properties": {
+        "@type": { "type": "string", "enum": ["DoseSchedule", "MaximumDoseSchedule", "RecommendedDoseSchedule", "ReportedDoseSchedule"] },
+        "doseUnit": { "type": "string", "description": "The unit of the dose (e.g., mg)." },
+        "doseValue": { "type": "number", "description": "The value of the dose." },
+        "frequency": { "type": "string", "description": "How often the dose is taken." },
+        "targetPopulation": { "type": "string", "description": "Characteristics of the population for which this is intended." }
+      }
+    },
+    "MaximumDoseSchedule": {
+      "type": "object",
+      "description": "The maximum dosing schedule considered safe.",
+      "properties": {
+        "@type": { "type": "string", "const": "MaximumDoseSchedule" },
+        "doseUnit": { "type": "string" },
+        "doseValue": { "type": "number" },
+        "frequency": { "type": "string" },
+        "targetPopulation": { "type": "string" }
+      }
+    },
+    "DrugStrength": {
+      "type": "object",
+      "description": "A specific strength in which a medical drug is available.",
+      "properties": {
+        "@type": { "type": "string", "const": "DrugStrength" },
+        "activeIngredient": { "type": "string" },
+        "strengthUnit": { "type": "string" },
+        "strengthValue": { "type": "number" }
+      }
+    }
+  }
+}

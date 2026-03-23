@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/how-to.json",
+  "title": "Schema.org HowTo",
+  "description": "Instructions that explain how to achieve a result by performing a sequence of steps.",
+  "type": "object",
+  "required": ["@type", "name", "step"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["HowTo", "Recipe"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the how-to guide."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the how-to guide."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the how-to guide."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the completed how-to."
+    },
+    "totalTime": {
+      "type": "string",
+      "description": "The total time required to perform all steps in ISO 8601 duration format."
+    },
+    "prepTime": {
+      "type": "string",
+      "description": "The length of time it takes to prepare the items in ISO 8601 duration format."
+    },
+    "performTime": {
+      "type": "string",
+      "description": "The length of time it takes to perform instructions in ISO 8601 duration format."
+    },
+    "estimatedCost": {
+      "type": "object",
+      "description": "The estimated cost of the supply or supplies consumed when performing instructions.",
+      "properties": {
+        "@type": { "type": "string", "const": "MonetaryAmount" },
+        "currency": { "type": "string" },
+        "value": { "type": "number" }
+      }
+    },
+    "supply": {
+      "oneOf": [
+        { "$ref": "#/$defs/HowToSupply" },
+        { "type": "array", "items": { "$ref": "#/$defs/HowToSupply" } }
+      ],
+      "description": "A sub-property of instrument. A supply consumed when performing instructions or a direction."
+    },
+    "tool": {
+      "oneOf": [
+        { "$ref": "#/$defs/HowToTool" },
+        { "type": "array", "items": { "$ref": "#/$defs/HowToTool" } }
+      ],
+      "description": "A sub-property of instrument. An object used (but not consumed) when performing instructions."
+    },
+    "step": {
+      "type": "array",
+      "description": "The steps in the how-to.",
+      "items": {
+        "$ref": "#/$defs/HowToStep"
+      }
+    },
+    "yield": {
+      "type": "string",
+      "description": "The quantity that results by performing instructions."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this how-to guide."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "video": {
+      "$ref": "schema-org-video-object-schema.json",
+      "description": "A video of the how-to."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "HowToStep": {
+      "type": "object",
+      "description": "A step in the instructions for how to achieve a result.",
+      "properties": {
+        "@type": { "type": "string", "const": "HowToStep" },
+        "name": { "type": "string", "description": "The name of the step." },
+        "text": { "type": "string", "description": "The text directions for the step." },
+        "url": { "type": "string", "format": "uri", "description": "A URL linking to the step." },
+        "image": { "oneOf": [{ "type": "string", "format": "uri" }, { "$ref": "schema-org-image-object-schema.json" }], "description": "An image for the step." },
+        "position": { "type": "integer", "description": "The position of the step." },
+        "itemListElement": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@type": { "const": "HowToDirection" },
+              "text": { "type": "string" }
+            }
+          },
+          "description": "Detailed elements of this step."
+        }
+      }
+    },
+    "HowToSupply": {
+      "type": "object",
+      "description": "A supply consumed when performing instructions.",
+      "properties": {
+        "@type": { "type": "string", "const": "HowToSupply" },
+        "name": { "type": "string", "description": "The name of the supply." },
+        "requiredQuantity": { "type": "number", "description": "The required quantity." },
+        "image": { "type": "string", "format": "uri", "description": "An image of the supply." },
+        "estimatedCost": { "type": "object", "properties": { "@type": { "const": "MonetaryAmount" }, "currency": { "type": "string" }, "value": { "type": "number" } } }
+      }
+    },
+    "HowToTool": {
+      "type": "object",
+      "description": "A tool used (but not consumed) when performing instructions.",
+      "properties": {
+        "@type": { "type": "string", "const": "HowToTool" },
+        "name": { "type": "string", "description": "The name of the tool." },
+        "image": { "type": "string", "format": "uri", "description": "An image of the tool." }
+      }
+    }
+  }
+}

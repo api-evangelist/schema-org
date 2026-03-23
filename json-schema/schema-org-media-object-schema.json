@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/media-object.json",
+  "title": "Schema.org MediaObject",
+  "description": "A media object, such as an image, video, audio, or text object embedded in a web page or a downloadable dataset.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["MediaObject", "AudioObject", "DataDownload", "ImageObject", "MusicVideoObject", "VideoObject", "3DModel"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the media object."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the media object."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the media object."
+    },
+    "contentUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Actual bytes of the media object."
+    },
+    "embedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "A URL pointing to a player for the media."
+    },
+    "encodingFormat": {
+      "type": "string",
+      "description": "Media type expressed using a MIME format."
+    },
+    "contentSize": {
+      "type": "string",
+      "description": "File size in bytes."
+    },
+    "bitrate": {
+      "type": "string",
+      "description": "The bitrate of the media object."
+    },
+    "duration": {
+      "type": "string",
+      "description": "The duration of the item in ISO 8601 format."
+    },
+    "width": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "object", "properties": { "@type": { "const": "QuantitativeValue" }, "value": { "type": "integer" }, "unitCode": { "type": "string" } } }
+      ],
+      "description": "The width of the media."
+    },
+    "height": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "object", "properties": { "@type": { "const": "QuantitativeValue" }, "value": { "type": "integer" }, "unitCode": { "type": "string" } } }
+      ],
+      "description": "The height of the media."
+    },
+    "playerType": {
+      "type": "string",
+      "description": "Player type required."
+    },
+    "productionCompany": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "The production company or studio performing the work."
+    },
+    "uploadDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when this media object was uploaded."
+    },
+    "requiresSubscription": {
+      "type": "boolean",
+      "description": "Indicates if use of the media requires a subscription."
+    },
+    "regionsAllowed": {
+      "type": "string",
+      "description": "The regions where the media is allowed."
+    },
+    "associatedArticle": {
+      "$ref": "schema-org-article-schema.json",
+      "description": "A NewsArticle associated with the media object."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

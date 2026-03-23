@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/creative-work.json",
+  "title": "Schema.org CreativeWork",
+  "description": "The most generic kind of creative work, including books, movies, photographs, software programs, etc.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["CreativeWork", "Article", "Blog", "Book", "Clip", "Comment", "Conversation", "Course", "Dataset", "DigitalDocument", "Drawing", "Episode", "Game", "Guide", "HowTo", "LegislationObject", "Map", "MediaObject", "Menu", "Message", "Movie", "MusicComposition", "MusicPlaylist", "MusicRecording", "Painting", "Photograph", "Play", "Poster", "PublicationIssue", "PublicationVolume", "Quotation", "Review", "Sculpture", "Season", "ShortStory", "SoftwareApplication", "SoftwareSourceCode", "TVSeries", "Thesis", "VisualArtwork", "WebContent", "WebPage", "WebSite"]
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the creative work."
+    },
+    "headline": {
+      "type": "string",
+      "maxLength": 110,
+      "description": "Headline of the article."
+    },
+    "alternativeHeadline": {
+      "type": "string",
+      "description": "A secondary title of the CreativeWork."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the creative work."
+    },
+    "text": {
+      "type": "string",
+      "description": "The textual content of this CreativeWork."
+    },
+    "abstract": {
+      "type": "string",
+      "description": "An abstract is a short description that summarizes a CreativeWork."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the creative work."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the creative work."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" },
+        { "type": "array", "items": { "oneOf": [{ "$ref": "schema-org-person-schema.json" }, { "$ref": "schema-org-organization-schema.json" }] } }
+      ],
+      "description": "The author of this content."
+    },
+    "creator": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The creator/author of this CreativeWork."
+    },
+    "editor": {
+      "$ref": "schema-org-person-schema.json",
+      "description": "Specifies the Person who edited the CreativeWork."
+    },
+    "publisher": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The publisher of the creative work."
+    },
+    "contributor": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" },
+        { "type": "array", "items": { "oneOf": [{ "$ref": "schema-org-person-schema.json" }, { "$ref": "schema-org-organization-schema.json" }] } }
+      ],
+      "description": "A secondary contributor to the CreativeWork."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first broadcast/publication."
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date",
+      "description": "The date on which the CreativeWork was created."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date",
+      "description": "The date on which the CreativeWork was most recently modified."
+    },
+    "copyrightYear": {
+      "type": "integer",
+      "description": "The year during which the claimed copyright was first asserted."
+    },
+    "copyrightHolder": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The party holding the legal copyright to the CreativeWork."
+    },
+    "license": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "object", "properties": { "@type": { "const": "CreativeWork" }, "name": { "type": "string" }, "url": { "type": "string", "format": "uri" } } }
+      ],
+      "description": "A license document that applies to this content."
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the content (IETF BCP 47)."
+    },
+    "keywords": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Keywords or tags used to describe this content."
+    },
+    "genre": {
+      "type": "string",
+      "description": "Genre of the creative work."
+    },
+    "about": {
+      "type": "object",
+      "description": "The subject matter of the content.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "isPartOf": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "string", "format": "uri" }
+      ],
+      "description": "Indicates an item that this item is part of."
+    },
+    "hasPart": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "Indicates an item that is part of this item."
+    },
+    "position": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "integer" }
+      ],
+      "description": "The position of an item in a series or sequence of items."
+    },
+    "version": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "number" }
+      ],
+      "description": "The version of the CreativeWork."
+    },
+    "encoding": {
+      "$ref": "schema-org-media-object-schema.json",
+      "description": "A media object that encodes this CreativeWork."
+    },
+    "encodingFormat": {
+      "type": "string",
+      "description": "Media type expressed using a MIME format."
+    },
+    "interactionStatistic": {
+      "type": "object",
+      "description": "The number of interactions for the CreativeWork.",
+      "properties": {
+        "@type": { "type": "string", "const": "InteractionCounter" },
+        "interactionType": { "type": "string", "description": "The Action representing the interaction." },
+        "userInteractionCount": { "type": "integer", "description": "The number of interactions." }
+      }
+    },
+    "comment": {
+      "oneOf": [
+        { "type": "object", "properties": { "@type": { "const": "Comment" }, "text": { "type": "string" } } },
+        { "type": "array", "items": { "type": "object", "properties": { "@type": { "const": "Comment" }, "text": { "type": "string" } } } }
+      ],
+      "description": "Comments on this creative work."
+    },
+    "commentCount": {
+      "type": "integer",
+      "description": "The number of comments this CreativeWork has received."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the item."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating."
+    },
+    "offers": {
+      "oneOf": [
+        { "$ref": "schema-org-offer-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-offer-schema.json" } }
+      ],
+      "description": "An offer to provide this item."
+    },
+    "accessMode": {
+      "type": "string",
+      "description": "The human sensory perceptual system or cognitive faculty through which a person may process the content."
+    },
+    "accessibilityFeature": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier property represents any kind of identifier."
+    }
+  }
+}

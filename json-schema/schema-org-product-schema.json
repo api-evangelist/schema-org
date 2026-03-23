@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/product.json",
+  "title": "Schema.org Product",
+  "description": "Any offered product or service. For example: a pair of shoes, a concert ticket, a car, etc.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Product", "IndividualProduct", "ProductGroup", "ProductModel", "Vehicle"]
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the product."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the product."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the product."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the product."
+    },
+    "sku": {
+      "type": "string",
+      "description": "The Stock Keeping Unit (SKU) of the product."
+    },
+    "gtin": {
+      "type": "string",
+      "description": "A Global Trade Item Number (GTIN)."
+    },
+    "gtin12": {
+      "type": "string",
+      "pattern": "^\\d{12}$",
+      "description": "The GTIN-12 code of the product (UPC-A)."
+    },
+    "gtin13": {
+      "type": "string",
+      "pattern": "^\\d{13}$",
+      "description": "The GTIN-13 code of the product (EAN)."
+    },
+    "gtin14": {
+      "type": "string",
+      "pattern": "^\\d{14}$",
+      "description": "The GTIN-14 code of the product."
+    },
+    "gtin8": {
+      "type": "string",
+      "pattern": "^\\d{8}$",
+      "description": "The GTIN-8 code of the product."
+    },
+    "mpn": {
+      "type": "string",
+      "description": "The Manufacturer Part Number (MPN) of the product."
+    },
+    "brand": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "schema-org-organization-schema.json" },
+        { "type": "object", "properties": { "@type": { "const": "Brand" }, "name": { "type": "string" } } }
+      ],
+      "description": "The brand of the product."
+    },
+    "manufacturer": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "The manufacturer of the product."
+    },
+    "model": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object", "properties": { "@type": { "const": "ProductModel" }, "name": { "type": "string" } } }
+      ],
+      "description": "The model of the product."
+    },
+    "category": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "string", "format": "uri" }
+      ],
+      "description": "A category for the product."
+    },
+    "color": {
+      "type": "string",
+      "description": "The color of the product."
+    },
+    "material": {
+      "type": "string",
+      "description": "The material the product is made from."
+    },
+    "weight": {
+      "type": "object",
+      "description": "The weight of the product.",
+      "properties": {
+        "@type": { "type": "string", "const": "QuantitativeValue" },
+        "value": { "type": "number", "description": "The value." },
+        "unitCode": { "type": "string", "description": "The unit of measurement (UN/CEFACT)." },
+        "unitText": { "type": "string", "description": "The unit of measurement as text." }
+      }
+    },
+    "width": {
+      "type": "object",
+      "description": "The width of the product.",
+      "properties": {
+        "@type": { "type": "string", "const": "QuantitativeValue" },
+        "value": { "type": "number" },
+        "unitCode": { "type": "string" },
+        "unitText": { "type": "string" }
+      }
+    },
+    "height": {
+      "type": "object",
+      "description": "The height of the product.",
+      "properties": {
+        "@type": { "type": "string", "const": "QuantitativeValue" },
+        "value": { "type": "number" },
+        "unitCode": { "type": "string" },
+        "unitText": { "type": "string" }
+      }
+    },
+    "depth": {
+      "type": "object",
+      "description": "The depth of the product.",
+      "properties": {
+        "@type": { "type": "string", "const": "QuantitativeValue" },
+        "value": { "type": "number" },
+        "unitCode": { "type": "string" },
+        "unitText": { "type": "string" }
+      }
+    },
+    "offers": {
+      "oneOf": [
+        { "$ref": "schema-org-offer-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-offer-schema.json" } }
+      ],
+      "description": "An offer to provide this product."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the product."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating."
+    },
+    "isRelatedTo": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "A pointer to another, somehow related product."
+    },
+    "isSimilarTo": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "A pointer to another, functionally similar product."
+    },
+    "additionalProperty": {
+      "oneOf": [
+        { "$ref": "schema-org-property-value-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-property-value-schema.json" } }
+      ],
+      "description": "A property-value pair representing an additional characteristic."
+    },
+    "award": {
+      "type": "string",
+      "description": "An award won by or for this product."
+    },
+    "countryOfOrigin": {
+      "type": "string",
+      "description": "The country of origin of the product."
+    },
+    "releaseDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The release date of a product."
+    },
+    "productionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date of production of the product."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier property represents any kind of identifier."
+    }
+  }
+}

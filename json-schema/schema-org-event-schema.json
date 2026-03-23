@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/event.json",
+  "title": "Schema.org Event",
+  "description": "An event happening at a certain time and location, such as a concert, lecture, or festival.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Event", "BusinessEvent", "ChildrensEvent", "ComedyEvent", "CourseInstance", "DanceEvent", "DeliveryEvent", "EducationEvent", "ExhibitionEvent", "Festival", "FoodEvent", "Hackathon", "LiteraryEvent", "MusicEvent", "PublicationEvent", "SaleEvent", "ScreeningEvent", "SocialEvent", "SportsEvent", "TheaterEvent", "VisualArtsEvent"]
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the event."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the event."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the event."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the event."
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The start date and time of the event."
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The end date and time of the event."
+    },
+    "doorTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time admission will commence."
+    },
+    "duration": {
+      "type": "string",
+      "description": "The duration of the event in ISO 8601 format."
+    },
+    "eventStatus": {
+      "type": "string",
+      "enum": ["EventCancelled", "EventMovedOnline", "EventPostponed", "EventRescheduled", "EventScheduled"],
+      "description": "The status of the event."
+    },
+    "eventAttendanceMode": {
+      "type": "string",
+      "enum": ["MixedEventAttendanceMode", "OfflineEventAttendanceMode", "OnlineEventAttendanceMode"],
+      "description": "The attendance mode of the event."
+    },
+    "location": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "schema-org-place-schema.json" },
+        { "$ref": "#/$defs/VirtualLocation" },
+        { "$ref": "schema-org-postal-address-schema.json" }
+      ],
+      "description": "The location of the event."
+    },
+    "organizer": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "An organizer of an Event."
+    },
+    "performer": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" },
+        { "type": "array", "items": { "oneOf": [{ "$ref": "schema-org-person-schema.json" }, { "$ref": "schema-org-organization-schema.json" }] } }
+      ],
+      "description": "A performer at the event."
+    },
+    "sponsor": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "A person or organization that supports a thing through a pledge, promise, or financial contribution."
+    },
+    "offers": {
+      "oneOf": [
+        { "$ref": "schema-org-offer-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-offer-schema.json" } }
+      ],
+      "description": "An offer to provide this item."
+    },
+    "audience": {
+      "type": "object",
+      "description": "An intended audience.",
+      "properties": {
+        "@type": { "type": "string", "const": "Audience" },
+        "audienceType": { "type": "string", "description": "The target group." }
+      }
+    },
+    "maximumAttendeeCapacity": {
+      "type": "integer",
+      "description": "The total number of individuals that may attend."
+    },
+    "maximumVirtualAttendeeCapacity": {
+      "type": "integer",
+      "description": "The maximum virtual attendee capacity."
+    },
+    "remainingAttendeeCapacity": {
+      "type": "integer",
+      "description": "The number of attendee places remaining."
+    },
+    "previousStartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Used for rescheduled or cancelled events to indicate the original start date."
+    },
+    "superEvent": {
+      "$ref": "#",
+      "description": "An event that this event is a part of."
+    },
+    "subEvent": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "An Event that is part of this event."
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the event."
+    },
+    "isAccessibleForFree": {
+      "type": "boolean",
+      "description": "A flag to signal that the item is accessible for free."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the event."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating, based on a collection of reviews or ratings."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier property represents any kind of identifier."
+    }
+  },
+  "$defs": {
+    "VirtualLocation": {
+      "type": "object",
+      "description": "An online or virtual location for attending events.",
+      "properties": {
+        "@type": { "type": "string", "const": "VirtualLocation" },
+        "url": { "type": "string", "format": "uri", "description": "URL of the virtual location." },
+        "name": { "type": "string", "description": "Name of the virtual location or platform." }
+      }
+    }
+  }
+}

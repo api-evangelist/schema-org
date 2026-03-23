@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/offer.json",
+  "title": "Schema.org Offer",
+  "description": "An offer to transfer some rights to an item or to provide a service, for example an offer to sell tickets to an event or to rent a movie.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Offer", "AggregateOffer"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the offer."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the offer."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the offer."
+    },
+    "price": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" }
+      ],
+      "description": "The offer price."
+    },
+    "priceCurrency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "The currency of the price (ISO 4217)."
+    },
+    "priceValidUntil": {
+      "type": "string",
+      "format": "date",
+      "description": "The date after which the price is no longer available."
+    },
+    "availability": {
+      "type": "string",
+      "enum": ["BackOrder", "Discontinued", "InStock", "InStoreOnly", "LimitedAvailability", "OnlineOnly", "OutOfStock", "PreOrder", "PreSale", "SoldOut"],
+      "description": "The availability of this item."
+    },
+    "availabilityStarts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The beginning of the availability of the product."
+    },
+    "availabilityEnds": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The end of the availability of the product."
+    },
+    "itemCondition": {
+      "type": "string",
+      "enum": ["DamagedCondition", "NewCondition", "RefurbishedCondition", "UsedCondition"],
+      "description": "The condition of the item."
+    },
+    "seller": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The entity offering the item."
+    },
+    "offeredBy": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "A pointer to the organization making the offer."
+    },
+    "itemOffered": {
+      "type": "object",
+      "description": "The item being offered.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "sku": {
+      "type": "string",
+      "description": "The Stock Keeping Unit."
+    },
+    "gtin": {
+      "type": "string",
+      "description": "A Global Trade Item Number."
+    },
+    "mpn": {
+      "type": "string",
+      "description": "The Manufacturer Part Number."
+    },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date when the item becomes valid."
+    },
+    "validThrough": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date after when the item is not valid."
+    },
+    "eligibleRegion": {
+      "type": "string",
+      "description": "The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code for the eligible region."
+    },
+    "eligibleQuantity": {
+      "type": "object",
+      "description": "The interval and unit of measurement of ordering quantities.",
+      "properties": {
+        "@type": { "type": "string", "const": "QuantitativeValue" },
+        "value": { "type": "number" },
+        "minValue": { "type": "number" },
+        "maxValue": { "type": "number" },
+        "unitCode": { "type": "string" }
+      }
+    },
+    "deliveryLeadTime": {
+      "type": "object",
+      "description": "The typical delay between the receipt of the order and the goods either leaving the warehouse or being prepared for pickup.",
+      "properties": {
+        "@type": { "type": "string", "const": "QuantitativeValue" },
+        "value": { "type": "number" },
+        "unitCode": { "type": "string" }
+      }
+    },
+    "shippingDetails": {
+      "$ref": "#/$defs/OfferShippingDetails",
+      "description": "Indicates information about the shipping policies and options."
+    },
+    "hasMerchantReturnPolicy": {
+      "$ref": "#/$defs/MerchantReturnPolicy",
+      "description": "Specifies a MerchantReturnPolicy."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the offer."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating."
+    },
+    "lowPrice": {
+      "type": "number",
+      "description": "The lowest price of all offers available (for AggregateOffer)."
+    },
+    "highPrice": {
+      "type": "number",
+      "description": "The highest price of all offers available (for AggregateOffer)."
+    },
+    "offerCount": {
+      "type": "integer",
+      "description": "The number of offers for the product (for AggregateOffer)."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "OfferShippingDetails": {
+      "type": "object",
+      "description": "Shipping details for an offer.",
+      "properties": {
+        "@type": { "type": "string", "const": "OfferShippingDetails" },
+        "shippingRate": {
+          "type": "object",
+          "properties": {
+            "@type": { "const": "MonetaryAmount" },
+            "value": { "type": "number" },
+            "currency": { "type": "string" }
+          }
+        },
+        "shippingDestination": {
+          "type": "object",
+          "properties": {
+            "@type": { "const": "DefinedRegion" },
+            "addressCountry": { "type": "string" }
+          }
+        },
+        "deliveryTime": {
+          "type": "object",
+          "properties": {
+            "@type": { "const": "ShippingDeliveryTime" },
+            "handlingTime": { "type": "object" },
+            "transitTime": { "type": "object" }
+          }
+        }
+      }
+    },
+    "MerchantReturnPolicy": {
+      "type": "object",
+      "description": "A MerchantReturnPolicy.",
+      "properties": {
+        "@type": { "type": "string", "const": "MerchantReturnPolicy" },
+        "applicableCountry": { "type": "string" },
+        "returnPolicyCategory": { "type": "string", "enum": ["MerchantReturnFiniteReturnWindow", "MerchantReturnNotPermitted", "MerchantReturnUnlimitedWindow", "MerchantReturnUnspecified"] },
+        "merchantReturnDays": { "type": "integer" },
+        "returnMethod": { "type": "string", "enum": ["ReturnAtKiosk", "ReturnByMail", "ReturnInStore"] },
+        "returnFees": { "type": "string", "enum": ["FreeReturn", "OriginalShippingFees", "RestockingFees", "ReturnFeesCustomerResponsibility", "ReturnShippingFees"] }
+      }
+    }
+  }
+}

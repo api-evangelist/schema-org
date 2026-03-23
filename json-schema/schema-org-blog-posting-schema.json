@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/blog-posting.json",
+  "title": "Schema.org BlogPosting",
+  "description": "A blog post. A subtype of Article and SocialMediaPosting.",
+  "type": "object",
+  "required": ["@type", "headline"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "BlogPosting",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "headline": {
+      "type": "string",
+      "maxLength": 110,
+      "description": "Headline of the blog post."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the blog post."
+    },
+    "description": {
+      "type": "string",
+      "description": "A short description of the blog post."
+    },
+    "articleBody": {
+      "type": "string",
+      "description": "The actual body of the blog post."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the blog post."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image for the blog post."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this blog post."
+    },
+    "publisher": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The publisher of this blog post."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date",
+      "description": "The date on which the blog post was created."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date",
+      "description": "The date on which the blog post was most recently modified."
+    },
+    "keywords": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Keywords or tags."
+    },
+    "wordCount": {
+      "type": "integer",
+      "description": "The number of words in the text."
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the content."
+    },
+    "sharedContent": {
+      "type": "object",
+      "description": "A CreativeWork such as an image, video, or audio clip shared as part of this posting.",
+      "properties": {
+        "@type": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "mainEntityOfPage": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-web-page-schema.json" }
+      ],
+      "description": "Indicates a page for which this blog post is the main entity."
+    },
+    "commentCount": {
+      "type": "integer",
+      "description": "The number of comments this blog post has received."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

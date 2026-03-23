@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/course.json",
+  "title": "Schema.org Course",
+  "description": "A description of an educational course which may be offered as distinct instances which take place at different times or locations, or through different media.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "Course",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the course."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the course."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the course."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the course."
+    },
+    "provider": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The service provider of the course."
+    },
+    "courseCode": {
+      "type": "string",
+      "description": "The identifier for the Course used by the course provider."
+    },
+    "coursePrerequisites": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "#" },
+        { "type": "array", "items": { "oneOf": [{ "type": "string" }, { "$ref": "#" }] } }
+      ],
+      "description": "Requirements for taking the course."
+    },
+    "educationalLevel": {
+      "type": "string",
+      "description": "The level in terms of progression through an educational or training context."
+    },
+    "educationalCredentialAwarded": {
+      "type": "string",
+      "description": "A description of the qualification or credential awarded upon completion."
+    },
+    "numberOfCredits": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "object", "properties": { "@type": { "const": "StructuredValue" }, "value": { "type": "integer" } } }
+      ],
+      "description": "The number of credits or units awarded by a Course."
+    },
+    "hasCourseInstance": {
+      "oneOf": [
+        { "$ref": "#/$defs/CourseInstance" },
+        { "type": "array", "items": { "$ref": "#/$defs/CourseInstance" } }
+      ],
+      "description": "An offering of the course at a specific time and place."
+    },
+    "about": {
+      "type": "object",
+      "description": "The subject matter of the course.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the course content."
+    },
+    "teaches": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "The item being described is intended to help a person learn the competency or learning outcome."
+    },
+    "totalHistoricalEnrollment": {
+      "type": "integer",
+      "description": "The total number of students that have enrolled in the history of the course."
+    },
+    "financialAidEligible": {
+      "type": "string",
+      "description": "A financial aid type or program which students may use to pay for the course."
+    },
+    "availableLanguage": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "A language someone may use with or at the item."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the course."
+    },
+    "offers": {
+      "oneOf": [
+        { "$ref": "schema-org-offer-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-offer-schema.json" } }
+      ],
+      "description": "An offer to provide this course."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "CourseInstance": {
+      "type": "object",
+      "description": "An instance of a Course offered at a specific time and place.",
+      "properties": {
+        "@type": { "type": "string", "const": "CourseInstance" },
+        "name": { "type": "string", "description": "The name of the course instance." },
+        "courseMode": { "type": "string", "description": "The medium or means of delivery of the course instance (e.g., online, onsite, blended)." },
+        "courseWorkload": { "type": "string", "description": "The amount of work expected of students." },
+        "instructor": { "$ref": "schema-org-person-schema.json", "description": "A person assigned to instruct or provide educational instruction." },
+        "startDate": { "type": "string", "format": "date", "description": "The start date." },
+        "endDate": { "type": "string", "format": "date", "description": "The end date." },
+        "location": { "oneOf": [{ "type": "string" }, { "$ref": "schema-org-place-schema.json" }], "description": "The location of the course instance." },
+        "courseSchedule": { "type": "object", "description": "Represents the schedule for the course.", "properties": { "@type": { "const": "Schedule" }, "repeatFrequency": { "type": "string" }, "repeatCount": { "type": "integer" } } }
+      }
+    }
+  }
+}

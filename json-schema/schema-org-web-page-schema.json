@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/web-page.json",
+  "title": "Schema.org WebPage",
+  "description": "A web page. Every web page is implicitly assumed to be declared to be of type WebPage.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["WebPage", "AboutPage", "CheckoutPage", "CollectionPage", "ContactPage", "FAQPage", "ItemPage", "MedicalWebPage", "ProfilePage", "QAPage", "RealEstateListing", "SearchResultsPage"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the web page."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the web page."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the web page."
+    },
+    "lastReviewed": {
+      "type": "string",
+      "format": "date",
+      "description": "Date on which the content on this web page was last reviewed for accuracy."
+    },
+    "mainContentOfPage": {
+      "type": "object",
+      "description": "Indicates if this web page element is the main subject of the page.",
+      "properties": {
+        "@type": { "type": "string", "const": "WebPageElement" },
+        "cssSelector": { "type": "string" }
+      }
+    },
+    "primaryImageOfPage": {
+      "$ref": "schema-org-image-object-schema.json",
+      "description": "Indicates the main image on the page."
+    },
+    "breadcrumb": {
+      "$ref": "schema-org-breadcrumb-list-schema.json",
+      "description": "A set of links that can help a user understand and navigate a website hierarchy."
+    },
+    "mainEntity": {
+      "type": "object",
+      "description": "Indicates the primary entity described in some page or other CreativeWork.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "significantLink": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "One of the more significant URLs on the page."
+    },
+    "speakable": {
+      "type": "object",
+      "description": "Indicates sections that are particularly speakable.",
+      "properties": {
+        "@type": { "type": "string", "const": "SpeakableSpecification" },
+        "cssSelector": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] },
+        "xpath": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] }
+      }
+    },
+    "specialty": {
+      "type": "string",
+      "description": "One of the domain specialties to which this web page's content applies."
+    },
+    "relatedLink": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "A link related to this web page."
+    },
+    "reviewedBy": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "People or organizations that have reviewed the content on this web page."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this web page."
+    },
+    "publisher": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The publisher of this web page."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date",
+      "description": "The date on which the page was most recently modified."
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the content."
+    },
+    "isPartOf": {
+      "$ref": "schema-org-web-site-schema.json",
+      "description": "Indicates the WebSite that this page is part of."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

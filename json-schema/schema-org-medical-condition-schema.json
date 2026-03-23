@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/medical-condition.json",
+  "title": "Schema.org MedicalCondition",
+  "description": "Any condition of the human body that affects the normal functioning of a person, whether physically or mentally.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["MedicalCondition", "InfectiousDisease", "MedicalSignOrSymptom"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the condition."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the condition."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL with information about the condition."
+    },
+    "alternateName": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "An alias for the condition."
+    },
+    "code": {
+      "$ref": "#/$defs/MedicalCode",
+      "description": "A medical code for the condition."
+    },
+    "associatedAnatomy": {
+      "type": "object",
+      "description": "The anatomy or anatomical system affected.",
+      "properties": {
+        "@type": { "type": "string", "enum": ["AnatomicalStructure", "AnatomicalSystem", "SuperficialAnatomy"] },
+        "name": { "type": "string" }
+      }
+    },
+    "differentialDiagnosis": {
+      "oneOf": [
+        { "$ref": "#/$defs/DDxElement" },
+        { "type": "array", "items": { "$ref": "#/$defs/DDxElement" } }
+      ],
+      "description": "One of a set of differential diagnoses for the condition."
+    },
+    "signOrSymptom": {
+      "oneOf": [
+        { "$ref": "#/$defs/MedicalSignOrSymptom" },
+        { "type": "array", "items": { "$ref": "#/$defs/MedicalSignOrSymptom" } }
+      ],
+      "description": "A sign or symptom of this condition."
+    },
+    "possibleTreatment": {
+      "oneOf": [
+        { "$ref": "#/$defs/MedicalTherapy" },
+        { "type": "array", "items": { "$ref": "#/$defs/MedicalTherapy" } }
+      ],
+      "description": "A possible treatment to address this condition."
+    },
+    "riskFactor": {
+      "oneOf": [
+        { "$ref": "#/$defs/MedicalRiskFactor" },
+        { "type": "array", "items": { "$ref": "#/$defs/MedicalRiskFactor" } }
+      ],
+      "description": "A modifiable or non-modifiable factor that increases the risk of a patient contracting this condition."
+    },
+    "expectedPrognosis": {
+      "type": "string",
+      "description": "The likely outcome in either the short or long term."
+    },
+    "naturalProgression": {
+      "type": "string",
+      "description": "The expected progression of the condition if it is not treated."
+    },
+    "stage": {
+      "type": "object",
+      "description": "The stage of the condition.",
+      "properties": {
+        "@type": { "type": "string", "const": "MedicalConditionStage" },
+        "stageAsNumber": { "type": "number" },
+        "subStageSuffix": { "type": "string" }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["EvidenceNotAssessed", "MedicalEvidenceLevel", "TreatmentActive", "TreatmentComplete", "TreatmentDiscontinued", "TreatmentNotApplicable", "TreatmentPending", "TreatmentStopped"],
+      "description": "The status of the condition."
+    },
+    "epidemiology": {
+      "type": "string",
+      "description": "The characteristics of associated patients, such as age, gender, race etc."
+    },
+    "pathophysiology": {
+      "type": "string",
+      "description": "Changes in the normal mechanical, physical, and biochemical functions."
+    },
+    "typicalTest": {
+      "oneOf": [
+        { "$ref": "#/$defs/MedicalTest" },
+        { "type": "array", "items": { "$ref": "#/$defs/MedicalTest" } }
+      ],
+      "description": "A medical test typically performed given this condition."
+    },
+    "primaryPrevention": {
+      "oneOf": [
+        { "$ref": "#/$defs/MedicalTherapy" },
+        { "type": "array", "items": { "$ref": "#/$defs/MedicalTherapy" } }
+      ],
+      "description": "A preventative therapy used to prevent an initial occurrence of the medical condition."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "MedicalCode": {
+      "type": "object",
+      "description": "A code for a medical entity.",
+      "properties": {
+        "@type": { "type": "string", "const": "MedicalCode" },
+        "codeValue": { "type": "string", "description": "The actual code." },
+        "codingSystem": { "type": "string", "description": "The coding system (e.g., ICD-10, SNOMED CT)." }
+      }
+    },
+    "DDxElement": {
+      "type": "object",
+      "description": "An alternative, closely-related condition to consider as part of differential diagnosis.",
+      "properties": {
+        "@type": { "type": "string", "const": "DDxElement" },
+        "diagnosis": { "$ref": "#", "description": "The condition being considered." },
+        "distinguishingSign": { "type": "array", "items": { "$ref": "#/$defs/MedicalSignOrSymptom" } }
+      }
+    },
+    "MedicalSignOrSymptom": {
+      "type": "object",
+      "description": "Any feature associated or not with a medical condition.",
+      "properties": {
+        "@type": { "type": "string", "enum": ["MedicalSign", "MedicalSymptom", "MedicalSignOrSymptom"] },
+        "name": { "type": "string", "description": "The name of the sign or symptom." },
+        "possibleTreatment": { "type": "object", "properties": { "@type": { "type": "string" }, "name": { "type": "string" } } }
+      }
+    },
+    "MedicalTherapy": {
+      "type": "object",
+      "description": "Any medical intervention designed to prevent, treat, and cure human diseases and medical conditions.",
+      "properties": {
+        "@type": { "type": "string", "enum": ["MedicalTherapy", "DrugTherapy", "PhysicalTherapy", "RadiationTherapy"] },
+        "name": { "type": "string", "description": "The name of the therapy." },
+        "description": { "type": "string", "description": "A description of the therapy." }
+      }
+    },
+    "MedicalRiskFactor": {
+      "type": "object",
+      "description": "A risk factor is anything that increases a person's likelihood of developing or contracting a disease, medical condition, or complication.",
+      "properties": {
+        "@type": { "type": "string", "const": "MedicalRiskFactor" },
+        "name": { "type": "string", "description": "The name of the risk factor." },
+        "increasesRiskOf": { "type": "object", "properties": { "@type": { "type": "string" }, "name": { "type": "string" } } }
+      }
+    },
+    "MedicalTest": {
+      "type": "object",
+      "description": "Any medical test, typically used for diagnosis.",
+      "properties": {
+        "@type": { "type": "string", "enum": ["MedicalTest", "BloodTest", "ImagingTest", "PathologyTest"] },
+        "name": { "type": "string", "description": "The name of the test." },
+        "usedToDiagnose": { "type": "object", "properties": { "@type": { "type": "string" }, "name": { "type": "string" } } }
+      }
+    }
+  }
+}

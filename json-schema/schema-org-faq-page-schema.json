@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/faq-page.json",
+  "title": "Schema.org FAQPage",
+  "description": "A FAQPage is a WebPage presenting one or more Frequently asked questions.",
+  "type": "object",
+  "required": ["@type", "mainEntity"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "FAQPage",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the FAQ page."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the FAQ page."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the FAQ page."
+    },
+    "mainEntity": {
+      "type": "array",
+      "description": "The list of questions and answers.",
+      "items": {
+        "$ref": "#/$defs/Question"
+      }
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the FAQ page was most recently modified."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this FAQ page."
+    },
+    "publisher": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The publisher of this FAQ page."
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the content."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "Question": {
+      "type": "object",
+      "description": "A specific question.",
+      "required": ["@type", "name", "acceptedAnswer"],
+      "properties": {
+        "@type": { "type": "string", "const": "Question" },
+        "name": { "type": "string", "description": "The full text of the question." },
+        "acceptedAnswer": {
+          "$ref": "#/$defs/Answer",
+          "description": "The answer that has been accepted as best."
+        },
+        "suggestedAnswer": {
+          "oneOf": [
+            { "$ref": "#/$defs/Answer" },
+            { "type": "array", "items": { "$ref": "#/$defs/Answer" } }
+          ],
+          "description": "An answer that is not accepted as best."
+        },
+        "answerCount": { "type": "integer", "description": "The number of answers." },
+        "upvoteCount": { "type": "integer", "description": "The number of upvotes." },
+        "dateCreated": { "type": "string", "format": "date", "description": "The date the question was created." },
+        "author": {
+          "oneOf": [
+            { "$ref": "schema-org-person-schema.json" },
+            { "$ref": "schema-org-organization-schema.json" }
+          ],
+          "description": "The author of the question."
+        }
+      }
+    },
+    "Answer": {
+      "type": "object",
+      "description": "An answer offered to a question.",
+      "required": ["@type", "text"],
+      "properties": {
+        "@type": { "type": "string", "const": "Answer" },
+        "text": { "type": "string", "description": "The textual content of the answer." },
+        "dateCreated": { "type": "string", "format": "date", "description": "The date the answer was created." },
+        "upvoteCount": { "type": "integer", "description": "The number of upvotes." },
+        "url": { "type": "string", "format": "uri", "description": "URL of the answer." },
+        "author": {
+          "oneOf": [
+            { "$ref": "schema-org-person-schema.json" },
+            { "$ref": "schema-org-organization-schema.json" }
+          ],
+          "description": "The author of the answer."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/invoice.json",
+  "title": "Schema.org Invoice",
+  "description": "A statement of the money due for goods or services; a bill.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "Invoice",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "The identifier for the account the payment will be applied to."
+    },
+    "confirmationNumber": {
+      "type": "string",
+      "description": "A number that confirms the given order or payment."
+    },
+    "customer": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "Party placing the order or paying the invoice."
+    },
+    "broker": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "An entity that arranges for an exchange."
+    },
+    "provider": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The service provider."
+    },
+    "billingPeriod": {
+      "type": "string",
+      "description": "The time interval used to compute the invoice in ISO 8601 format."
+    },
+    "paymentDueDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date that payment is due."
+    },
+    "paymentMethod": {
+      "type": "string",
+      "description": "The name of the credit card or other method of payment."
+    },
+    "paymentMethodId": {
+      "type": "string",
+      "description": "An identifier for the method of payment used."
+    },
+    "paymentStatus": {
+      "type": "string",
+      "enum": ["PaymentAutomaticallyApplied", "PaymentComplete", "PaymentDeclined", "PaymentDue", "PaymentPastDue"],
+      "description": "The status of payment."
+    },
+    "scheduledPaymentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the invoice is scheduled to be paid."
+    },
+    "totalPaymentDue": {
+      "type": "object",
+      "description": "The total amount due.",
+      "properties": {
+        "@type": { "type": "string", "const": "MonetaryAmount" },
+        "value": { "type": "number", "description": "The amount." },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$", "description": "The currency (ISO 4217)." }
+      }
+    },
+    "minimumPaymentDue": {
+      "type": "object",
+      "description": "The minimum payment required at this time.",
+      "properties": {
+        "@type": { "type": "string", "const": "MonetaryAmount" },
+        "value": { "type": "number" },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+      }
+    },
+    "referencesOrder": {
+      "$ref": "schema-org-order-schema.json",
+      "description": "The Order(s) related to this Invoice."
+    },
+    "category": {
+      "type": "string",
+      "description": "A category for the invoice."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the invoice."
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/contact-point.json",
+  "title": "Schema.org ContactPoint",
+  "description": "A contact point, for example a customer service contact point.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["ContactPoint", "PostalAddress"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "contactType": {
+      "type": "string",
+      "description": "A person or organization can have different contact points for different purposes (e.g., sales, technical support, billing)."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "The telephone number."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address."
+    },
+    "faxNumber": {
+      "type": "string",
+      "description": "The fax number."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the contact point."
+    },
+    "areaServed": {
+      "type": "string",
+      "description": "The geographic area where a service is provided."
+    },
+    "availableLanguage": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "A language someone may use with or at the item."
+    },
+    "contactOption": {
+      "type": "string",
+      "enum": ["HearingImpairedSupported", "TollFree"],
+      "description": "An option available on this contact point."
+    },
+    "hoursAvailable": {
+      "type": "object",
+      "description": "The hours during which this service is available.",
+      "properties": {
+        "@type": { "type": "string", "const": "OpeningHoursSpecification" },
+        "dayOfWeek": { "type": "string" },
+        "opens": { "type": "string" },
+        "closes": { "type": "string" }
+      }
+    },
+    "productSupported": {
+      "type": "string",
+      "description": "The product or service this support contact point is related to."
+    },
+    "serviceArea": {
+      "type": "string",
+      "description": "The geographic area where the service is provided."
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/item-list.json",
+  "title": "Schema.org ItemList",
+  "description": "A list of items of any sort, for example, Top 10 Restaurants, Recommended Products, or a list of music tracks.",
+  "type": "object",
+  "required": ["@type", "itemListElement"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["ItemList", "BreadcrumbList", "HowToSection", "HowToStep", "OfferCatalog"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the list."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the list."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the list."
+    },
+    "itemListElement": {
+      "type": "array",
+      "description": "The items in the list.",
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/ListItem" },
+          { "type": "object" },
+          { "type": "string" }
+        ]
+      }
+    },
+    "itemListOrder": {
+      "type": "string",
+      "enum": ["ItemListOrderAscending", "ItemListOrderDescending", "ItemListUnordered"],
+      "description": "Type of ordering."
+    },
+    "numberOfItems": {
+      "type": "integer",
+      "description": "The number of items in an ItemList."
+    }
+  },
+  "$defs": {
+    "ListItem": {
+      "type": "object",
+      "description": "An item in a list.",
+      "properties": {
+        "@type": { "type": "string", "const": "ListItem" },
+        "position": { "type": "integer", "description": "The position of an item in a series." },
+        "name": { "type": "string", "description": "The name of the item." },
+        "url": { "type": "string", "format": "uri", "description": "URL of the item." },
+        "item": {
+          "type": "object",
+          "description": "The item represented by this list item.",
+          "properties": {
+            "@type": { "type": "string" },
+            "name": { "type": "string" },
+            "url": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    }
+  }
+}

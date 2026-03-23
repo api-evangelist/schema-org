@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/order.json",
+  "title": "Schema.org Order",
+  "description": "An order is a confirmation of a transaction, typically from an online shop.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "Order",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "orderNumber": {
+      "type": "string",
+      "description": "The identifier of the transaction."
+    },
+    "orderStatus": {
+      "type": "string",
+      "enum": ["OrderCancelled", "OrderDelivered", "OrderInTransit", "OrderPaymentDue", "OrderPickupAvailable", "OrderProblem", "OrderProcessing", "OrderReturned"],
+      "description": "The current status of the order."
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date order was placed."
+    },
+    "customer": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "Party placing the order."
+    },
+    "seller": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "An entity which offers goods or services."
+    },
+    "broker": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "An entity that arranges for the exchange."
+    },
+    "orderedItem": {
+      "oneOf": [
+        { "$ref": "#/$defs/OrderItem" },
+        { "type": "array", "items": { "$ref": "#/$defs/OrderItem" } },
+        { "$ref": "schema-org-product-schema.json" }
+      ],
+      "description": "The item ordered."
+    },
+    "acceptedOffer": {
+      "oneOf": [
+        { "$ref": "schema-org-offer-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-offer-schema.json" } }
+      ],
+      "description": "The offer(s) that were accepted as part of this order."
+    },
+    "billingAddress": {
+      "$ref": "schema-org-postal-address-schema.json",
+      "description": "The billing address for the order."
+    },
+    "paymentMethod": {
+      "type": "string",
+      "description": "The name of the credit card or other method of payment for the order."
+    },
+    "paymentMethodId": {
+      "type": "string",
+      "description": "An identifier for the method of payment used."
+    },
+    "paymentUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL for sending a payment."
+    },
+    "paymentDueDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date that payment is due."
+    },
+    "discount": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" }
+      ],
+      "description": "Any discount applied to the order."
+    },
+    "discountCode": {
+      "type": "string",
+      "description": "Code used to redeem a discount."
+    },
+    "discountCurrency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "The currency of the discount."
+    },
+    "isGift": {
+      "type": "boolean",
+      "description": "Was the offer accepted as a gift for someone other than the buyer."
+    },
+    "orderDelivery": {
+      "$ref": "#/$defs/ParcelDelivery",
+      "description": "The delivery of the parcel related to this order."
+    },
+    "confirmationNumber": {
+      "type": "string",
+      "description": "A number confirming the given order."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the order."
+    }
+  },
+  "$defs": {
+    "OrderItem": {
+      "type": "object",
+      "description": "An order item is a line of an order.",
+      "properties": {
+        "@type": { "type": "string", "const": "OrderItem" },
+        "orderItemNumber": { "type": "string", "description": "The identifier of the order item." },
+        "orderQuantity": { "type": "integer", "description": "The number of the item ordered." },
+        "orderItemStatus": { "type": "string", "enum": ["OrderCancelled", "OrderDelivered", "OrderInTransit", "OrderPaymentDue", "OrderPickupAvailable", "OrderProblem", "OrderProcessing", "OrderReturned"], "description": "The current status of the order item." },
+        "orderedItem": { "type": "object", "properties": { "@type": { "type": "string" }, "name": { "type": "string" } }, "description": "The item ordered." }
+      }
+    },
+    "ParcelDelivery": {
+      "type": "object",
+      "description": "The delivery of a parcel.",
+      "properties": {
+        "@type": { "type": "string", "const": "ParcelDelivery" },
+        "trackingNumber": { "type": "string", "description": "Shipper tracking number." },
+        "trackingUrl": { "type": "string", "format": "uri", "description": "Tracking URL for the parcel delivery." },
+        "deliveryStatus": { "type": "string", "description": "New entry added as the package is delivered." },
+        "expectedArrivalFrom": { "type": "string", "format": "date-time", "description": "The earliest date the package may arrive." },
+        "expectedArrivalUntil": { "type": "string", "format": "date-time", "description": "The latest date the package may arrive." },
+        "carrier": { "$ref": "schema-org-organization-schema.json", "description": "The party responsible for the parcel delivery." },
+        "deliveryAddress": { "$ref": "schema-org-postal-address-schema.json", "description": "Destination address." }
+      }
+    }
+  }
+}

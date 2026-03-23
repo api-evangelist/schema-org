@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/medical-procedure.json",
+  "title": "Schema.org MedicalProcedure",
+  "description": "A process of care used in either a diagnostic, therapeutic, preventive or palliative capacity that relies on invasive, non-invasive, or other techniques.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["MedicalProcedure", "DiagnosticProcedure", "PalliativeProcedure", "PhysicalExam", "SurgicalProcedure", "TherapeuticProcedure"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the procedure."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the procedure."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL with information about the procedure."
+    },
+    "procedureType": {
+      "type": "string",
+      "enum": ["NoninvasiveProcedure", "PercutaneousProcedure", "SurgicalProcedure"],
+      "description": "The type of procedure, for example Surgical, Noninvasive, or Percutaneous."
+    },
+    "bodyLocation": {
+      "type": "string",
+      "description": "Location in the body of the anatomical structure."
+    },
+    "preparation": {
+      "type": "string",
+      "description": "Typical preparation that a patient must undergo before having the procedure performed."
+    },
+    "followup": {
+      "type": "string",
+      "description": "Typical or recommended followup care after the procedure is performed."
+    },
+    "howPerformed": {
+      "type": "string",
+      "description": "How the procedure is performed."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["EvidenceNotAssessed", "MedicalEvidenceLevel", "TreatmentActive", "TreatmentComplete", "TreatmentDiscontinued", "TreatmentNotApplicable", "TreatmentPending", "TreatmentStopped"],
+      "description": "The status of the procedure."
+    },
+    "code": {
+      "type": "object",
+      "description": "A medical code for the procedure.",
+      "properties": {
+        "@type": { "type": "string", "const": "MedicalCode" },
+        "codeValue": { "type": "string", "description": "The actual code." },
+        "codingSystem": { "type": "string", "description": "The coding system (e.g., ICD-10-PCS, CPT)." }
+      }
+    },
+    "doseSchedule": {
+      "type": "object",
+      "description": "A dosing schedule for the procedure (for therapeutic procedures).",
+      "properties": {
+        "@type": { "type": "string", "const": "DoseSchedule" },
+        "doseUnit": { "type": "string" },
+        "doseValue": { "type": "number" },
+        "frequency": { "type": "string" }
+      }
+    },
+    "drug": {
+      "oneOf": [
+        { "$ref": "schema-org-drug-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-drug-schema.json" } }
+      ],
+      "description": "Specifying a drug or medicine used in a medication procedure."
+    },
+    "adverseOutcome": {
+      "type": "object",
+      "description": "A possible complication and/or side effect of this therapy.",
+      "properties": {
+        "@type": { "type": "string", "const": "MedicalEntity" },
+        "name": { "type": "string" }
+      }
+    },
+    "contraindication": {
+      "type": "string",
+      "description": "A contraindication for this therapy."
+    },
+    "duplicateTherapy": {
+      "type": "object",
+      "description": "A therapy that duplicates or overlaps this one.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "seriousAdverseOutcome": {
+      "type": "object",
+      "description": "A possible serious complication and/or serious side effect of this therapy.",
+      "properties": {
+        "@type": { "type": "string", "const": "MedicalEntity" },
+        "name": { "type": "string" }
+      }
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

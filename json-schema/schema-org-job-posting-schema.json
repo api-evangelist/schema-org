@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/job-posting.json",
+  "title": "Schema.org JobPosting",
+  "description": "A listing that describes a job opening in a certain organization.",
+  "type": "object",
+  "required": ["@type", "title", "datePosted", "description"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "JobPosting",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the job."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the job posting."
+    },
+    "datePosted": {
+      "type": "string",
+      "format": "date",
+      "description": "Publication date of an online listing."
+    },
+    "validThrough": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date after when the listing is not valid."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the job posting."
+    },
+    "hiringOrganization": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "Organization offering the job position."
+    },
+    "jobLocation": {
+      "oneOf": [
+        { "$ref": "schema-org-place-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-place-schema.json" } }
+      ],
+      "description": "A (typically single) geographic location associated with the job position."
+    },
+    "applicantLocationRequirements": {
+      "type": "object",
+      "description": "The location(s) applicants can have their workplace.",
+      "properties": {
+        "@type": { "type": "string", "const": "Country" },
+        "name": { "type": "string" }
+      }
+    },
+    "jobLocationType": {
+      "type": "string",
+      "description": "A description of the job location (e.g., TELECOMMUTE for telecommute jobs)."
+    },
+    "employmentType": {
+      "oneOf": [
+        { "type": "string", "enum": ["FULL_TIME", "PART_TIME", "CONTRACTOR", "TEMPORARY", "INTERN", "VOLUNTEER", "PER_DIEM", "OTHER"] },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Type of employment."
+    },
+    "baseSalary": {
+      "type": "object",
+      "description": "The base salary of the job.",
+      "properties": {
+        "@type": { "type": "string", "const": "MonetaryAmount" },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "value": {
+          "type": "object",
+          "properties": {
+            "@type": { "type": "string", "const": "QuantitativeValue" },
+            "value": { "type": "number" },
+            "minValue": { "type": "number" },
+            "maxValue": { "type": "number" },
+            "unitText": { "type": "string", "enum": ["HOUR", "DAY", "WEEK", "MONTH", "YEAR"] }
+          }
+        }
+      }
+    },
+    "educationRequirements": {
+      "type": "object",
+      "description": "Educational background needed for the position.",
+      "properties": {
+        "@type": { "type": "string", "const": "EducationalOccupationalCredential" },
+        "credentialCategory": { "type": "string" }
+      }
+    },
+    "experienceRequirements": {
+      "type": "string",
+      "description": "Description of skills and experience needed for the position."
+    },
+    "qualifications": {
+      "type": "string",
+      "description": "Specific qualifications required for this role."
+    },
+    "responsibilities": {
+      "type": "string",
+      "description": "Responsibilities associated with this role."
+    },
+    "skills": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "A statement of knowledge, skill, ability, task or any other assertion expressing a competency."
+    },
+    "industry": {
+      "type": "string",
+      "description": "The industry associated with the job position."
+    },
+    "occupationalCategory": {
+      "type": "string",
+      "description": "A category describing the job, preferably using a BLS O*NET-SOC taxonomy."
+    },
+    "workHours": {
+      "type": "string",
+      "description": "The typical working hours for this job."
+    },
+    "jobBenefits": {
+      "type": "string",
+      "description": "Description of benefits associated with the job."
+    },
+    "incentiveCompensation": {
+      "type": "string",
+      "description": "Description of bonus and commission compensation aspects of the job."
+    },
+    "directApply": {
+      "type": "boolean",
+      "description": "Indicates whether an url that is set as the listing for this job goes directly to the site of the business."
+    },
+    "identifier": {
+      "$ref": "schema-org-property-value-schema.json",
+      "description": "The identifier property represents any kind of identifier."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

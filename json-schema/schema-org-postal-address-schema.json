@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/postal-address.json",
+  "title": "Schema.org PostalAddress",
+  "description": "The mailing address.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "PostalAddress",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "streetAddress": {
+      "type": "string",
+      "description": "The street address."
+    },
+    "addressLocality": {
+      "type": "string",
+      "description": "The locality (city)."
+    },
+    "addressRegion": {
+      "type": "string",
+      "description": "The region (state, province)."
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "The postal code."
+    },
+    "addressCountry": {
+      "type": "string",
+      "description": "The country. Use the two-letter ISO 3166-1 alpha-2 country code."
+    },
+    "postOfficeBoxNumber": {
+      "type": "string",
+      "description": "The post office box number."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the address."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "The telephone number."
+    },
+    "faxNumber": {
+      "type": "string",
+      "description": "The fax number."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address."
+    },
+    "contactType": {
+      "type": "string",
+      "description": "A person or organization can have different contact points for different purposes."
+    },
+    "areaServed": {
+      "type": "string",
+      "description": "The geographic area where a service is provided."
+    },
+    "availableLanguage": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "A language someone may use with or at the item."
+    }
+  }
+}

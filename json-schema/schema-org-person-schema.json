@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/person.json",
+  "title": "Schema.org Person",
+  "description": "A person (alive, dead, undead, or fictional). Extends Thing with properties specific to individuals.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "Person",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the person."
+    },
+    "givenName": {
+      "type": "string",
+      "description": "Given name (first name)."
+    },
+    "familyName": {
+      "type": "string",
+      "description": "Family name (last name)."
+    },
+    "additionalName": {
+      "type": "string",
+      "description": "An additional name for a Person, can be used for a middle name."
+    },
+    "honorificPrefix": {
+      "type": "string",
+      "description": "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr."
+    },
+    "honorificSuffix": {
+      "type": "string",
+      "description": "An honorific suffix following a Person's name such as M.D./PhD/MSCSW."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "The telephone number."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the person's page."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the person."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the person."
+    },
+    "jobTitle": {
+      "type": "string",
+      "description": "The job title of the person."
+    },
+    "worksFor": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "Organizations that the person works for."
+    },
+    "affiliation": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "An organization that this person is affiliated with."
+    },
+    "alumniOf": {
+      "oneOf": [
+        { "$ref": "schema-org-organization-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-organization-schema.json" } }
+      ],
+      "description": "An organization that the person is an alumni of."
+    },
+    "birthDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of birth."
+    },
+    "deathDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of death."
+    },
+    "birthPlace": {
+      "$ref": "schema-org-place-schema.json",
+      "description": "The place where the person was born."
+    },
+    "gender": {
+      "type": "string",
+      "description": "Gender of the person."
+    },
+    "nationality": {
+      "type": "string",
+      "description": "Nationality of the person."
+    },
+    "address": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "schema-org-postal-address-schema.json" }
+      ],
+      "description": "Physical address of the person."
+    },
+    "contactPoint": {
+      "oneOf": [
+        { "$ref": "schema-org-contact-point-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-contact-point-schema.json" } }
+      ],
+      "description": "A contact point for a person."
+    },
+    "colleague": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "A colleague of the person."
+    },
+    "knows": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "The most generic bi-directional social/work relation."
+    },
+    "follows": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "The most generic uni-directional social relation."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier property represents any kind of identifier."
+    },
+    "award": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "An award won by or for this person."
+    },
+    "hasOccupation": {
+      "type": "object",
+      "description": "The Person's occupation.",
+      "properties": {
+        "@type": { "type": "string", "const": "Occupation" },
+        "name": { "type": "string", "description": "The name of the occupation." },
+        "occupationalCategory": { "type": "string", "description": "A category describing the job." }
+      }
+    }
+  }
+}

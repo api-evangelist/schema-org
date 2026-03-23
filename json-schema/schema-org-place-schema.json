@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/place.json",
+  "title": "Schema.org Place",
+  "description": "Entities that have a somewhat fixed, physical extension. Includes locations, buildings, geographic features, and more.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Place", "AdministrativeArea", "CivicStructure", "Landform", "LandmarksOrHistoricalBuildings", "Residence", "TouristAttraction", "Accommodation"]
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the place."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the place."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the place."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the place."
+    },
+    "address": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "schema-org-postal-address-schema.json" }
+      ],
+      "description": "Physical address of the place."
+    },
+    "geo": {
+      "$ref": "schema-org-geo-coordinates-schema.json",
+      "description": "The geo coordinates of the place."
+    },
+    "latitude": {
+      "type": "number",
+      "description": "The latitude of a location.",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "description": "The longitude of a location.",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "telephone": {
+      "type": "string",
+      "description": "The telephone number."
+    },
+    "faxNumber": {
+      "type": "string",
+      "description": "The fax number."
+    },
+    "hasMap": {
+      "type": "string",
+      "format": "uri",
+      "description": "A URL to a map of the place."
+    },
+    "containedInPlace": {
+      "$ref": "#",
+      "description": "The basic containment relation between a place and one that contains it."
+    },
+    "containsPlace": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "The basic containment relation between a place and another that it contains."
+    },
+    "isAccessibleForFree": {
+      "type": "boolean",
+      "description": "A flag to signal that the item is accessible for free."
+    },
+    "publicAccess": {
+      "type": "boolean",
+      "description": "A flag to signal that the Place is open to public visitors."
+    },
+    "openingHoursSpecification": {
+      "oneOf": [
+        { "$ref": "#/$defs/OpeningHoursSpecification" },
+        { "type": "array", "items": { "$ref": "#/$defs/OpeningHoursSpecification" } }
+      ],
+      "description": "The opening hours of a certain place."
+    },
+    "photo": {
+      "oneOf": [
+        { "$ref": "schema-org-image-object-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-image-object-schema.json" } }
+      ],
+      "description": "A photograph of this place."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the place."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating, based on a collection of reviews or ratings."
+    },
+    "amenityFeature": {
+      "oneOf": [
+        { "$ref": "#/$defs/LocationFeatureSpecification" },
+        { "type": "array", "items": { "$ref": "#/$defs/LocationFeatureSpecification" } }
+      ],
+      "description": "An amenity feature of this accommodation."
+    },
+    "maximumAttendeeCapacity": {
+      "type": "integer",
+      "description": "The total number of individuals that may attend an event or venue."
+    },
+    "smokingAllowed": {
+      "type": "boolean",
+      "description": "Indicates whether it is allowed to smoke in the place."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier property represents any kind of identifier."
+    }
+  },
+  "$defs": {
+    "OpeningHoursSpecification": {
+      "type": "object",
+      "description": "A structured value providing information about the opening hours of a place.",
+      "properties": {
+        "@type": { "type": "string", "const": "OpeningHoursSpecification" },
+        "dayOfWeek": {
+          "type": "string",
+          "enum": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "PublicHolidays"],
+          "description": "The day of the week for which these opening hours are valid."
+        },
+        "opens": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "description": "The opening hour (HH:MM format)." },
+        "closes": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "description": "The closing hour (HH:MM format)." },
+        "validFrom": { "type": "string", "format": "date", "description": "The date when the opening hours become valid." },
+        "validThrough": { "type": "string", "format": "date", "description": "The date after which the opening hours are no longer valid." }
+      }
+    },
+    "LocationFeatureSpecification": {
+      "type": "object",
+      "description": "Specifies a location feature by providing a structured value representing a feature of an accommodation.",
+      "properties": {
+        "@type": { "type": "string", "const": "LocationFeatureSpecification" },
+        "name": { "type": "string", "description": "The name of the feature." },
+        "value": { "type": "boolean", "description": "Whether the feature is available." }
+      }
+    }
+  }
+}

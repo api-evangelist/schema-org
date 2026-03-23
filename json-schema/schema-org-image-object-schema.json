@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/image-object.json",
+  "title": "Schema.org ImageObject",
+  "description": "An image file.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "ImageObject",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the image."
+    },
+    "contentUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Actual bytes of the media object."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the image."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the image."
+    },
+    "caption": {
+      "type": "string",
+      "description": "The caption for this image."
+    },
+    "width": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "object", "properties": { "@type": { "const": "QuantitativeValue" }, "value": { "type": "integer" }, "unitCode": { "type": "string" } } }
+      ],
+      "description": "The width of the image in pixels."
+    },
+    "height": {
+      "oneOf": [
+        { "type": "integer" },
+        { "type": "object", "properties": { "@type": { "const": "QuantitativeValue" }, "value": { "type": "integer" }, "unitCode": { "type": "string" } } }
+      ],
+      "description": "The height of the image in pixels."
+    },
+    "encodingFormat": {
+      "type": "string",
+      "description": "Media type expressed using a MIME format (e.g., image/jpeg, image/png)."
+    },
+    "contentSize": {
+      "type": "string",
+      "description": "File size in bytes."
+    },
+    "thumbnail": {
+      "$ref": "#",
+      "description": "Thumbnail image."
+    },
+    "representativeOfPage": {
+      "type": "boolean",
+      "description": "Indicates whether this image is representative of the content of the page."
+    },
+    "exifData": {
+      "type": "array",
+      "items": { "$ref": "schema-org-property-value-schema.json" },
+      "description": "EXIF data for the image."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this image."
+    },
+    "copyrightHolder": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The party holding the legal copyright."
+    },
+    "copyrightYear": {
+      "type": "integer",
+      "description": "The year during which the claimed copyright was first asserted."
+    },
+    "license": {
+      "type": "string",
+      "format": "uri",
+      "description": "A license document that applies to this image."
+    },
+    "acquireLicensePage": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to acquire a license for using the image."
+    },
+    "creditText": {
+      "type": "string",
+      "description": "Text that can be used to credit person(s) and/or organization(s) associated with the image."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/video-object.json",
+  "title": "Schema.org VideoObject",
+  "description": "A video file.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "VideoObject",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the video."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the video."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the video."
+    },
+    "contentUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Actual bytes of the media object."
+    },
+    "embedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "A URL pointing to a player for a specific video."
+    },
+    "thumbnailUrl": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "A thumbnail image relevant to the video."
+    },
+    "duration": {
+      "type": "string",
+      "description": "The duration of the video in ISO 8601 format."
+    },
+    "uploadDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when this video was uploaded."
+    },
+    "caption": {
+      "type": "string",
+      "description": "The caption for this video."
+    },
+    "transcript": {
+      "type": "string",
+      "description": "If this MediaObject is an AudioObject or VideoObject, the transcript of that object."
+    },
+    "videoFrameSize": {
+      "type": "string",
+      "description": "The frame size of the video."
+    },
+    "videoQuality": {
+      "type": "string",
+      "description": "The quality of the video."
+    },
+    "width": {
+      "type": "integer",
+      "description": "The width of the video in pixels."
+    },
+    "height": {
+      "type": "integer",
+      "description": "The height of the video in pixels."
+    },
+    "encodingFormat": {
+      "type": "string",
+      "description": "Media type expressed using a MIME format."
+    },
+    "contentSize": {
+      "type": "string",
+      "description": "File size in bytes."
+    },
+    "bitrate": {
+      "type": "string",
+      "description": "The bitrate of the media object."
+    },
+    "isFamilyFriendly": {
+      "type": "boolean",
+      "description": "Whether the video is family friendly."
+    },
+    "requiresSubscription": {
+      "type": "boolean",
+      "description": "Indicates if use of the media requires a subscription."
+    },
+    "regionsAllowed": {
+      "type": "string",
+      "description": "The regions where the video is allowed."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this video."
+    },
+    "publisher": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The publisher of this video."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "interactionStatistic": {
+      "type": "object",
+      "description": "The number of interactions for the video.",
+      "properties": {
+        "@type": { "type": "string", "const": "InteractionCounter" },
+        "interactionType": { "type": "string" },
+        "userInteractionCount": { "type": "integer" }
+      }
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

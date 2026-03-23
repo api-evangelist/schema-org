@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/aggregate-rating.json",
+  "title": "Schema.org AggregateRating",
+  "description": "The average rating based on multiple ratings or reviews.",
+  "type": "object",
+  "required": ["@type", "ratingValue"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "AggregateRating",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "ratingValue": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" }
+      ],
+      "description": "The rating for the content."
+    },
+    "bestRating": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" }
+      ],
+      "description": "The highest value allowed in this rating system."
+    },
+    "worstRating": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string" }
+      ],
+      "description": "The lowest value allowed in this rating system."
+    },
+    "ratingCount": {
+      "type": "integer",
+      "description": "The count of total number of ratings."
+    },
+    "reviewCount": {
+      "type": "integer",
+      "description": "The count of total number of reviews."
+    },
+    "itemReviewed": {
+      "type": "object",
+      "description": "The item that is being rated.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

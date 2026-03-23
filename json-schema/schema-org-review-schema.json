@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/review.json",
+  "title": "Schema.org Review",
+  "description": "A review of an item, such as a product, service, or creative work.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Review", "ClaimReview", "CriticReview", "EmployerReview", "MediaReview", "Recommendation", "UserReview"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the review."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the review."
+    },
+    "reviewBody": {
+      "type": "string",
+      "description": "The actual body of the review."
+    },
+    "reviewRating": {
+      "$ref": "#/$defs/Rating",
+      "description": "The rating given in this review."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this review."
+    },
+    "publisher": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "The publisher of this review."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the review was most recently modified."
+    },
+    "itemReviewed": {
+      "type": "object",
+      "description": "The item that is being reviewed.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "positiveNotes": {
+      "type": "object",
+      "description": "Positive aspects of the reviewed item.",
+      "properties": {
+        "@type": { "const": "ItemList" },
+        "itemListElement": { "type": "array", "items": { "type": "object", "properties": { "@type": { "const": "ListItem" }, "name": { "type": "string" } } } }
+      }
+    },
+    "negativeNotes": {
+      "type": "object",
+      "description": "Negative aspects of the reviewed item.",
+      "properties": {
+        "@type": { "const": "ItemList" },
+        "itemListElement": { "type": "array", "items": { "type": "object", "properties": { "@type": { "const": "ListItem" }, "name": { "type": "string" } } } }
+      }
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the review."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "Rating": {
+      "type": "object",
+      "description": "A rating is an evaluation on a numeric scale.",
+      "properties": {
+        "@type": { "type": "string", "const": "Rating" },
+        "ratingValue": { "oneOf": [{ "type": "number" }, { "type": "string" }], "description": "The rating for the content." },
+        "bestRating": { "oneOf": [{ "type": "number" }, { "type": "string" }], "description": "The highest value allowed in this rating system." },
+        "worstRating": { "oneOf": [{ "type": "number" }, { "type": "string" }], "description": "The lowest value allowed in this rating system." },
+        "ratingExplanation": { "type": "string", "description": "A short explanation for the rating." }
+      }
+    }
+  }
+}

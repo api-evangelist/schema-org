@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/breadcrumb-list.json",
+  "title": "Schema.org BreadcrumbList",
+  "description": "A BreadcrumbList is an ItemList consisting of a chain of linked Web pages, typically described using at least their URL and their name, and typically ending with the current page.",
+  "type": "object",
+  "required": ["@type", "itemListElement"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "BreadcrumbList",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "itemListElement": {
+      "type": "array",
+      "description": "The list of breadcrumb items.",
+      "items": {
+        "$ref": "#/$defs/ListItem"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the breadcrumb list."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the breadcrumb list."
+    },
+    "numberOfItems": {
+      "type": "integer",
+      "description": "The number of items in the breadcrumb list."
+    }
+  },
+  "$defs": {
+    "ListItem": {
+      "type": "object",
+      "description": "An item in a breadcrumb list.",
+      "required": ["@type", "position"],
+      "properties": {
+        "@type": { "type": "string", "const": "ListItem" },
+        "position": { "type": "integer", "description": "The position of an item in a series." },
+        "name": { "type": "string", "description": "The name of the item." },
+        "item": {
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            { "type": "object", "properties": { "@type": { "type": "string" }, "@id": { "type": "string", "format": "uri" }, "name": { "type": "string" } } }
+          ],
+          "description": "The item represented by this list item."
+        }
+      }
+    }
+  }
+}

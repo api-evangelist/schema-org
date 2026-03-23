@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/action.json",
+  "title": "Schema.org Action",
+  "description": "An action performed by a direct agent and indirect participants upon a direct object. Optionally happens at a location.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Action", "AchieveAction", "AssessAction", "ConsumeAction", "ControlAction", "CreateAction", "FindAction", "InteractAction", "MoveAction", "OrganizeAction", "PlayAction", "SearchAction", "SeekToAction", "SolveMathAction", "TradeAction", "TransferAction", "UpdateAction"]
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the action."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the action."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL associated with the action."
+    },
+    "actionStatus": {
+      "type": "string",
+      "enum": ["ActiveActionStatus", "CompletedActionStatus", "FailedActionStatus", "PotentialActionStatus"],
+      "description": "Indicates the current disposition of the Action."
+    },
+    "agent": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The direct performer or driver of the action."
+    },
+    "object": {
+      "type": "object",
+      "description": "The object upon which the action is carried out.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "result": {
+      "type": "object",
+      "description": "The result produced in the action.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "target": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "#/$defs/EntryPoint" }
+      ],
+      "description": "Indicates a target EntryPoint for an Action."
+    },
+    "instrument": {
+      "type": "object",
+      "description": "The object that helped the agent perform the action.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "participant": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "Other co-agents that participated in the action indirectly."
+    },
+    "location": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "schema-org-place-schema.json" },
+        { "$ref": "schema-org-postal-address-schema.json" }
+      ],
+      "description": "The location of the action."
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The startTime of something."
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The endTime of something."
+    },
+    "error": {
+      "type": "object",
+      "description": "For failed actions, more information on the cause of the failure.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  },
+  "$defs": {
+    "EntryPoint": {
+      "type": "object",
+      "description": "An entry point for a URL-addressable action.",
+      "properties": {
+        "@type": { "type": "string", "const": "EntryPoint" },
+        "urlTemplate": { "type": "string", "description": "A URL template for the action." },
+        "httpMethod": { "type": "string", "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"], "description": "An HTTP method." },
+        "contentType": { "type": "string", "description": "The supported content type(s)." },
+        "encodingType": { "type": "string", "description": "The supported encoding type(s)." },
+        "actionPlatform": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ],
+          "description": "The high level platform(s) where the Action can be performed for the given URL."
+        }
+      }
+    }
+  }
+}

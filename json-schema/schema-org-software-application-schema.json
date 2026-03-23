@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/software-application.json",
+  "title": "Schema.org SoftwareApplication",
+  "description": "A software application.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["SoftwareApplication", "MobileApplication", "VideoGame", "WebApplication"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the application."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the application."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the application."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the application."
+    },
+    "applicationCategory": {
+      "type": "string",
+      "description": "Type of software application (e.g., GameApplication, SocialNetworkingApplication)."
+    },
+    "applicationSubCategory": {
+      "type": "string",
+      "description": "Subcategory of the application."
+    },
+    "operatingSystem": {
+      "type": "string",
+      "description": "Operating systems supported (e.g., Windows, macOS, Android, iOS)."
+    },
+    "applicationSuite": {
+      "type": "string",
+      "description": "The name of the application suite to which the application belongs."
+    },
+    "softwareVersion": {
+      "type": "string",
+      "description": "Version of the software instance."
+    },
+    "softwareRequirements": {
+      "type": "string",
+      "description": "Component dependency requirements for the software."
+    },
+    "softwareAddOn": {
+      "$ref": "#",
+      "description": "Additional content for a software application."
+    },
+    "downloadUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to download the application."
+    },
+    "installUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL at which the app may be installed."
+    },
+    "featureList": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Features or content items that are part of this application."
+    },
+    "screenshot": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" },
+        { "type": "array", "items": { "oneOf": [{ "type": "string", "format": "uri" }, { "$ref": "schema-org-image-object-schema.json" }] } }
+      ],
+      "description": "A link to a screenshot image of the app."
+    },
+    "permissions": {
+      "type": "string",
+      "description": "Permission(s) required by the application."
+    },
+    "processorRequirements": {
+      "type": "string",
+      "description": "Processor architecture required to run the application."
+    },
+    "memoryRequirements": {
+      "type": "string",
+      "description": "Minimum memory requirements."
+    },
+    "storageRequirements": {
+      "type": "string",
+      "description": "Storage requirements."
+    },
+    "fileSize": {
+      "type": "string",
+      "description": "Size of the application / package."
+    },
+    "releaseNotes": {
+      "type": "string",
+      "description": "Description of what changed in this version."
+    },
+    "countriesSupported": {
+      "type": "string",
+      "description": "Countries for which the application is supported."
+    },
+    "availableOnDevice": {
+      "type": "string",
+      "description": "Device required to run the application."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "schema-org-organization-schema.json" }
+      ],
+      "description": "The author of this application."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "offers": {
+      "oneOf": [
+        { "$ref": "schema-org-offer-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-offer-schema.json" } }
+      ],
+      "description": "An offer to provide this application."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the application."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

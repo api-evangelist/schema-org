@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/organization.json",
+  "title": "Schema.org Organization",
+  "description": "An organization such as a school, NGO, corporation, club, etc.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["Organization", "Corporation", "EducationalOrganization", "GovernmentOrganization", "MedicalOrganization", "NGO", "PerformingGroup", "SportsOrganization"]
+    },
+    "@context": {
+      "type": "string",
+      "description": "The JSON-LD context URL.",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the organization."
+    },
+    "legalName": {
+      "type": "string",
+      "description": "The official name of the organization."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the organization."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the organization."
+    },
+    "logo": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An associated logo."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the organization."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "The telephone number."
+    },
+    "faxNumber": {
+      "type": "string",
+      "description": "The fax number."
+    },
+    "address": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "schema-org-postal-address-schema.json" }
+      ],
+      "description": "Physical address of the organization."
+    },
+    "contactPoint": {
+      "oneOf": [
+        { "$ref": "schema-org-contact-point-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-contact-point-schema.json" } }
+      ],
+      "description": "A contact point for the organization."
+    },
+    "founder": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-person-schema.json" } }
+      ],
+      "description": "A person who founded this organization."
+    },
+    "foundingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date that this organization was founded."
+    },
+    "foundingLocation": {
+      "$ref": "schema-org-place-schema.json",
+      "description": "The place where the organization was founded."
+    },
+    "dissolutionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date that this organization was dissolved."
+    },
+    "numberOfEmployees": {
+      "type": "object",
+      "description": "The number of employees in an organization.",
+      "properties": {
+        "@type": { "type": "string", "const": "QuantitativeValue" },
+        "value": { "type": "integer", "description": "The value." },
+        "minValue": { "type": "integer", "description": "The lower value of some characteristic." },
+        "maxValue": { "type": "integer", "description": "The upper value of some characteristic." }
+      }
+    },
+    "member": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "$ref": "#" },
+        { "type": "array", "items": { "oneOf": [{ "$ref": "schema-org-person-schema.json" }, { "$ref": "#" }] } }
+      ],
+      "description": "A member of an Organization or a ProgramMembership."
+    },
+    "parentOrganization": {
+      "$ref": "#",
+      "description": "The larger organization that this organization is a subOrganization of."
+    },
+    "subOrganization": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "A relationship between two organizations where the first includes the second."
+    },
+    "department": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "A department within the organization."
+    },
+    "areaServed": {
+      "type": "string",
+      "description": "The geographic area where a service or offered item is provided."
+    },
+    "brand": {
+      "type": "object",
+      "description": "The brand(s) associated with the organization.",
+      "properties": {
+        "@type": { "type": "string", "enum": ["Brand", "Organization"] },
+        "name": { "type": "string", "description": "The name of the brand." },
+        "logo": { "type": "string", "format": "uri", "description": "URL of the brand logo." }
+      }
+    },
+    "taxID": {
+      "type": "string",
+      "description": "The Tax / Fiscal ID of the organization."
+    },
+    "vatID": {
+      "type": "string",
+      "description": "The Value-Added Tax ID of the organization."
+    },
+    "duns": {
+      "type": "string",
+      "description": "The Dun & Bradstreet DUNS number."
+    },
+    "naics": {
+      "type": "string",
+      "description": "The North American Industry Classification System (NAICS) code."
+    },
+    "isicV4": {
+      "type": "string",
+      "description": "The International Standard of Industrial Classification of All Economic Activities (ISIC) code."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier property represents any kind of identifier."
+    },
+    "award": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "An award won by or for this organization."
+    },
+    "knowsAbout": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Of a Person, and less typically of an Organization, to indicate a topic that is known about."
+    }
+  }
+}

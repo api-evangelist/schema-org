@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/search-action.json",
+  "title": "Schema.org SearchAction",
+  "description": "The act of searching for an object. Related actions: FindAction.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "SearchAction",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "target": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "#/$defs/EntryPoint" }
+      ],
+      "description": "Indicates a target EntryPoint for an Action."
+    },
+    "query-input": {
+      "type": "string",
+      "description": "A sub property of object. The query used on this action (e.g., required name=search_term_string)."
+    },
+    "query": {
+      "type": "string",
+      "description": "The query string."
+    },
+    "actionStatus": {
+      "type": "string",
+      "enum": ["ActiveActionStatus", "CompletedActionStatus", "FailedActionStatus", "PotentialActionStatus"],
+      "description": "Indicates the current disposition of the Action."
+    },
+    "result": {
+      "type": "object",
+      "description": "The result produced in the action.",
+      "properties": {
+        "@type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the action."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the action."
+    }
+  },
+  "$defs": {
+    "EntryPoint": {
+      "type": "object",
+      "description": "An entry point for a URL-addressable action.",
+      "properties": {
+        "@type": { "type": "string", "const": "EntryPoint" },
+        "urlTemplate": { "type": "string", "description": "A URL template for the action." },
+        "actionPlatform": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ],
+          "description": "The high level platform(s) where the Action can be performed."
+        }
+      }
+    }
+  }
+}

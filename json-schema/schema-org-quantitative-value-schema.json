@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/quantitative-value.json",
+  "title": "Schema.org QuantitativeValue",
+  "description": "A point value or interval for product characteristics and other purposes.",
+  "type": "object",
+  "required": ["@type"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "QuantitativeValue",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "value": {
+      "type": "number",
+      "description": "The value."
+    },
+    "minValue": {
+      "type": "number",
+      "description": "The lower value of some characteristic or property."
+    },
+    "maxValue": {
+      "type": "number",
+      "description": "The upper value of some characteristic or property."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "The unit of measurement given using the UN/CEFACT Common Code."
+    },
+    "unitText": {
+      "type": "string",
+      "description": "A string indicating the unit of measurement."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the quantity."
+    },
+    "additionalProperty": {
+      "$ref": "schema-org-property-value-schema.json",
+      "description": "A property-value pair representing an additional characteristic."
+    },
+    "valueReference": {
+      "type": "object",
+      "description": "A pointer to a secondary value that provides additional information.",
+      "properties": {
+        "@type": { "type": "string" },
+        "value": {}
+      }
+    }
+  }
+}

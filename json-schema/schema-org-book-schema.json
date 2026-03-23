@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/book.json",
+  "title": "Schema.org Book",
+  "description": "A book.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "const": "Book",
+      "description": "The Schema.org type."
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the book."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the book."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the book."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the book."
+    },
+    "author": {
+      "oneOf": [
+        { "$ref": "schema-org-person-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-person-schema.json" } }
+      ],
+      "description": "The author of this book."
+    },
+    "publisher": {
+      "$ref": "schema-org-organization-schema.json",
+      "description": "The publisher of this book."
+    },
+    "isbn": {
+      "type": "string",
+      "description": "The ISBN of the book."
+    },
+    "numberOfPages": {
+      "type": "integer",
+      "description": "The number of pages in the book."
+    },
+    "bookEdition": {
+      "type": "string",
+      "description": "The edition of the book."
+    },
+    "bookFormat": {
+      "type": "string",
+      "enum": ["AudiobookFormat", "EBook", "GraphicNovel", "Hardcover", "Paperback"],
+      "description": "The format of the book."
+    },
+    "illustrator": {
+      "$ref": "schema-org-person-schema.json",
+      "description": "The illustrator of the book."
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first publication."
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "The language of the book."
+    },
+    "genre": {
+      "type": "string",
+      "description": "Genre of the book."
+    },
+    "award": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "An award won by the book."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the book."
+    },
+    "offers": {
+      "oneOf": [
+        { "$ref": "schema-org-offer-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-offer-schema.json" } }
+      ],
+      "description": "An offer to provide this book."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    }
+  }
+}

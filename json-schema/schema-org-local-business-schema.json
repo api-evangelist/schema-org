@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.org/schemas/local-business.json",
+  "title": "Schema.org LocalBusiness",
+  "description": "A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a bank branch, a medical practice, a club, a bowling alley, etc.",
+  "type": "object",
+  "required": ["@type", "name"],
+  "properties": {
+    "@type": {
+      "type": "string",
+      "description": "The Schema.org type.",
+      "enum": ["LocalBusiness", "AnimalShelter", "AutomotiveBusiness", "ChildCare", "Dentist", "DryCleaningOrLaundry", "EmergencyService", "EmploymentAgency", "EntertainmentBusiness", "FinancialService", "FoodEstablishment", "GovernmentOffice", "HealthAndBeautyBusiness", "HomeAndConstructionBusiness", "InternetCafe", "LegalService", "Library", "LodgingBusiness", "MedicalBusiness", "ProfessionalService", "RadioStation", "RealEstateAgent", "RecyclingCenter", "SelfStorage", "ShoppingCenter", "SportsActivityLocation", "Store", "TelevisionStation", "TouristInformationCenter", "TravelAgency"]
+    },
+    "@context": {
+      "type": "string",
+      "default": "https://schema.org"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the business."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the business."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the business."
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An image of the business."
+    },
+    "logo": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "$ref": "schema-org-image-object-schema.json" }
+      ],
+      "description": "An associated logo."
+    },
+    "address": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "schema-org-postal-address-schema.json" }
+      ],
+      "description": "Physical address of the business."
+    },
+    "geo": {
+      "$ref": "schema-org-geo-coordinates-schema.json",
+      "description": "The geo coordinates of the business."
+    },
+    "telephone": {
+      "type": "string",
+      "description": "The telephone number."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address."
+    },
+    "faxNumber": {
+      "type": "string",
+      "description": "The fax number."
+    },
+    "openingHours": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "The general opening hours for a business (e.g., Mo-Fr 08:00-17:00)."
+    },
+    "openingHoursSpecification": {
+      "oneOf": [
+        { "$ref": "#/$defs/OpeningHoursSpecification" },
+        { "type": "array", "items": { "$ref": "#/$defs/OpeningHoursSpecification" } }
+      ],
+      "description": "The opening hours of a certain place."
+    },
+    "priceRange": {
+      "type": "string",
+      "description": "The price range of the business (e.g., $$$)."
+    },
+    "currenciesAccepted": {
+      "type": "string",
+      "description": "The currency accepted."
+    },
+    "paymentAccepted": {
+      "type": "string",
+      "description": "Cash, Credit Card, Cryptocurrency, Local Exchange Tradings System, etc."
+    },
+    "areaServed": {
+      "type": "string",
+      "description": "The geographic area where a service or offered item is provided."
+    },
+    "hasMap": {
+      "type": "string",
+      "format": "uri",
+      "description": "A URL to a map of the place."
+    },
+    "aggregateRating": {
+      "$ref": "schema-org-aggregate-rating-schema.json",
+      "description": "The overall rating."
+    },
+    "review": {
+      "oneOf": [
+        { "$ref": "schema-org-review-schema.json" },
+        { "type": "array", "items": { "$ref": "schema-org-review-schema.json" } }
+      ],
+      "description": "A review of the business."
+    },
+    "department": {
+      "oneOf": [
+        { "$ref": "#" },
+        { "type": "array", "items": { "$ref": "#" } }
+      ],
+      "description": "A department within the business."
+    },
+    "founder": {
+      "$ref": "schema-org-person-schema.json",
+      "description": "A person who founded this business."
+    },
+    "foundingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date that this business was founded."
+    },
+    "menu": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the menu (for FoodEstablishment)."
+    },
+    "servesCuisine": {
+      "type": "string",
+      "description": "The cuisine of the restaurant (for FoodEstablishment)."
+    },
+    "acceptsReservations": {
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "string", "format": "uri" }
+      ],
+      "description": "Indicates whether a FoodEstablishment accepts reservations."
+    },
+    "sameAs": {
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "array", "items": { "type": "string", "format": "uri" } }
+      ],
+      "description": "URL of a reference Web page that unambiguously indicates the item's identity."
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier property represents any kind of identifier."
+    }
+  },
+  "$defs": {
+    "OpeningHoursSpecification": {
+      "type": "object",
+      "description": "A structured value providing information about the opening hours of a place.",
+      "properties": {
+        "@type": { "type": "string", "const": "OpeningHoursSpecification" },
+        "dayOfWeek": { "type": "string", "enum": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "PublicHolidays"] },
+        "opens": { "type": "string", "pattern": "^\\d{2}:\\d{2}$" },
+        "closes": { "type": "string", "pattern": "^\\d{2}:\\d{2}$" },
+        "validFrom": { "type": "string", "format": "date" },
+        "validThrough": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}
