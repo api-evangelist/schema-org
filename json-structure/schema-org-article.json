@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Article",
+  "description": "An article, such as a news article or piece of investigative report.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "headline": { "type": "string" },
+    "alternativeHeadline": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "articleBody": { "type": "string" },
+    "articleSection": { "type": "string" },
+    "wordCount": { "type": "int32" },
+    "pageStart": { "type": "string" },
+    "pageEnd": { "type": "string" },
+    "pagination": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "array", "items": { "type": "string" } },
+    "author": { "type": "array", "items": { "type": { "$ref": "schema-org-person.json" } } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "datePublished": { "type": "date" },
+    "dateCreated": { "type": "date" },
+    "dateModified": { "type": "date" },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "inLanguage": { "type": "string" },
+    "isPartOf": { "type": "string" },
+    "mainEntityOfPage": { "type": "string" },
+    "speakable": { "type": { "$ref": "#/definitions/SpeakableSpecification" } },
+    "backstory": { "type": "string" },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["headline"],
+  "definitions": {
+    "SpeakableSpecification": {
+      "type": "object",
+      "name": "SpeakableSpecification",
+      "properties": {
+        "type": { "type": "string" },
+        "cssSelector": { "type": "array", "items": { "type": "string" } },
+        "xpath": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

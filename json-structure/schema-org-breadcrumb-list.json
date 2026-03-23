@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "BreadcrumbList",
+  "description": "A BreadcrumbList is an ItemList consisting of a chain of linked Web pages.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "itemListElement": { "type": "array", "items": { "type": { "$ref": "#/definitions/ListItem" } } },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "numberOfItems": { "type": "int32" }
+  },
+  "required": ["itemListElement"],
+  "definitions": {
+    "ListItem": {
+      "type": "object",
+      "name": "ListItem",
+      "properties": {
+        "type": { "type": "string" },
+        "position": { "type": "int32" },
+        "name": { "type": "string" },
+        "item": { "type": "string" }
+      },
+      "required": ["position"]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "MedicalProcedure",
+  "description": "A process of care used in either a diagnostic, therapeutic, preventive or palliative capacity.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "procedureType": { "type": "string" },
+    "bodyLocation": { "type": "string" },
+    "preparation": { "type": "string" },
+    "followup": { "type": "string" },
+    "howPerformed": { "type": "string" },
+    "status": { "type": "string" },
+    "code": { "type": { "$ref": "#/definitions/MedicalCode" } },
+    "drug": { "type": "array", "items": { "type": { "$ref": "schema-org-drug.json" } } },
+    "adverseOutcome": { "type": { "$ref": "#/definitions/MedicalEntity" } },
+    "contraindication": { "type": "string" },
+    "seriousAdverseOutcome": { "type": { "$ref": "#/definitions/MedicalEntity" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "MedicalCode": {
+      "type": "object",
+      "name": "MedicalCode",
+      "properties": {
+        "type": { "type": "string" },
+        "codeValue": { "type": "string" },
+        "codingSystem": { "type": "string" }
+      }
+    },
+    "MedicalEntity": {
+      "type": "object",
+      "name": "MedicalEntity",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

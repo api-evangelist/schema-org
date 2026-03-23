@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Drug",
+  "description": "A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "alternateName": { "type": "array", "items": { "type": "string" } },
+    "nonProprietaryName": { "type": "string" },
+    "proprietaryName": { "type": "string" },
+    "activeIngredient": { "type": "array", "items": { "type": "string" } },
+    "drugClass": { "type": { "$ref": "#/definitions/DrugClass" } },
+    "administrationRoute": { "type": "string" },
+    "dosageForm": { "type": "string" },
+    "doseSchedule": { "type": "array", "items": { "type": { "$ref": "#/definitions/DoseSchedule" } } },
+    "mechanismOfAction": { "type": "string" },
+    "interactingDrug": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "foodWarning": { "type": "string" },
+    "alcoholWarning": { "type": "string" },
+    "pregnancyWarning": { "type": "string" },
+    "breastfeedingWarning": { "type": "string" },
+    "warning": { "type": "string" },
+    "overdosage": { "type": "string" },
+    "clinicalPharmacology": { "type": "string" },
+    "availableStrength": { "type": "array", "items": { "type": { "$ref": "#/definitions/DrugStrength" } } },
+    "isProprietary": { "type": "boolean" },
+    "isAvailableGenerically": { "type": "boolean" },
+    "prescriptionStatus": { "type": "string" },
+    "legalStatus": { "type": "string" },
+    "manufacturer": { "type": { "$ref": "schema-org-organization.json" } },
+    "code": { "type": { "$ref": "#/definitions/MedicalCode" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "DrugClass": {
+      "type": "object",
+      "name": "DrugClass",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "DoseSchedule": {
+      "type": "object",
+      "name": "DoseSchedule",
+      "properties": {
+        "type": { "type": "string" },
+        "doseUnit": { "type": "string" },
+        "doseValue": { "type": "number" },
+        "frequency": { "type": "string" },
+        "targetPopulation": { "type": "string" }
+      }
+    },
+    "DrugStrength": {
+      "type": "object",
+      "name": "DrugStrength",
+      "properties": {
+        "type": { "type": "string" },
+        "activeIngredient": { "type": "string" },
+        "strengthUnit": { "type": "string" },
+        "strengthValue": { "type": "number" }
+      }
+    },
+    "MedicalCode": {
+      "type": "object",
+      "name": "MedicalCode",
+      "properties": {
+        "type": { "type": "string" },
+        "codeValue": { "type": "string" },
+        "codingSystem": { "type": "string" }
+      }
+    }
+  }
+}

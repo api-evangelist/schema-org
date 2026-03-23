@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Invoice",
+  "description": "A statement of the money due for goods or services; a bill.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "accountId": { "type": "string" },
+    "confirmationNumber": { "type": "string" },
+    "customer": { "type": { "$ref": "schema-org-person.json" } },
+    "broker": { "type": { "$ref": "schema-org-organization.json" } },
+    "provider": { "type": { "$ref": "schema-org-organization.json" } },
+    "billingPeriod": { "type": "string" },
+    "paymentDueDate": { "type": "datetime" },
+    "paymentMethod": { "type": "string" },
+    "paymentMethodId": { "type": "string" },
+    "paymentStatus": { "type": "string" },
+    "scheduledPaymentDate": { "type": "date" },
+    "totalPaymentDue": { "type": { "$ref": "#/definitions/MonetaryAmount" } },
+    "minimumPaymentDue": { "type": { "$ref": "#/definitions/MonetaryAmount" } },
+    "referencesOrder": { "type": { "$ref": "schema-org-order.json" } },
+    "category": { "type": "string" },
+    "url": { "type": "string" }
+  },
+  "definitions": {
+    "MonetaryAmount": {
+      "type": "object",
+      "name": "MonetaryAmount",
+      "properties": {
+        "type": { "type": "string" },
+        "value": { "type": "decimal", "precision": 10, "scale": 2 },
+        "currency": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Place",
+  "description": "Entities that have a somewhat fixed, physical extension.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "address": { "type": { "$ref": "schema-org-postal-address.json" } },
+    "geo": { "type": { "$ref": "schema-org-geo-coordinates.json" } },
+    "latitude": { "type": "double" },
+    "longitude": { "type": "double" },
+    "telephone": { "type": "string" },
+    "faxNumber": { "type": "string" },
+    "hasMap": { "type": "string" },
+    "containedInPlace": { "type": { "$ref": "#" } },
+    "containsPlace": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "isAccessibleForFree": { "type": "boolean" },
+    "publicAccess": { "type": "boolean" },
+    "openingHoursSpecification": { "type": "array", "items": { "type": { "$ref": "#/definitions/OpeningHoursSpecification" } } },
+    "photo": { "type": "array", "items": { "type": { "$ref": "schema-org-image-object.json" } } },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "amenityFeature": { "type": "array", "items": { "type": { "$ref": "#/definitions/LocationFeatureSpecification" } } },
+    "maximumAttendeeCapacity": { "type": "int32" },
+    "smokingAllowed": { "type": "boolean" },
+    "sameAs": { "type": "array", "items": { "type": "string" } },
+    "identifier": { "type": "string" }
+  },
+  "required": ["name"],
+  "definitions": {
+    "OpeningHoursSpecification": {
+      "type": "object",
+      "name": "OpeningHoursSpecification",
+      "properties": {
+        "type": { "type": "string" },
+        "dayOfWeek": { "type": "string" },
+        "opens": { "type": "string" },
+        "closes": { "type": "string" },
+        "validFrom": { "type": "date" },
+        "validThrough": { "type": "date" }
+      }
+    },
+    "LocationFeatureSpecification": {
+      "type": "object",
+      "name": "LocationFeatureSpecification",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "value": { "type": "boolean" }
+      }
+    }
+  }
+}

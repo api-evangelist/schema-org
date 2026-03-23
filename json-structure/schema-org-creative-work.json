@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "CreativeWork",
+  "description": "The most generic kind of creative work, including books, movies, photographs, software programs, etc.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "headline": { "type": "string" },
+    "alternativeHeadline": { "type": "string" },
+    "description": { "type": "string" },
+    "text": { "type": "string" },
+    "abstract": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "author": { "type": "array", "items": { "type": { "$ref": "schema-org-person.json" } } },
+    "creator": { "type": { "$ref": "schema-org-person.json" } },
+    "editor": { "type": { "$ref": "schema-org-person.json" } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "contributor": { "type": "array", "items": { "type": { "$ref": "schema-org-person.json" } } },
+    "datePublished": { "type": "date" },
+    "dateCreated": { "type": "date" },
+    "dateModified": { "type": "date" },
+    "copyrightYear": { "type": "int32" },
+    "copyrightHolder": { "type": { "$ref": "schema-org-organization.json" } },
+    "license": { "type": "string" },
+    "inLanguage": { "type": "string" },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "genre": { "type": "string" },
+    "about": { "type": "string" },
+    "isPartOf": { "type": { "$ref": "#" } },
+    "hasPart": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "position": { "type": "string" },
+    "version": { "type": "string" },
+    "encodingFormat": { "type": "string" },
+    "interactionStatistic": { "type": { "$ref": "#/definitions/InteractionCounter" } },
+    "commentCount": { "type": "int32" },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "offers": { "type": "array", "items": { "type": { "$ref": "schema-org-offer.json" } } },
+    "accessMode": { "type": "string" },
+    "accessibilityFeature": { "type": "array", "items": { "type": "string" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } },
+    "identifier": { "type": "string" }
+  },
+  "definitions": {
+    "InteractionCounter": {
+      "type": "object",
+      "name": "InteractionCounter",
+      "properties": {
+        "type": { "type": "string" },
+        "interactionType": { "type": "string" },
+        "userInteractionCount": { "type": "int32" }
+      }
+    }
+  }
+}

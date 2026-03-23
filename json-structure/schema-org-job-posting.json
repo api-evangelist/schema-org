@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "JobPosting",
+  "description": "A listing that describes a job opening in a certain organization.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "datePosted": { "type": "date" },
+    "validThrough": { "type": "datetime" },
+    "url": { "type": "string" },
+    "hiringOrganization": { "type": { "$ref": "schema-org-organization.json" } },
+    "jobLocation": { "type": "array", "items": { "type": { "$ref": "schema-org-place.json" } } },
+    "jobLocationType": { "type": "string" },
+    "employmentType": { "type": "array", "items": { "type": "string" } },
+    "baseSalary": { "type": { "$ref": "#/definitions/MonetaryAmount" } },
+    "educationRequirements": { "type": { "$ref": "#/definitions/EducationalCredential" } },
+    "experienceRequirements": { "type": "string" },
+    "qualifications": { "type": "string" },
+    "responsibilities": { "type": "string" },
+    "skills": { "type": "array", "items": { "type": "string" } },
+    "industry": { "type": "string" },
+    "occupationalCategory": { "type": "string" },
+    "workHours": { "type": "string" },
+    "jobBenefits": { "type": "string" },
+    "incentiveCompensation": { "type": "string" },
+    "directApply": { "type": "boolean" },
+    "identifier": { "type": { "$ref": "schema-org-property-value.json" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["title", "description", "datePosted"],
+  "definitions": {
+    "MonetaryAmount": {
+      "type": "object",
+      "name": "MonetaryAmount",
+      "properties": {
+        "type": { "type": "string" },
+        "currency": { "type": "string" },
+        "value": { "type": { "$ref": "#/definitions/SalaryValue" } }
+      }
+    },
+    "SalaryValue": {
+      "type": "object",
+      "name": "SalaryValue",
+      "properties": {
+        "type": { "type": "string" },
+        "value": { "type": "number" },
+        "minValue": { "type": "number" },
+        "maxValue": { "type": "number" },
+        "unitText": { "type": "string" }
+      }
+    },
+    "EducationalCredential": {
+      "type": "object",
+      "name": "EducationalOccupationalCredential",
+      "properties": {
+        "type": { "type": "string" },
+        "credentialCategory": { "type": "string" }
+      }
+    }
+  }
+}

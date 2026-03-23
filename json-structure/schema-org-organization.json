@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Organization",
+  "description": "An organization such as a school, NGO, corporation, club, etc.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "legalName": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "logo": { "type": "string" },
+    "image": { "type": "string" },
+    "email": { "type": "string" },
+    "telephone": { "type": "string" },
+    "faxNumber": { "type": "string" },
+    "address": { "type": { "$ref": "schema-org-postal-address.json" } },
+    "contactPoint": { "type": "array", "items": { "type": { "$ref": "schema-org-contact-point.json" } } },
+    "founder": { "type": "array", "items": { "type": { "$ref": "schema-org-person.json" } } },
+    "foundingDate": { "type": "date" },
+    "foundingLocation": { "type": { "$ref": "schema-org-place.json" } },
+    "dissolutionDate": { "type": "date" },
+    "numberOfEmployees": { "type": { "$ref": "#/definitions/QuantitativeValue" } },
+    "member": { "type": "array", "items": { "type": { "$ref": "schema-org-person.json" } } },
+    "parentOrganization": { "type": { "$ref": "#" } },
+    "subOrganization": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "department": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "areaServed": { "type": "string" },
+    "brand": { "type": { "$ref": "#/definitions/Brand" } },
+    "taxID": { "type": "string" },
+    "vatID": { "type": "string" },
+    "duns": { "type": "string" },
+    "naics": { "type": "string" },
+    "isicV4": { "type": "string" },
+    "sameAs": { "type": "array", "items": { "type": "string" } },
+    "identifier": { "type": "string" },
+    "award": { "type": "array", "items": { "type": "string" } },
+    "knowsAbout": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "Brand": {
+      "type": "object",
+      "name": "Brand",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "logo": { "type": "string" }
+      }
+    },
+    "QuantitativeValue": {
+      "type": "object",
+      "name": "QuantitativeValue",
+      "properties": {
+        "type": { "type": "string" },
+        "value": { "type": "int32" },
+        "minValue": { "type": "int32" },
+        "maxValue": { "type": "int32" }
+      }
+    }
+  }
+}

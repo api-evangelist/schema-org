@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "PropertyValue",
+  "description": "A property-value pair, e.g. representing a feature of a product or place.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "value": { "type": "string" },
+    "propertyID": { "type": "string" },
+    "unitCode": { "type": "string" },
+    "unitText": { "type": "string" },
+    "minValue": { "type": "number" },
+    "maxValue": { "type": "number" },
+    "measurementTechnique": { "type": "string" },
+    "url": { "type": "string" }
+  },
+  "required": ["name"]
+}

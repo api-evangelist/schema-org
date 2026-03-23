@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "SearchAction",
+  "description": "The act of searching for an object.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "target": { "type": { "$ref": "#/definitions/EntryPoint" } },
+    "query_input": { "type": "string" },
+    "query": { "type": "string" },
+    "actionStatus": { "type": "string" },
+    "result": { "type": { "$ref": "#/definitions/ActionResult" } },
+    "name": { "type": "string" },
+    "description": { "type": "string" }
+  },
+  "definitions": {
+    "EntryPoint": {
+      "type": "object",
+      "name": "EntryPoint",
+      "properties": {
+        "type": { "type": "string" },
+        "urlTemplate": { "type": "string" },
+        "actionPlatform": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "ActionResult": {
+      "type": "object",
+      "name": "ActionResult",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

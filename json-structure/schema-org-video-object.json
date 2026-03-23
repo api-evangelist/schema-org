@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "VideoObject",
+  "description": "A video file.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "contentUrl": { "type": "string" },
+    "embedUrl": { "type": "string" },
+    "thumbnailUrl": { "type": "array", "items": { "type": "string" } },
+    "duration": { "type": "string" },
+    "uploadDate": { "type": "date" },
+    "caption": { "type": "string" },
+    "transcript": { "type": "string" },
+    "videoFrameSize": { "type": "string" },
+    "videoQuality": { "type": "string" },
+    "width": { "type": "int32" },
+    "height": { "type": "int32" },
+    "encodingFormat": { "type": "string" },
+    "contentSize": { "type": "string" },
+    "bitrate": { "type": "string" },
+    "isFamilyFriendly": { "type": "boolean" },
+    "requiresSubscription": { "type": "boolean" },
+    "regionsAllowed": { "type": "string" },
+    "author": { "type": { "$ref": "schema-org-person.json" } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "datePublished": { "type": "date" },
+    "interactionStatistic": { "type": { "$ref": "#/definitions/InteractionCounter" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "InteractionCounter": {
+      "type": "object",
+      "name": "InteractionCounter",
+      "properties": {
+        "type": { "type": "string" },
+        "interactionType": { "type": "string" },
+        "userInteractionCount": { "type": "int32" }
+      }
+    }
+  }
+}

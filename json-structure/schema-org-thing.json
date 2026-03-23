@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Thing",
+  "description": "The most generic type of item in the Schema.org vocabulary.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "identifier": { "type": "string" },
+    "sameAs": { "type": "array", "items": { "type": "string" } },
+    "alternateName": { "type": "string" },
+    "additionalType": { "type": "string" },
+    "mainEntityOfPage": { "type": "string" },
+    "potentialAction": { "type": "array", "items": { "type": { "$ref": "#/definitions/Action" } } },
+    "subjectOf": { "type": "string" }
+  },
+  "definitions": {
+    "Action": {
+      "type": "object",
+      "name": "Action",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "target": { "type": "string" }
+      }
+    }
+  }
+}

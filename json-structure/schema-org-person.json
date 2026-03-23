@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Person",
+  "description": "A person (alive, dead, undead, or fictional).",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "givenName": { "type": "string" },
+    "familyName": { "type": "string" },
+    "additionalName": { "type": "string" },
+    "honorificPrefix": { "type": "string" },
+    "honorificSuffix": { "type": "string" },
+    "email": { "type": "string" },
+    "telephone": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "description": { "type": "string" },
+    "jobTitle": { "type": "string" },
+    "worksFor": { "type": { "$ref": "schema-org-organization.json" } },
+    "affiliation": { "type": { "$ref": "schema-org-organization.json" } },
+    "alumniOf": { "type": "array", "items": { "type": { "$ref": "schema-org-organization.json" } } },
+    "birthDate": { "type": "date" },
+    "deathDate": { "type": "date" },
+    "birthPlace": { "type": { "$ref": "schema-org-place.json" } },
+    "gender": { "type": "string" },
+    "nationality": { "type": "string" },
+    "address": { "type": { "$ref": "schema-org-postal-address.json" } },
+    "contactPoint": { "type": "array", "items": { "type": { "$ref": "schema-org-contact-point.json" } } },
+    "colleague": { "type": "array", "items": { "type": "string" } },
+    "knows": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "follows": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "sameAs": { "type": "array", "items": { "type": "string" } },
+    "identifier": { "type": "string" },
+    "award": { "type": "array", "items": { "type": "string" } },
+    "hasOccupation": { "type": { "$ref": "#/definitions/Occupation" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "Occupation": {
+      "type": "object",
+      "name": "Occupation",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "occupationalCategory": { "type": "string" }
+      }
+    }
+  }
+}

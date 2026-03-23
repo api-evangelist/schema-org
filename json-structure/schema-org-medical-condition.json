@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "MedicalCondition",
+  "description": "Any condition of the human body that affects the normal functioning of a person.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "alternateName": { "type": "array", "items": { "type": "string" } },
+    "code": { "type": { "$ref": "#/definitions/MedicalCode" } },
+    "associatedAnatomy": { "type": { "$ref": "#/definitions/AnatomicalStructure" } },
+    "differentialDiagnosis": { "type": "array", "items": { "type": { "$ref": "#/definitions/DDxElement" } } },
+    "signOrSymptom": { "type": "array", "items": { "type": { "$ref": "#/definitions/MedicalSignOrSymptom" } } },
+    "possibleTreatment": { "type": "array", "items": { "type": { "$ref": "#/definitions/MedicalTherapy" } } },
+    "riskFactor": { "type": "array", "items": { "type": { "$ref": "#/definitions/MedicalRiskFactor" } } },
+    "expectedPrognosis": { "type": "string" },
+    "naturalProgression": { "type": "string" },
+    "stage": { "type": { "$ref": "#/definitions/MedicalConditionStage" } },
+    "status": { "type": "string" },
+    "epidemiology": { "type": "string" },
+    "pathophysiology": { "type": "string" },
+    "typicalTest": { "type": "array", "items": { "type": { "$ref": "#/definitions/MedicalTest" } } },
+    "primaryPrevention": { "type": "array", "items": { "type": { "$ref": "#/definitions/MedicalTherapy" } } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "MedicalCode": {
+      "type": "object",
+      "name": "MedicalCode",
+      "properties": {
+        "type": { "type": "string" },
+        "codeValue": { "type": "string" },
+        "codingSystem": { "type": "string" }
+      }
+    },
+    "AnatomicalStructure": {
+      "type": "object",
+      "name": "AnatomicalStructure",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "DDxElement": {
+      "type": "object",
+      "name": "DDxElement",
+      "properties": {
+        "type": { "type": "string" },
+        "diagnosis": { "type": { "$ref": "#" } },
+        "distinguishingSign": { "type": "array", "items": { "type": { "$ref": "#/definitions/MedicalSignOrSymptom" } } }
+      }
+    },
+    "MedicalSignOrSymptom": {
+      "type": "object",
+      "name": "MedicalSignOrSymptom",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "MedicalTherapy": {
+      "type": "object",
+      "name": "MedicalTherapy",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "MedicalRiskFactor": {
+      "type": "object",
+      "name": "MedicalRiskFactor",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "MedicalConditionStage": {
+      "type": "object",
+      "name": "MedicalConditionStage",
+      "properties": {
+        "type": { "type": "string" },
+        "stageAsNumber": { "type": "number" },
+        "subStageSuffix": { "type": "string" }
+      }
+    },
+    "MedicalTest": {
+      "type": "object",
+      "name": "MedicalTest",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "PostalAddress",
+  "description": "The mailing address.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "streetAddress": { "type": "string" },
+    "addressLocality": { "type": "string" },
+    "addressRegion": { "type": "string" },
+    "postalCode": { "type": "string" },
+    "addressCountry": { "type": "string" },
+    "postOfficeBoxNumber": { "type": "string" },
+    "name": { "type": "string" },
+    "telephone": { "type": "string" },
+    "faxNumber": { "type": "string" },
+    "email": { "type": "string" },
+    "contactType": { "type": "string" },
+    "areaServed": { "type": "string" },
+    "availableLanguage": { "type": "array", "items": { "type": "string" } }
+  }
+}

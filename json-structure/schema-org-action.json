@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Action",
+  "description": "An action performed by a direct agent and indirect participants upon a direct object.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "actionStatus": { "type": "string" },
+    "agent": { "type": { "$ref": "schema-org-person.json" } },
+    "object": { "type": { "$ref": "#/definitions/ActionTarget" } },
+    "result": { "type": { "$ref": "#/definitions/ActionTarget" } },
+    "target": { "type": { "$ref": "#/definitions/EntryPoint" } },
+    "instrument": { "type": { "$ref": "#/definitions/ActionTarget" } },
+    "participant": { "type": { "$ref": "schema-org-person.json" } },
+    "location": { "type": { "$ref": "schema-org-place.json" } },
+    "startTime": { "type": "datetime" },
+    "endTime": { "type": "datetime" },
+    "error": { "type": { "$ref": "#/definitions/ActionTarget" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "definitions": {
+    "EntryPoint": {
+      "type": "object",
+      "name": "EntryPoint",
+      "properties": {
+        "type": { "type": "string" },
+        "urlTemplate": { "type": "string" },
+        "httpMethod": { "type": "string" },
+        "contentType": { "type": "string" },
+        "encodingType": { "type": "string" },
+        "actionPlatform": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "ActionTarget": {
+      "type": "object",
+      "name": "ActionTarget",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

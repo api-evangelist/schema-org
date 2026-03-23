@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "MediaObject",
+  "description": "A media object, such as an image, video, audio, or text object embedded in a web page.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "contentUrl": { "type": "string" },
+    "embedUrl": { "type": "string" },
+    "encodingFormat": { "type": "string" },
+    "contentSize": { "type": "string" },
+    "bitrate": { "type": "string" },
+    "duration": { "type": "string" },
+    "width": { "type": "int32" },
+    "height": { "type": "int32" },
+    "playerType": { "type": "string" },
+    "productionCompany": { "type": { "$ref": "schema-org-organization.json" } },
+    "uploadDate": { "type": "date" },
+    "requiresSubscription": { "type": "boolean" },
+    "regionsAllowed": { "type": "string" },
+    "associatedArticle": { "type": { "$ref": "schema-org-article.json" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  }
+}

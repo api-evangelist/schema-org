@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "QuantitativeValue",
+  "description": "A point value or interval for product characteristics and other purposes.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "value": { "type": "number" },
+    "minValue": { "type": "number" },
+    "maxValue": { "type": "number" },
+    "unitCode": { "type": "string" },
+    "unitText": { "type": "string" },
+    "name": { "type": "string" },
+    "additionalProperty": { "type": { "$ref": "schema-org-property-value.json" } }
+  }
+}

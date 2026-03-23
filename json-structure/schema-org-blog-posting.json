@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "BlogPosting",
+  "description": "A blog post.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "headline": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "articleBody": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "author": { "type": { "$ref": "schema-org-person.json" } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "datePublished": { "type": "date" },
+    "dateCreated": { "type": "date" },
+    "dateModified": { "type": "date" },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "wordCount": { "type": "int32" },
+    "inLanguage": { "type": "string" },
+    "mainEntityOfPage": { "type": "string" },
+    "commentCount": { "type": "int32" },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["headline"]
+}

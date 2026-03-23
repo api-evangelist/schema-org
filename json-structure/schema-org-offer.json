@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Offer",
+  "description": "An offer to transfer some rights to an item or to provide a service.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "price": { "type": "decimal", "precision": 10, "scale": 2 },
+    "priceCurrency": { "type": "string" },
+    "priceValidUntil": { "type": "date" },
+    "availability": { "type": "string" },
+    "availabilityStarts": { "type": "datetime" },
+    "availabilityEnds": { "type": "datetime" },
+    "itemCondition": { "type": "string" },
+    "seller": { "type": { "$ref": "schema-org-organization.json" } },
+    "offeredBy": { "type": { "$ref": "schema-org-organization.json" } },
+    "itemOffered": { "type": "string" },
+    "sku": { "type": "string" },
+    "gtin": { "type": "string" },
+    "mpn": { "type": "string" },
+    "validFrom": { "type": "datetime" },
+    "validThrough": { "type": "datetime" },
+    "eligibleRegion": { "type": "string" },
+    "eligibleQuantity": { "type": { "$ref": "schema-org-quantitative-value.json" } },
+    "shippingDetails": { "type": { "$ref": "#/definitions/OfferShippingDetails" } },
+    "hasMerchantReturnPolicy": { "type": { "$ref": "#/definitions/MerchantReturnPolicy" } },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "lowPrice": { "type": "decimal", "precision": 10, "scale": 2 },
+    "highPrice": { "type": "decimal", "precision": 10, "scale": 2 },
+    "offerCount": { "type": "int32" },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "definitions": {
+    "OfferShippingDetails": {
+      "type": "object",
+      "name": "OfferShippingDetails",
+      "properties": {
+        "type": { "type": "string" },
+        "shippingRate": { "type": { "$ref": "#/definitions/MonetaryAmount" } },
+        "shippingDestination": { "type": { "$ref": "#/definitions/DefinedRegion" } }
+      }
+    },
+    "MonetaryAmount": {
+      "type": "object",
+      "name": "MonetaryAmount",
+      "properties": {
+        "type": { "type": "string" },
+        "value": { "type": "decimal", "precision": 10, "scale": 2 },
+        "currency": { "type": "string" }
+      }
+    },
+    "DefinedRegion": {
+      "type": "object",
+      "name": "DefinedRegion",
+      "properties": {
+        "type": { "type": "string" },
+        "addressCountry": { "type": "string" }
+      }
+    },
+    "MerchantReturnPolicy": {
+      "type": "object",
+      "name": "MerchantReturnPolicy",
+      "properties": {
+        "type": { "type": "string" },
+        "applicableCountry": { "type": "string" },
+        "returnPolicyCategory": { "type": "string" },
+        "merchantReturnDays": { "type": "int32" },
+        "returnMethod": { "type": "string" },
+        "returnFees": { "type": "string" }
+      }
+    }
+  }
+}

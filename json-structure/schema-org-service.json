@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Service",
+  "description": "A service provided by an organization.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "serviceType": { "type": "string" },
+    "provider": { "type": { "$ref": "schema-org-organization.json" } },
+    "areaServed": { "type": "string" },
+    "audience": { "type": { "$ref": "#/definitions/Audience" } },
+    "availableChannel": { "type": { "$ref": "#/definitions/ServiceChannel" } },
+    "category": { "type": "string" },
+    "offers": { "type": "array", "items": { "type": { "$ref": "schema-org-offer.json" } } },
+    "termsOfService": { "type": "string" },
+    "serviceArea": { "type": "string" },
+    "logo": { "type": "string" },
+    "brand": { "type": { "$ref": "#/definitions/Brand" } },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "Audience": {
+      "type": "object",
+      "name": "Audience",
+      "properties": {
+        "type": { "type": "string" },
+        "audienceType": { "type": "string" }
+      }
+    },
+    "ServiceChannel": {
+      "type": "object",
+      "name": "ServiceChannel",
+      "properties": {
+        "type": { "type": "string" },
+        "serviceUrl": { "type": "string" },
+        "servicePhone": { "type": "string" },
+        "serviceSmsNumber": { "type": "string" },
+        "servicePostalAddress": { "type": { "$ref": "schema-org-postal-address.json" } }
+      }
+    },
+    "Brand": {
+      "type": "object",
+      "name": "Brand",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

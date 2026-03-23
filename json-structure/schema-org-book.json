@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Book",
+  "description": "A book.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "author": { "type": "array", "items": { "type": { "$ref": "schema-org-person.json" } } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "isbn": { "type": "string" },
+    "numberOfPages": { "type": "int32" },
+    "bookEdition": { "type": "string" },
+    "bookFormat": { "type": "string" },
+    "illustrator": { "type": { "$ref": "schema-org-person.json" } },
+    "datePublished": { "type": "date" },
+    "inLanguage": { "type": "string" },
+    "genre": { "type": "string" },
+    "award": { "type": "array", "items": { "type": "string" } },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "offers": { "type": "array", "items": { "type": { "$ref": "schema-org-offer.json" } } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"]
+}

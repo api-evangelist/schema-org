@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "LocalBusiness",
+  "description": "A particular physical business or branch of an organization.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "logo": { "type": "string" },
+    "address": { "type": { "$ref": "schema-org-postal-address.json" } },
+    "geo": { "type": { "$ref": "schema-org-geo-coordinates.json" } },
+    "telephone": { "type": "string" },
+    "email": { "type": "string" },
+    "faxNumber": { "type": "string" },
+    "openingHours": { "type": "array", "items": { "type": "string" } },
+    "openingHoursSpecification": { "type": "array", "items": { "type": { "$ref": "#/definitions/OpeningHoursSpecification" } } },
+    "priceRange": { "type": "string" },
+    "currenciesAccepted": { "type": "string" },
+    "paymentAccepted": { "type": "string" },
+    "areaServed": { "type": "string" },
+    "hasMap": { "type": "string" },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "department": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "founder": { "type": { "$ref": "schema-org-person.json" } },
+    "foundingDate": { "type": "date" },
+    "menu": { "type": "string" },
+    "servesCuisine": { "type": "string" },
+    "acceptsReservations": { "type": "boolean" },
+    "sameAs": { "type": "array", "items": { "type": "string" } },
+    "identifier": { "type": "string" }
+  },
+  "required": ["name"],
+  "definitions": {
+    "OpeningHoursSpecification": {
+      "type": "object",
+      "name": "OpeningHoursSpecification",
+      "properties": {
+        "type": { "type": "string" },
+        "dayOfWeek": { "type": "string" },
+        "opens": { "type": "string" },
+        "closes": { "type": "string" },
+        "validFrom": { "type": "date" },
+        "validThrough": { "type": "date" }
+      }
+    }
+  }
+}

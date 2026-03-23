@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Order",
+  "description": "An order is a confirmation of a transaction.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "orderNumber": { "type": "string" },
+    "orderStatus": { "type": "string" },
+    "orderDate": { "type": "datetime" },
+    "customer": { "type": { "$ref": "schema-org-person.json" } },
+    "seller": { "type": { "$ref": "schema-org-organization.json" } },
+    "broker": { "type": { "$ref": "schema-org-organization.json" } },
+    "orderedItem": { "type": "array", "items": { "type": { "$ref": "#/definitions/OrderItem" } } },
+    "acceptedOffer": { "type": "array", "items": { "type": { "$ref": "schema-org-offer.json" } } },
+    "billingAddress": { "type": { "$ref": "schema-org-postal-address.json" } },
+    "paymentMethod": { "type": "string" },
+    "paymentMethodId": { "type": "string" },
+    "paymentUrl": { "type": "string" },
+    "paymentDueDate": { "type": "datetime" },
+    "discount": { "type": "number" },
+    "discountCode": { "type": "string" },
+    "discountCurrency": { "type": "string" },
+    "isGift": { "type": "boolean" },
+    "orderDelivery": { "type": { "$ref": "#/definitions/ParcelDelivery" } },
+    "confirmationNumber": { "type": "string" },
+    "url": { "type": "string" }
+  },
+  "definitions": {
+    "OrderItem": {
+      "type": "object",
+      "name": "OrderItem",
+      "properties": {
+        "type": { "type": "string" },
+        "orderItemNumber": { "type": "string" },
+        "orderQuantity": { "type": "int32" },
+        "orderItemStatus": { "type": "string" }
+      }
+    },
+    "ParcelDelivery": {
+      "type": "object",
+      "name": "ParcelDelivery",
+      "properties": {
+        "type": { "type": "string" },
+        "trackingNumber": { "type": "string" },
+        "trackingUrl": { "type": "string" },
+        "deliveryStatus": { "type": "string" },
+        "expectedArrivalFrom": { "type": "datetime" },
+        "expectedArrivalUntil": { "type": "datetime" },
+        "carrier": { "type": { "$ref": "schema-org-organization.json" } },
+        "deliveryAddress": { "type": { "$ref": "schema-org-postal-address.json" } }
+      }
+    }
+  }
+}

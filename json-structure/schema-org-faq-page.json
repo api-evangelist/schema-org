@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "FAQPage",
+  "description": "A FAQPage is a WebPage presenting one or more Frequently asked questions.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "mainEntity": { "type": "array", "items": { "type": { "$ref": "#/definitions/Question" } } },
+    "datePublished": { "type": "date" },
+    "dateModified": { "type": "date" },
+    "author": { "type": { "$ref": "schema-org-person.json" } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "inLanguage": { "type": "string" },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["mainEntity"],
+  "definitions": {
+    "Question": {
+      "type": "object",
+      "name": "Question",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "acceptedAnswer": { "type": { "$ref": "#/definitions/Answer" } },
+        "suggestedAnswer": { "type": "array", "items": { "type": { "$ref": "#/definitions/Answer" } } },
+        "answerCount": { "type": "int32" },
+        "upvoteCount": { "type": "int32" },
+        "dateCreated": { "type": "date" },
+        "author": { "type": { "$ref": "schema-org-person.json" } }
+      },
+      "required": ["name", "acceptedAnswer"]
+    },
+    "Answer": {
+      "type": "object",
+      "name": "Answer",
+      "properties": {
+        "type": { "type": "string" },
+        "text": { "type": "string" },
+        "dateCreated": { "type": "date" },
+        "upvoteCount": { "type": "int32" },
+        "url": { "type": "string" },
+        "author": { "type": { "$ref": "schema-org-person.json" } }
+      },
+      "required": ["text"]
+    }
+  }
+}

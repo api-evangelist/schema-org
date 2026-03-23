@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "WebSite",
+  "description": "A WebSite is a set of related web pages and other items typically served from a single web domain.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "potentialAction": { "type": { "$ref": "schema-org-search-action.json" } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "inLanguage": { "type": "array", "items": { "type": "string" } },
+    "alternateName": { "type": "string" },
+    "image": { "type": "string" },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name", "url"]
+}

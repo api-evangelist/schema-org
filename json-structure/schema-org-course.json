@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Course",
+  "description": "A description of an educational course which may be offered as distinct instances.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "provider": { "type": { "$ref": "schema-org-organization.json" } },
+    "courseCode": { "type": "string" },
+    "coursePrerequisites": { "type": "array", "items": { "type": "string" } },
+    "educationalLevel": { "type": "string" },
+    "educationalCredentialAwarded": { "type": "string" },
+    "numberOfCredits": { "type": "int32" },
+    "hasCourseInstance": { "type": "array", "items": { "type": { "$ref": "#/definitions/CourseInstance" } } },
+    "about": { "type": "string" },
+    "inLanguage": { "type": "string" },
+    "teaches": { "type": "array", "items": { "type": "string" } },
+    "totalHistoricalEnrollment": { "type": "int32" },
+    "financialAidEligible": { "type": "string" },
+    "availableLanguage": { "type": "array", "items": { "type": "string" } },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "offers": { "type": "array", "items": { "type": { "$ref": "schema-org-offer.json" } } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "CourseInstance": {
+      "type": "object",
+      "name": "CourseInstance",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "courseMode": { "type": "string" },
+        "courseWorkload": { "type": "string" },
+        "instructor": { "type": { "$ref": "schema-org-person.json" } },
+        "startDate": { "type": "date" },
+        "endDate": { "type": "date" },
+        "location": { "type": { "$ref": "schema-org-place.json" } }
+      }
+    }
+  }
+}

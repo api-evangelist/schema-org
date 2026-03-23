@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Event",
+  "description": "An event happening at a certain time and location, such as a concert, lecture, or festival.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "image": { "type": "string" },
+    "startDate": { "type": "datetime" },
+    "endDate": { "type": "datetime" },
+    "doorTime": { "type": "datetime" },
+    "duration": { "type": "string" },
+    "eventStatus": { "type": "string" },
+    "eventAttendanceMode": { "type": "string" },
+    "location": { "type": { "$ref": "schema-org-place.json" } },
+    "organizer": { "type": { "$ref": "schema-org-organization.json" } },
+    "performer": { "type": "array", "items": { "type": { "$ref": "schema-org-person.json" } } },
+    "sponsor": { "type": { "$ref": "schema-org-organization.json" } },
+    "offers": { "type": "array", "items": { "type": { "$ref": "schema-org-offer.json" } } },
+    "audience": { "type": { "$ref": "#/definitions/Audience" } },
+    "maximumAttendeeCapacity": { "type": "int32" },
+    "maximumVirtualAttendeeCapacity": { "type": "int32" },
+    "remainingAttendeeCapacity": { "type": "int32" },
+    "previousStartDate": { "type": "datetime" },
+    "superEvent": { "type": { "$ref": "#" } },
+    "subEvent": { "type": "array", "items": { "type": { "$ref": "#" } } },
+    "inLanguage": { "type": "string" },
+    "isAccessibleForFree": { "type": "boolean" },
+    "review": { "type": "array", "items": { "type": { "$ref": "schema-org-review.json" } } },
+    "aggregateRating": { "type": { "$ref": "schema-org-aggregate-rating.json" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } },
+    "identifier": { "type": "string" }
+  },
+  "required": ["name"],
+  "definitions": {
+    "Audience": {
+      "type": "object",
+      "name": "Audience",
+      "properties": {
+        "type": { "type": "string" },
+        "audienceType": { "type": "string" }
+      }
+    },
+    "VirtualLocation": {
+      "type": "object",
+      "name": "VirtualLocation",
+      "properties": {
+        "type": { "type": "string" },
+        "url": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

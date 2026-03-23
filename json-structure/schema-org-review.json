@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "Review",
+  "description": "A review of an item, such as a product, service, or creative work.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "reviewBody": { "type": "string" },
+    "reviewRating": { "type": { "$ref": "#/definitions/Rating" } },
+    "author": { "type": { "$ref": "schema-org-person.json" } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "datePublished": { "type": "date" },
+    "dateModified": { "type": "date" },
+    "itemReviewed": { "type": { "$ref": "#/definitions/ReviewedItem" } },
+    "positiveNotes": { "type": { "$ref": "schema-org-item-list.json" } },
+    "negativeNotes": { "type": { "$ref": "schema-org-item-list.json" } },
+    "url": { "type": "string" },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "definitions": {
+    "Rating": {
+      "type": "object",
+      "name": "Rating",
+      "properties": {
+        "type": { "type": "string" },
+        "ratingValue": { "type": "number" },
+        "bestRating": { "type": "number" },
+        "worstRating": { "type": "number" },
+        "ratingExplanation": { "type": "string" }
+      }
+    },
+    "ReviewedItem": {
+      "type": "object",
+      "name": "ReviewedItem",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string" }
+      }
+    }
+  }
+}

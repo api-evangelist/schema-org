@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "ContactPoint",
+  "description": "A contact point, for example a customer service contact point.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "contactType": { "type": "string" },
+    "telephone": { "type": "string" },
+    "email": { "type": "string" },
+    "faxNumber": { "type": "string" },
+    "url": { "type": "string" },
+    "areaServed": { "type": "string" },
+    "availableLanguage": { "type": "array", "items": { "type": "string" } },
+    "contactOption": { "type": "string" },
+    "hoursAvailable": { "type": { "$ref": "#/definitions/OpeningHoursSpecification" } },
+    "productSupported": { "type": "string" },
+    "serviceArea": { "type": "string" }
+  },
+  "definitions": {
+    "OpeningHoursSpecification": {
+      "type": "object",
+      "name": "OpeningHoursSpecification",
+      "properties": {
+        "type": { "type": "string" },
+        "dayOfWeek": { "type": "string" },
+        "opens": { "type": "string" },
+        "closes": { "type": "string" }
+      }
+    }
+  }
+}

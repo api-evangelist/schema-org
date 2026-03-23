@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "AggregateRating",
+  "description": "The average rating based on multiple ratings or reviews.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "ratingValue": { "type": "number" },
+    "bestRating": { "type": "number" },
+    "worstRating": { "type": "number" },
+    "ratingCount": { "type": "int32" },
+    "reviewCount": { "type": "int32" },
+    "itemReviewed": { "type": { "$ref": "#/definitions/RatedItem" } }
+  },
+  "required": ["ratingValue"],
+  "definitions": {
+    "RatedItem": {
+      "type": "object",
+      "name": "RatedItem",
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

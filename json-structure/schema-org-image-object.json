@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "ImageObject",
+  "description": "An image file.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "url": { "type": "string" },
+    "contentUrl": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "caption": { "type": "string" },
+    "width": { "type": "int32" },
+    "height": { "type": "int32" },
+    "encodingFormat": { "type": "string" },
+    "contentSize": { "type": "string" },
+    "thumbnail": { "type": { "$ref": "#" } },
+    "representativeOfPage": { "type": "boolean" },
+    "exifData": { "type": "array", "items": { "type": { "$ref": "schema-org-property-value.json" } } },
+    "author": { "type": { "$ref": "schema-org-person.json" } },
+    "copyrightHolder": { "type": { "$ref": "schema-org-organization.json" } },
+    "copyrightYear": { "type": "int32" },
+    "license": { "type": "string" },
+    "acquireLicensePage": { "type": "string" },
+    "creditText": { "type": "string" },
+    "datePublished": { "type": "date" },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  }
+}

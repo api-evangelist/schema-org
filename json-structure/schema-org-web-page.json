@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "type": "object",
+  "name": "WebPage",
+  "description": "A web page. Every web page is implicitly assumed to be declared to be of type WebPage.",
+  "properties": {
+    "type": { "type": "string" },
+    "context": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "url": { "type": "string" },
+    "lastReviewed": { "type": "date" },
+    "primaryImageOfPage": { "type": { "$ref": "schema-org-image-object.json" } },
+    "breadcrumb": { "type": { "$ref": "schema-org-breadcrumb-list.json" } },
+    "mainEntity": { "type": "string" },
+    "significantLink": { "type": "array", "items": { "type": "string" } },
+    "speakable": { "type": { "$ref": "#/definitions/SpeakableSpecification" } },
+    "specialty": { "type": "string" },
+    "relatedLink": { "type": "array", "items": { "type": "string" } },
+    "reviewedBy": { "type": { "$ref": "schema-org-organization.json" } },
+    "author": { "type": { "$ref": "schema-org-person.json" } },
+    "publisher": { "type": { "$ref": "schema-org-organization.json" } },
+    "datePublished": { "type": "date" },
+    "dateModified": { "type": "date" },
+    "inLanguage": { "type": "string" },
+    "isPartOf": { "type": { "$ref": "schema-org-web-site.json" } },
+    "sameAs": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name"],
+  "definitions": {
+    "SpeakableSpecification": {
+      "type": "object",
+      "name": "SpeakableSpecification",
+      "properties": {
+        "type": { "type": "string" },
+        "cssSelector": { "type": "array", "items": { "type": "string" } },
+        "xpath": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

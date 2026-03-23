@@ -44,6 +44,22 @@ apis:
     type: JSONSchema
   - url: json-schema/schema-org-action-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-thing.json
+    type: JSONStructure
+  - url: json-structure/schema-org-person.json
+    type: JSONStructure
+  - url: json-structure/schema-org-organization.json
+    type: JSONStructure
+  - url: json-structure/schema-org-place.json
+    type: JSONStructure
+  - url: json-structure/schema-org-event.json
+    type: JSONStructure
+  - url: json-structure/schema-org-product.json
+    type: JSONStructure
+  - url: json-structure/schema-org-creative-work.json
+    type: JSONStructure
+  - url: json-structure/schema-org-action.json
+    type: JSONStructure
   description: >-
     Schema.org is a collaborative, community-driven vocabulary for structured data on the internet. It provides a collection of shared vocabularies that webmasters and developers can use to mark up pages in ways recognized by major search engines including Google, Microsoft, Yahoo, and Yandex. The vocabulary covers entities, relationships between entities, and actions, and can be used with many different encodings including RDFa, Microdata, and JSON-LD. Schema.org provides machine-readable definitions of its types and properties available for download in RDF/Turtle, JSON-LD, and other formats.
 
@@ -99,6 +115,8 @@ apis:
     type: Documentation
   - url: json-schema/schema-org-web-api-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-web-api.json
+    type: JSONStructure
   description: >-
     The Schema.org WebAPI type defines an application programming interface accessible over Web and Internet technologies. It provides a standardized way to describe APIs using structured data, including properties for documentation, terms of service, provider information, and service channels. The WebAPI type enables search engines and automated tools to discover and understand APIs published on the web.
 
@@ -136,6 +154,24 @@ apis:
     type: JSONSchema
   - url: json-schema/schema-org-media-object-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-article.json
+    type: JSONStructure
+  - url: json-structure/schema-org-web-page.json
+    type: JSONStructure
+  - url: json-structure/schema-org-web-site.json
+    type: JSONStructure
+  - url: json-structure/schema-org-blog-posting.json
+    type: JSONStructure
+  - url: json-structure/schema-org-book.json
+    type: JSONStructure
+  - url: json-structure/schema-org-software-application.json
+    type: JSONStructure
+  - url: json-structure/schema-org-image-object.json
+    type: JSONStructure
+  - url: json-structure/schema-org-video-object.json
+    type: JSONStructure
+  - url: json-structure/schema-org-media-object.json
+    type: JSONStructure
   description: >-
     Schema.org defines a rich hierarchy of CreativeWork subtypes for describing different kinds of content on the web. These include Article and BlogPosting for written content, WebPage and WebSite for web resources, Book for published works, SoftwareApplication for apps, and MediaObject types like ImageObject and VideoObject for multimedia. Each subtype inherits properties from CreativeWork while adding type-specific fields.
 
@@ -165,6 +201,16 @@ apis:
     type: JSONSchema
   - url: json-schema/schema-org-invoice-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-offer.json
+    type: JSONStructure
+  - url: json-structure/schema-org-review.json
+    type: JSONStructure
+  - url: json-structure/schema-org-aggregate-rating.json
+    type: JSONStructure
+  - url: json-structure/schema-org-order.json
+    type: JSONStructure
+  - url: json-structure/schema-org-invoice.json
+    type: JSONStructure
   description: >-
     Schema.org provides a comprehensive set of commerce-related types for describing products, offers, reviews, ratings, orders, and invoices. The Offer type describes pricing and availability. Review and AggregateRating capture user feedback. Order represents confirmed transactions, and Invoice represents billing statements. These types enable rich product listings and e-commerce structured data that search engines can understand.
 
@@ -192,6 +238,16 @@ apis:
     type: JSONSchema
   - url: json-schema/schema-org-quantitative-value-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-postal-address.json
+    type: JSONStructure
+  - url: json-structure/schema-org-geo-coordinates.json
+    type: JSONStructure
+  - url: json-structure/schema-org-contact-point.json
+    type: JSONStructure
+  - url: json-structure/schema-org-property-value.json
+    type: JSONStructure
+  - url: json-structure/schema-org-quantitative-value.json
+    type: JSONStructure
   description: >-
     Schema.org structural value types are reusable building blocks used across many other Schema.org types. PostalAddress represents mailing addresses with street, city, region, and country components. GeoCoordinates captures latitude and longitude. ContactPoint provides phone, email, and other contact details. PropertyValue and QuantitativeValue enable flexible key-value pairs and measurements with units.
 
@@ -217,6 +273,14 @@ apis:
     type: JSONSchema
   - url: json-schema/schema-org-course-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-local-business.json
+    type: JSONStructure
+  - url: json-structure/schema-org-service.json
+    type: JSONStructure
+  - url: json-structure/schema-org-job-posting.json
+    type: JSONStructure
+  - url: json-structure/schema-org-course.json
+    type: JSONStructure
   description: >-
     Schema.org business types describe local businesses, services, job postings, and educational courses. LocalBusiness covers physical businesses with addresses, hours, and reviews. Service describes offerings provided by organizations. JobPosting enables structured job listings with salary, location, and requirements. Course describes educational offerings with prerequisites, credentials, and instances.
 
@@ -246,6 +310,16 @@ apis:
     type: JSONSchema
   - url: json-schema/schema-org-item-list-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-breadcrumb-list.json
+    type: JSONStructure
+  - url: json-structure/schema-org-faq-page.json
+    type: JSONStructure
+  - url: json-structure/schema-org-how-to.json
+    type: JSONStructure
+  - url: json-structure/schema-org-search-action.json
+    type: JSONStructure
+  - url: json-structure/schema-org-item-list.json
+    type: JSONStructure
   description: >-
     Schema.org defines several types specifically designed for web content and SEO rich results. BreadcrumbList provides navigation hierarchy. FAQPage structures frequently asked questions with answers. HowTo describes step-by-step instructions with supplies and tools. SearchAction enables sitelinks search boxes. ItemList provides ordered or unordered collections of items. These types directly power Google rich results and other search engine features.
 
@@ -270,6 +344,12 @@ apis:
     type: JSONSchema
   - url: json-schema/schema-org-medical-procedure-schema.json
     type: JSONSchema
+  - url: json-structure/schema-org-medical-condition.json
+    type: JSONStructure
+  - url: json-structure/schema-org-drug.json
+    type: JSONStructure
+  - url: json-structure/schema-org-medical-procedure.json
+    type: JSONStructure
   description: >-
     Schema.org medical types provide structured data for health and medical information. MedicalCondition describes diseases and conditions with symptoms, treatments, and risk factors. Drug covers pharmaceuticals with dosage, interactions, and warnings. MedicalProcedure describes diagnostic, therapeutic, and surgical procedures. These types help search engines understand and surface reliable medical information.
 
