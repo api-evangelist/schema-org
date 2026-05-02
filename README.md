@@ -9,7 +9,7 @@ Schema.org is a collaborative, community-driven project that creates and maintai
 - **Position:** Consuming
 - **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
  - Schema, Vocabulary, Structured Data, Linked Data, JSON-LD, RDF, SEO, Web Standards
 
@@ -90,6 +90,52 @@ The Schema.org WebAPI type defines an application programming interface accessib
 - [Blog](https://blog.schema.org/)
 - [Support](https://github.com/schemaorg/schemaorg/issues)
 - [JSON-LD](json-ld/schema-org-context.jsonld)
+- [Vocabulary](vocabulary/schema-org-vocabulary.yml)
+
+## Spectral Rules
+
+| Ruleset | Description |
+|---|---|
+| [schema-org-rules.yml](rules/schema-org-rules.yml) | Validation rules for Schema.org JSON-LD structured data |
+
+## JSON Schema
+
+| Schema | Description |
+|---|---|
+| [schema-org-thing-schema.json](json-schema/schema-org-thing-schema.json) | Schema.org Thing type — base for all Schema.org types |
+| [schema-org-web-api-schema.json](json-schema/schema-org-web-api-schema.json) | Schema.org WebAPI type for describing APIs |
+| [schema-org-person-schema.json](json-schema/schema-org-person-schema.json) | Schema.org Person type |
+| [schema-org-organization-schema.json](json-schema/schema-org-organization-schema.json) | Schema.org Organization type |
+| [schema-org-product-schema.json](json-schema/schema-org-product-schema.json) | Schema.org Product type for e-commerce |
+| [schema-org-event-schema.json](json-schema/schema-org-event-schema.json) | Schema.org Event type |
+| [schema-org-article-schema.json](json-schema/schema-org-article-schema.json) | Schema.org Article type |
+
+## JSON Structure
+
+| Structure | Description |
+|---|---|
+| [schema-org-thing.json](json-structure/schema-org-thing.json) | Thing type structure documentation |
+| [schema-org-product.json](json-structure/schema-org-product.json) | Product type structure documentation |
+| [schema-org-person.json](json-structure/schema-org-person.json) | Person type structure documentation |
+
+## JSON-LD
+
+| Context | Description |
+|---|---|
+| [schema-org-context.jsonld](json-ld/schema-org-context.jsonld) | Canonical Schema.org JSON-LD context mapping all major types |
+
+## Examples
+
+| Example | Description |
+|---|---|
+| [schema-org-web-api-example.json](examples/schema-org-web-api-example.json) | WebAPI type JSON-LD structured data for API description |
+| [schema-org-product-example.json](examples/schema-org-product-example.json) | Product type with offer and rating for e-commerce rich results |
+
+## Vocabulary
+
+| Vocabulary | Description |
+|---|---|
+| [schema-org-vocabulary.yml](vocabulary/schema-org-vocabulary.yml) | Schema.org core types and concepts vocabulary |
 
 ## Maintainers
 

@@ -1,0 +1,24 @@
+{
+  "title": "Schema.org WebAPI Structured Data Example",
+  "description": "Example of using Schema.org's WebAPI type to describe an API with JSON-LD structured data markup, enabling search engines to understand and index API documentation.",
+  "jsonld": {
+    "@context": "https://schema.org",
+    "@type": "WebAPI",
+    "name": "ScanSource Product API",
+    "description": "The ScanSource Product API provides real-time product information, pricing, and availability for technology distribution partners.",
+    "documentation": "https://services.scansource.com/api/Help",
+    "termsOfService": "https://www.scansource.com/terms",
+    "provider": {
+      "@type": "Organization",
+      "name": "ScanSource",
+      "url": "https://www.scansource.com",
+      "logo": "https://www.scansource.com/logo.png"
+    },
+    "serviceType": "REST API",
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://services.scansource.com/api",
+      "serviceType": "REST"
+    }
+  }
+}

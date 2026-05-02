@@ -1,0 +1,156 @@
+name: Schema.org Vocabulary
+description: Core vocabulary for Schema.org structured data, covering the key types, properties, and encoding formats used to annotate web content for search engines and linked data applications.
+url: https://github.com/api-evangelist/schema-org
+created: '2026-05-02'
+modified: '2026-05-02'
+tags:
+- Schema.org
+- Structured Data
+- Linked Data
+- JSON-LD
+- SEO
+- Vocabulary
+terms:
+- term: Thing
+  label: Thing
+  definition: The most generic type in the Schema.org type hierarchy. All other Schema.org types are subclasses of Thing. Thing provides the base properties shared by all entities including name, description, url, image, and identifier.
+  url: https://schema.org/Thing
+  tags:
+  - Core Type
+  - Base Type
+
+- term: Action
+  label: Action
+  definition: An action performed by a direct agent, optionally involving a participant upon a direct object. Schema.org provides action types for common web interactions including SearchAction, BuyAction, ViewAction, and many others. Actions are used in JSON-LD to describe potential actions on a webpage.
+  url: https://schema.org/Action
+  tags:
+  - Core Type
+  - Actions
+
+- term: CreativeWork
+  label: Creative Work
+  definition: The most generic kind of creative work, including books, movies, photographs, software programs, etc. Subclasses include Article, BlogPosting, Book, Course, Movie, MusicRecording, Recipe, SoftwareApplication, and WebPage.
+  url: https://schema.org/CreativeWork
+  tags:
+  - Core Type
+  - Content
+
+- term: Event
+  label: Event
+  definition: An event happening at a certain time and location, such as a concert, lecture, or festival. Events can be online or in-person and include properties for start/end time, location, organizer, and attendees.
+  url: https://schema.org/Event
+  tags:
+  - Core Type
+  - Events
+
+- term: Organization
+  label: Organization
+  definition: An organization such as a school, NGO, corporation, club, etc. Includes subclasses for Corporation, EducationalOrganization, GovernmentOrganization, LocalBusiness, NewsMediaOrganization, and more.
+  url: https://schema.org/Organization
+  tags:
+  - Core Type
+  - Organizations
+
+- term: Person
+  label: Person
+  definition: A person (alive, dead, undead, or fictional). Used to represent individuals with properties including name, birthDate, jobTitle, worksFor, email, and sameAs links to social profiles.
+  url: https://schema.org/Person
+  tags:
+  - Core Type
+  - People
+
+- term: Place
+  label: Place
+  definition: Entities that have a somewhat fixed physical extension, such as geographic locations, buildings, and facilities. Includes subclasses for Country, City, LandmarksOrHistoricalBuildings, and LocalBusiness.
+  url: https://schema.org/Place
+  tags:
+  - Core Type
+  - Geography
+
+- term: Product
+  label: Product
+  definition: Any offered product or service including products, services, and offerings. Used in e-commerce structured data to enable rich product listings in search results, including price, availability, ratings, and reviews.
+  url: https://schema.org/Product
+  tags:
+  - Core Type
+  - Commerce
+
+- term: WebAPI
+  label: WebAPI
+  definition: An application programming interface accessible over Web/Internet technologies. Added to Schema.org to enable structured data description of APIs. Properties include documentation URL, termsOfService, provider, and ServiceChannel describing how to access the API.
+  url: https://schema.org/WebAPI
+  tags:
+  - API
+  - Web Standards
+
+- term: JSONLD
+  label: JSON-LD
+  definition: JavaScript Object Notation for Linked Data — a method of encoding linked data using JSON. JSON-LD is the recommended format for Schema.org structured data by Google. It can be embedded in web pages via a script tag with type="application/ld+json" without modifying visible HTML.
+  tags:
+  - Encoding Format
+  - Linked Data
+
+- term: Microdata
+  label: Microdata
+  definition: An HTML5 specification for embedding machine-readable data in HTML using attributes like itemscope, itemtype, and itemprop. Microdata was an early method for embedding Schema.org structured data but JSON-LD is now preferred by Google.
+  tags:
+  - Encoding Format
+  - HTML
+
+- term: RDFa
+  label: RDFa (Resource Description Framework in Attributes)
+  definition: A W3C standard for expressing structured data in HTML and other XML-based markup languages using attributes. RDFa is widely used by publishers and is well-supported in WordPress and other CMS platforms.
+  tags:
+  - Encoding Format
+  - W3C Standard
+
+- term: SameAs
+  label: sameAs
+  definition: A Schema.org property that indicates the URL of a reference Web page that unambiguously indicates the item's identity, linking it to authoritative sources. Used to connect entities to their Wikidata, DBpedia, or official website entries for knowledge graph disambiguation.
+  url: https://schema.org/sameAs
+  tags:
+  - Property
+  - Linked Data
+  - Knowledge Graph
+
+- term: BreadcrumbList
+  label: BreadcrumbList
+  definition: A Schema.org type representing an ordered list of breadcrumb navigation items. Used to enable breadcrumb display in Google Search results by annotating page navigation hierarchy.
+  url: https://schema.org/BreadcrumbList
+  tags:
+  - Navigation
+  - SEO
+  - Rich Results
+
+- term: AggregateRating
+  label: AggregateRating
+  definition: The average rating based on multiple ratings or reviews. Properties include ratingValue, bestRating, worstRating, and ratingCount. Used on Product, LocalBusiness, Recipe, Movie pages to enable star rating rich results in Google Search.
+  url: https://schema.org/AggregateRating
+  tags:
+  - Reviews
+  - Commerce
+  - Rich Results
+
+- term: SearchAction
+  label: SearchAction
+  definition: A Schema.org action type that indicates the subject's search functionality. Used on website home pages to enable Google Sitelinks Search Box, allowing users to search the site directly from Google search results.
+  url: https://schema.org/SearchAction
+  tags:
+  - Actions
+  - SEO
+  - Rich Results
+
+- term: StructuredData
+  label: Structured Data
+  definition: Information formatted to be understood by machines, not just humans. In the web context, structured data markup uses Schema.org vocabulary in JSON-LD, Microdata, or RDFa to annotate page content so search engines can display rich results (Knowledge Panels, Rich Snippets, FAQs, etc.).
+  tags:
+  - Core Concept
+  - SEO
+
+- term: RichResult
+  label: Rich Result
+  definition: An enhanced search result in Google that goes beyond the standard blue link, displaying additional visual or interactive elements like star ratings, event dates, product prices, FAQ accordions, or recipe images. Enabled by valid Schema.org structured data on the page.
+  tags:
+  - SEO
+  - Google Search
+  - Search Engines

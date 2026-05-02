@@ -1,0 +1,92 @@
+rules:
+  schema-org-context-required:
+    description: JSON-LD documents must include @context pointing to schema.org
+    message: "JSON-LD structured data must include @context with schema.org or https://schema.org"
+    severity: error
+    given: "$"
+    then:
+      field: "@context"
+      function: truthy
+
+  schema-org-type-required:
+    description: JSON-LD documents must include @type declaring the Schema.org type
+    message: "JSON-LD structured data must include @type"
+    severity: error
+    given: "$"
+    then:
+      field: "@type"
+      function: truthy
+
+  schema-org-name-recommended:
+    description: Most Schema.org types should have a name property
+    message: "Schema.org entities should have a name property for human-readable identification"
+    severity: warn
+    given: "$[?(@type)]"
+    then:
+      field: name
+      function: truthy
+
+  schema-org-url-format:
+    description: URL properties must be valid URIs
+    message: "Schema.org url properties must be valid URIs"
+    severity: error
+    given: "$.url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https?://"
+
+  schema-org-same-as-format:
+    description: sameAs references should be valid URIs
+    message: "sameAs links should be valid URIs pointing to authoritative references"
+    severity: warn
+    given: "$.sameAs"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https?://"
+
+  schema-org-aggregate-rating-values:
+    description: AggregateRating must include ratingValue
+    message: "AggregateRating should include ratingValue, ratingCount, and bestRating"
+    severity: warn
+    given: "$[?(@type == 'AggregateRating')]"
+    then:
+      field: ratingValue
+      function: truthy
+
+  schema-org-offer-price-currency:
+    description: Offers must include both price and priceCurrency
+    message: "Offer objects must include both price and priceCurrency properties"
+    severity: error
+    given: "$[?(@type == 'Offer')]"
+    then:
+      field: priceCurrency
+      function: truthy
+
+  schema-org-webapi-documentation:
+    description: WebAPI types should include documentation URL
+    message: "WebAPI structured data should include a documentation URL"
+    severity: warn
+    given: "$[?(@type == 'WebAPI')]"
+    then:
+      field: documentation
+      function: truthy
+
+  schema-org-organization-url:
+    description: Organization entities should include a URL
+    message: "Organization type should include a url property"
+    severity: warn
+    given: "$[?(@type == 'Organization')]"
+    then:
+      field: url
+      function: truthy
+
+  schema-org-person-name:
+    description: Person entities must include a name
+    message: "Person type must include a name property"
+    severity: error
+    given: "$[?(@type == 'Person')]"
+    then:
+      field: name
+      function: truthy

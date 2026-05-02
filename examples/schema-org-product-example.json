@@ -1,0 +1,39 @@
+{
+  "title": "Schema.org Product Structured Data Example",
+  "description": "Example of Schema.org Product type with offers, aggregate rating, and brand markup for e-commerce rich results.",
+  "jsonld": {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Zebra ZD421 Direct Thermal Label Printer",
+    "image": [
+      "https://cdn.example.com/products/zd421-front.jpg",
+      "https://cdn.example.com/products/zd421-side.jpg"
+    ],
+    "description": "Compact desktop label printer with USB, Ethernet, and Bluetooth connectivity. 203 dpi resolution, 4-inch print width.",
+    "sku": "ZD42143-D0E000EZ",
+    "mpn": "ZD42143-D0E000EZ",
+    "brand": {
+      "@type": "Brand",
+      "name": "Zebra Technologies"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "bestRating": "5",
+      "ratingCount": "312"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.scansource.com/products/zd421",
+      "priceCurrency": "USD",
+      "price": "249.99",
+      "priceValidUntil": "2026-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "ScanSource"
+      }
+    }
+  }
+}
