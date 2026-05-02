@@ -99,7 +99,9 @@ common:
   url: https://blog.schema.org/
 - type: Support
   url: https://github.com/schemaorg/schemaorg/issues
-- type: JSON-LD
+- type: SpectralRules
+  url: rules/schema-org-rules.yml
+- type: JSONLDContext
   url: json-ld/schema-org-context.jsonld
 - type: Vocabulary
   url: vocabulary/schema-org-vocabulary.yml
