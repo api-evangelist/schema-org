@@ -1,0 +1,13 @@
+{
+  "repo": "schema-org",
+  "feeds": [
+    {
+      "source": "https://blog.schema.org/",
+      "feed_url": "https://blog.schema.org/feed/",
+      "saved": 10,
+      "title": "Schema.org \u2022 Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:35:39Z"
+}
