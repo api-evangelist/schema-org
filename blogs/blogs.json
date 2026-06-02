@@ -2,12 +2,20 @@
   "repo": "schema-org",
   "feeds": [
     {
-      "source": "https://blog.schema.org/",
+      "source": "https://blog.schema.org/feed/",
       "feed_url": "https://blog.schema.org/feed/",
-      "title": "Schema.org \u2022 Blog",
-      "saved": 8
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://schema.org/docs/documents.html",
+      "feed_url": "https://schema.org/docs/documents.html",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 18,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
