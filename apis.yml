@@ -57,7 +57,7 @@ apis:
   properties:
   - type: Documentation
     url: https://schema.org/docs/developers.html
-  - type: JSON-LD Context
+  - type: JSONLDContext
     url: https://schema.org/docs/jsonldcontext.json
 
 - name: Schema.org Markup Validator
