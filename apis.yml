@@ -91,6 +91,8 @@ apis:
     url: json-schema/schema-org-web-api-schema.json
 
 common:
+- type: DomainSecurity
+  url: security/schema-org-domain-security.yml
 - type: Website
   url: https://schema.org/
 - type: Documentation
