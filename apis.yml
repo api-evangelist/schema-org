@@ -1,3 +1,16 @@
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/schema-org.png
 name: Schema.org
 description: Schema.org is a collaborative, community-driven project that creates and maintains a shared vocabulary for structured data on the web. Founded by Google, Microsoft, Yahoo, and Yandex in 2011, it provides types and properties that developers and webmasters use to annotate content in formats like JSON-LD, RDFa, and Microdata, enabling search engines and applications to better understand web content. The vocabulary currently consists of 800+ Types, 1500+ Properties, and covers domains including commerce, healthcare, organizations, events, creative works, and more. The Schema.org WebAPI type provides a standardized vocabulary for describing APIs in structured data.
 url: https://github.com/api-evangelist/schema-org
