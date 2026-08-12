@@ -104,6 +104,9 @@ apis:
     url: json-schema/schema-org-web-api-schema.json
 
 common:
+- type: License
+  name: Apache-2.0
+  url: https://github.com/schemaorg/schemaorg/blob/main/LICENSE
 - type: DomainSecurity
   url: security/schema-org-domain-security.yml
 - type: Website
