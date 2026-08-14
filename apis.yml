@@ -26,7 +26,7 @@ tags:
 - RDF
 - Ontology
 created: '2026-05-02'
-modified: '2026-05-02'
+modified: '2026-08-13'
 apis:
 - name: Schema.org Vocabulary
   description: Schema.org is a collaborative, community-driven vocabulary for structured data on the internet. It provides a collection of shared vocabularies that webmasters and developers can use to mark up pages in ways recognized by major search engines. The vocabulary covers entities, relationships between entities, and actions. Machine-readable definitions are available in RDF/Turtle, JSON-LD, CSV, and other formats.
@@ -123,6 +123,39 @@ common:
   url: json-ld/schema-org-context.jsonld
 - type: Vocabulary
   url: vocabulary/schema-org-vocabulary.yml
+- type: DeveloperPortal
+  url: https://schema.org/docs/developers.html
+- type: GettingStarted
+  url: https://schema.org/docs/gs.html
+- type: GitHubOrganization
+  url: https://github.com/schemaorg
+- type: TermsOfService
+  url: https://schema.org/docs/terms.html
+- type: Packages
+  url: packages/schema-org-packages.yml
+- type: LLMsTxt
+  url: llms/schema-org-llms.txt
+- type: ChangeLog
+  url: changelog/schema-org-changelog.yml
+- type: Lifecycle
+  url: lifecycle/schema-org-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/schema-org-lifecycle.yml
+- type: Conventions
+  url: conventions/schema-org-conventions.yml
+- type: Conformance
+  url: conformance/schema-org-conformance.yml
+- type: DataModel
+  url: data-model/schema-org-data-model.yml
+- type: Plans
+  url: plans/schema-org-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/schema-org-rate-limits.yml
 maintainers:
 - FN: API Evangelist
   email: info@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 8
+  pass: local-v1
