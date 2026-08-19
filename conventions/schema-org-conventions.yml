@@ -1,0 +1,126 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  Live unauthenticated HTTP probes of schema.org and validator.schema.org on 2026-08-13,
+  plus https://schema.org/docs/developers.html, https://schema.org/docs/faq.html#19 and
+  https://github.com/schemaorg/schemaorg/discussions/3261
+provider: Schema.org
+providerId: schema-org
+description: >-
+  Cross-cutting retrieval semantics for the Schema.org surface. Schema.org is a vocabulary
+  publisher, not a request/response API: everything it serves is an anonymous GET of a
+  static, versioned file. The conventions that matter to an integrator are therefore about
+  identifier form, versioned paths, caching, CORS and context discovery — not auth,
+  pagination or idempotency.
+authentication:
+  style: none
+  detail: >-
+    No authentication of any kind. There are no API keys, no OAuth, and no accounts. Probed
+    /.well-known/openid-configuration and /.well-known/oauth-authorization-server on every
+    host: all 404. See authentication note in security/schema-org-domain-security.yml.
+transport:
+  protocol: HTTP/2 over TLS 1.3
+  methods_supported: [GET, HEAD]
+  server: Google Frontend
+  cors:
+    enabled: true
+    allow_origin: '*'
+    allow_methods: GET
+    allow_headers: Accept
+    allow_credentials: true
+    expose_headers: Link
+    evidence: Response headers observed on GET https://schema.org/ (200) on 2026-08-13.
+    note: >-
+      Wide-open CORS is deliberate and load-bearing here: browser-side JSON-LD tooling
+      fetches https://schema.org/docs/jsonldcontext.json cross-origin at runtime.
+context_discovery:
+  mechanism: RFC 8288 Link header
+  header: 'Link: </docs/jsonldcontext.jsonld>; rel="alternate"; type="application/ld+json"'
+  observed_on: every HTML page on schema.org (verified on GET https://schema.org/, 200)
+  canonical_context: https://schema.org/docs/jsonldcontext.json
+  context_content_type: application/ld+json
+  standard: >-
+    Documented by the project as the JSON-LD 1.1 convention for exposing a context location,
+    even though Schema.org markup itself is typically deployed as JSON-LD 1.0.
+content_negotiation:
+  supported: false
+  evidence: >-
+    GET https://schema.org/Person with Accept: application/ld+json, text/turtle,
+    application/rdf+xml and application/json each returned 200 text/html with an identical
+    265,945-byte HTML body. Probed 2026-08-13.
+  workaround: >-
+    Machine-readable term definitions are embedded as JSON-LD inside each term page's HTML,
+    and the whole vocabulary is available as bulk files under /version/<release>/ in JSON-LD,
+    Turtle, N-Triples, N-Quads, RDF/XML and CSV. A consumer wanting RDF for one term must
+    parse the term page or filter the bulk file; per-term content negotiation is not offered.
+identifiers:
+  form: HTTP(S) IRIs rooted at schema.org
+  https_vs_http: >-
+    The same term is written both https://schema.org/Person and http://schema.org/Person.
+    The project instructs consuming applications to accept both, publishes each release in
+    parallel https and http flavours (schemaorg-current-https / schemaorg-current-http), and
+    states the JSON-LD context file itself uses the http form and is unlikely to change
+    without a long warning period. See https://schema.org/docs/faq.html#19.
+  case: >-
+    Types are UpperCamelCase (Person, LocalBusiness); properties are lowerCamelCase (name,
+    addressLocality). Enumeration values are UpperCamelCase.
+versioning:
+  in_path: true
+  pattern: https://schema.org/version/<release>/<file>.<format>
+  floating_alias: https://schema.org/version/latest/
+  detail: See lifecycle/schema-org-lifecycle.yml.
+caching:
+  cache_control: 'public, max-age=600'
+  etag: true
+  etag_example: '"AxXBLg"'
+  expires: true
+  detail: >-
+    Ten-minute public caching with a strong ETag on both HTML pages and the JSON-LD context.
+    Conditional GET with If-None-Match is the correct way to poll for a new release; the
+    ETag is shared across the site build, so it changes when a release or early-access fix
+    is published.
+pagination:
+  applicable: false
+  detail: Static files; no collection endpoints and therefore no pagination.
+idempotency:
+  supported: false
+  detail: >-
+    No write surface exists, so idempotency keys are not applicable and no Idempotency
+    pointer is emitted in apis.yml.
+errors:
+  envelope: HTML
+  detail: >-
+    Missing paths return a Google Frontend HTML 404 body ("Error: Not Found / The requested
+    URL <code>...</code> was not found on this server."). No application/problem+json, no
+    machine-readable error envelope, no error codes. See rate-limits for the 429 case.
+rate_limit_signaling:
+  headers: none observed
+  detail: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After headers on any 200 response from schema.org.
+    See rate-limits/schema-org-rate-limits.yml.
+undocumented_surfaces:
+  - name: validator.schema.org /validate
+    status: not a public API — do not integrate
+    observed: >-
+      POST https://validator.schema.org/validate with a form-encoded `url` or `html`
+      parameter returns 200 application/json (XSSI-prefixed with )]}' before the JSON body)
+      carrying tripleGroups[], numObjects, errors[], totalNumErrors and totalNumWarnings.
+      GET on the same path returns 405. Verified by probe on 2026-08-13.
+    provider_position: >-
+      A Schema.org maintainer states plainly in
+      https://github.com/schemaorg/schemaorg/discussions/3261: "Do not try to scrape
+      validator.schema.org - it is a service run and hosted by Google as a contribution to
+      the project. This Github doesn't include it. There are no resources or plans for
+      Google to make an API," and notes the service has "a lot of safeguards against
+      scraping" that return 429.
+    action: >-
+      Recorded here so a later enrichment round does not mistake this endpoint for an
+      undiscovered contract and publish an OpenAPI for it. NO OpenAPI, MCP tool, skill or
+      apis.yml API pointer is derived from this endpoint. The project's own suggested
+      alternative for programmatic validation is https://github.com/google/schemarama.
+cross_links:
+  lifecycle: lifecycle/schema-org-lifecycle.yml
+  rate_limits: rate-limits/schema-org-rate-limits.yml
+  conformance: conformance/schema-org-conformance.yml
+  data_model: data-model/schema-org-data-model.yml
+  well_known: well-known/schema-org-well-known.yml

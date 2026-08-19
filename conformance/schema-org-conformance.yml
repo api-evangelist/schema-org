@@ -1,0 +1,108 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://schema.org/docs/developers.html, https://schema.org/docs/datamodel.html,
+  https://schema.org/docs/faq.html#19, https://schema.org/docs/terms.html,
+  https://schema.org/docs/validator.html and live probes of schema.org on 2026-08-13
+provider: Schema.org
+providerId: schema-org
+description: >-
+  Standards conformance for Schema.org. The API-industry standards this artifact normally
+  asserts against (OAuth 2.0, OIDC, FAPI, SCIM, OData, JSON:API, RFC 9457) are all
+  not-applicable here: Schema.org publishes no callable API, no authentication and no error
+  envelope. What it does conform to is the W3C/RDF semantic-web stack, and that is what is
+  recorded below. Every entry carries the evidence it was judged on.
+conformance:
+  - id: rdf-schema
+    name: RDF Schema (RDFS)
+    conforms: true
+    evidence: >-
+      "Editorial work is conducted in Turtle format, and defined using an approach based on
+      RDF Schema" — https://schema.org/docs/developers.html. Vocabulary releases ship in
+      Turtle, N-Triples, N-Quads and RDF/XML alongside JSON-LD.
+  - id: json-ld
+    name: JSON-LD
+    conforms: true
+    version: 1.0 deployed, 1.1 context-discovery conventions
+    evidence: >-
+      "Schema.org is typically deployed in JSON-LD 1.0, but the location of our context file
+      is exposed via JSON-LD 1.1 conventions, as an HTTP link header"
+      (https://schema.org/docs/developers.html). Verified: GET https://schema.org/ returns
+      Link: </docs/jsonldcontext.jsonld>; rel="alternate"; type="application/ld+json".
+      The context itself is served at https://schema.org/docs/jsonldcontext.json as
+      application/ld+json (probed 200).
+  - id: rdfa
+    name: RDFa 1.1
+    conforms: true
+    evidence: >-
+      RDFa 1.1 is one of the three markup syntaxes Schema.org supports for publishers, and
+      the Schema Markup Validator extracts it — https://schema.org/docs/validator.html.
+  - id: microdata
+    name: HTML Microdata
+    conforms: true
+    evidence: >-
+      Microdata is a supported Schema.org markup syntax and is extracted by the validator —
+      https://schema.org/docs/validator.html.
+  - id: owl
+    name: OWL (Web Ontology Language)
+    conforms: partial
+    evidence: >-
+      An OWL rendering is published at https://schema.org/docs/schemaorg.owl (probed 200),
+      but the project labels it experimental and states "The mapping into OWL is an
+      approximation, and should not be considered an authoritative definition for
+      Schema.org's terms" — https://schema.org/docs/developers.html. Schema.org's own data
+      model uses domainIncludes/rangeIncludes rather than rdfs:domain/rdfs:range precisely
+      because it is deliberately weaker than OWL/RDFS entailment.
+  - id: rfc8288
+    name: 'RFC 8288: Web Linking'
+    conforms: true
+    evidence: >-
+      Link header with rel="alternate" and type="application/ld+json" observed on
+      https://schema.org/ (200, 2026-08-13); access-control-expose-headers: Link is set so
+      browser clients can read it.
+  - id: cors
+    name: W3C Cross-Origin Resource Sharing
+    conforms: true
+    evidence: >-
+      access-control-allow-origin: *, access-control-allow-methods: GET,
+      access-control-allow-headers: Accept, access-control-expose-headers: Link — observed
+      on https://schema.org/ and https://schema.org/docs/jsonldcontext.json (both 200).
+  - id: cc-by-sa
+    name: Creative Commons Attribution-ShareAlike 3.0
+    conforms: true
+    evidence: https://schema.org/docs/terms.html
+  - id: w3c-rf-patent
+    name: W3C Royalty-Free patent commitment
+    conforms: true
+    evidence: >-
+      Sponsors commit to making Essential Claims available under W3C RF licensing
+      requirements, as if the schemas were W3C Recommendations —
+      https://schema.org/docs/terms.html.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    applicable: false
+    evidence: >-
+      No authenticated surface exists. /.well-known/oauth-authorization-server and
+      /.well-known/openid-configuration returned 404 on schema.org, validator.schema.org and
+      blog.schema.org (probed 2026-08-13).
+  - id: rfc9457
+    name: 'RFC 9457: Problem Details for HTTP APIs'
+    conforms: false
+    applicable: false
+    evidence: >-
+      Errors are Google Frontend HTML 404 pages; there is no application/problem+json
+      surface because there is no API. See conventions/schema-org-conventions.yml.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    applicable: false
+    evidence: >-
+      /openapi.json, /openapi.yaml, /swagger.json and /api-docs all returned 404 on
+      schema.org and validator.schema.org (probed 2026-08-13). Schema.org publishes a
+      vocabulary, not a REST contract. It does, however, define the WebAPI type
+      (https://schema.org/WebAPI) that other providers use to describe their own APIs.
+not_applicable_note: >-
+  Entries with applicable: false are recorded rather than omitted so a reader can see they
+  were checked. Absence of OAuth or RFC 9457 on a vocabulary publisher is correct behaviour,
+  not a gap.

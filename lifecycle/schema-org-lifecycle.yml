@@ -1,0 +1,86 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://schema.org/docs/howwework.html, https://schema.org/docs/releases.html,
+  https://schema.org/docs/attic.home.html, https://schema.org/docs/terms.html,
+  https://raw.githubusercontent.com/schemaorg/schemaorg/main/versions.json
+provider: Schema.org
+providerId: schema-org
+description: >-
+  Versioning, deprecation and support posture for the Schema.org vocabulary. Schema.org is
+  a vocabulary rather than a callable API, so the lifecycle contract it publishes is about
+  term stability, not endpoint stability — and on that axis it is unusually explicit: terms
+  are effectively never deleted, retired terms keep resolvable URLs in an "attic" section,
+  and every release is dated and traceable to the issues and pull requests that produced it.
+versioning:
+  scheme: numeric MAJOR.MINOR release numbering
+  current: '30.0'
+  current_released: '2026-03-19'
+  policy_url: https://schema.org/docs/howwework.html
+  in_url: true
+  url_pattern: https://schema.org/version/<release>/
+  latest_alias: https://schema.org/version/latest
+  pinning: >-
+    Consumers can pin to an immutable release path (https://schema.org/version/30.0/... —
+    probed 200). The convenience alias /version/latest/ floats and changes contents on every
+    release without a URL change, so anything reproducible must use the pinned form.
+  header_versioning: false
+  media_type_versioning: false
+  note: >-
+    The JSON-LD context at https://schema.org/docs/jsonldcontext.json is NOT versioned and
+    has no pinned alternative. It is the one unversioned surface in an otherwise well
+    versioned distribution.
+deprecation:
+  policy: true
+  policy_url: https://schema.org/docs/attic.home.html
+  mechanism: supersededBy + attic section
+  statement: >-
+    "It is exceptionally rare for a property, type or enumerated value to be
+    deleted/removed without leaving it in the system as 'supersededBy' another."
+    (https://schema.org/docs/howwework.html)
+  attic_statement: >-
+    "Attic terms are preserved here to satisfy previous links to them." Implementors and
+    publishers are "gently encouraged not to use terms in the attic area."
+    (https://schema.org/docs/attic.home.html)
+  url_stability: >-
+    Retired term URLs stay resolvable. Retired terms are additionally shipped in the
+    schemaorg-all-https / schemaorg-all-http distribution files, separate from
+    schemaorg-current-*, so a consumer can machine-detect which terms are current.
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    RFC 8594 Sunset and Deprecation headers are not used — there is no request/response API
+    to carry them. Deprecation is expressed in the vocabulary data itself via supersededBy
+    and via placement in the attic, which is the equivalent machine-readable signal.
+support:
+  sla: false
+  status_page: false
+  status_page_url: null
+  support_url: https://github.com/schemaorg/schemaorg/issues
+  discussion_url: https://github.com/schemaorg/schemaorg/discussions
+  community_group: https://www.w3.org/community/schemaorg/
+  note: >-
+    No status page and no SLA are published for schema.org, validator.schema.org or
+    blog.schema.org. Probed: schema.org/.well-known/* all 404. Support is community
+    issue-tracker based. The site is served from Google Frontend infrastructure but the
+    project publishes no availability commitment.
+governance:
+  model: community project with a steering committee
+  founding_sponsors: [Google, Microsoft, Yahoo, Yandex]
+  how_we_work: https://schema.org/docs/howwework.html
+  staging: https://staging.schema.org
+  early_access_fixes: >-
+    Documentation improvements, bug fixes and minor enhancements can ship between releases
+    with steering-committee approval; they are logged on the releases page and folded into
+    the following full release.
+  license: Creative Commons Attribution-ShareAlike License version 3.0
+  license_url: https://schema.org/docs/terms.html
+  patent_posture: >-
+    Sponsors commit to making Essential Claims available under W3C royalty-free licensing
+    requirements, as if the schemas were W3C Recommendations.
+  warranty: Materials are provided "AS IS" with no warranties.
+deprecated_operations: []
+note: >-
+  deprecated_operations is empty because there is no OpenAPI in this repo to derive
+  operation-level deprecation from — Schema.org publishes no REST contract. See
+  conventions/schema-org-conventions.yml for what it does publish.

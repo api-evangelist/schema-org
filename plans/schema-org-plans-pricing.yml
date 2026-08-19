@@ -4,165 +4,52 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Schema.org
 providerId: schema-org
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://schema.org/docs/terms.html, https://schema.org/docs/developers.html and
+  https://schema.org/docs/howwework.html
 tags:
   - Schema.org
   - Structured Data
-  - Linked Data
-  - JSON-LD
   - Vocabulary
-  - SEO
-  - Web Standards
-  - RDF
-  - Ontology
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: schema-org-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Schema.org API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://schema.org
-          - https://validator.schema.org
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://schema.org
-          - https://validator.schema.org
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Schema.org Vocabulary
-      - name: Schema.org JSON-LD Context
-      - name: Schema.org Markup Validator
-      - name: Schema.org WebAPI Type
-  - id: schema-org-pro
-    name: Professional
-    type: paid
-    description: Production tier for Schema.org. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://schema.org
-          - https://validator.schema.org
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://schema.org
-          - https://validator.schema.org
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://schema.org
-          - https://validator.schema.org
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Schema.org Vocabulary
-      - name: Schema.org JSON-LD Context
-      - name: Schema.org Markup Validator
-      - name: Schema.org WebAPI Type
-  - id: schema-org-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Schema.org. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://schema.org
-          - https://validator.schema.org
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://schema.org
-          - https://validator.schema.org
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Schema.org Vocabulary
-      - name: Schema.org JSON-LD Context
-      - name: Schema.org Markup Validator
-      - name: Schema.org WebAPI Type
-maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+  - Pricing
+  - Licensing
+description: >-
+  Commercial terms for Schema.org. This file replaces a 2026-05-04 bulk-sweep scaffold that
+  invented a "Free" tier with a 1,000-requests-per-month quota. Schema.org sells nothing and
+  meters nothing. It is a community project whose entire output — the vocabulary, the
+  release files, the documentation site — is published free under an open licence, with no
+  accounts, no keys, no tiers and no paid plans of any kind. The correct record is a zero.
+plan_count: 0
+plans: []
+pricing_page: null
+pricing_model: free / open licence
+cost_to_consumer: 0
+currency: null
+signup_required: false
+account_required: false
+enterprise_contact_only: false
+licensing:
+  vocabulary_and_site: Creative Commons Attribution-ShareAlike License version 3.0
+  license_url: https://schema.org/docs/terms.html
+  quote: >-
+    "The Sponsors' copyrights in the schema are licensed to website publishers and other
+    third parties under the Creative Commons Attribution-ShareAlike License"
+  software_license: Apache-2.0
+  software_license_url: https://github.com/schemaorg/schemaorg/blob/main/LICENSE
+  patent_posture: >-
+    Sponsors have committed to making any Essential Claims available under W3C
+    royalty-free licensing requirements, as if the schemas were W3C Recommendations.
+  warranty: >-
+    The website and schema materials are provided "AS IS" with no warranties.
+funding_model: >-
+  Sponsored community project. Founded in 2011 by Google, Microsoft, Yahoo and Yandex; run
+  with a steering committee and a W3C community group. Infrastructure (schema.org and
+  validator.schema.org) is contributed by Google. There is no revenue relationship with
+  consumers of the vocabulary.
+note: >-
+  plan_count: 0 here means "checked, the provider genuinely publishes no plans" — not
+  "not checked". No pricing page exists on schema.org; the terms page is the closest thing
+  to a commercial document and it grants free use under CC BY-SA 3.0.

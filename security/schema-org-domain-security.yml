@@ -1,16 +1,16 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: schema.org
   https: true
   tls_version: TLSv1.3
-  cert_expires: Sep 14 08:37:49 2026 GMT
+  cert_expires: Oct 12 18:08:07 2026 GMT
   hsts: false
 - host: validator.schema.org
   https: true
   tls_version: TLSv1.3
-  cert_expires: Sep 14 08:37:49 2026 GMT
+  cert_expires: Oct 12 18:08:07 2026 GMT
   hsts: false
 domains:
 - domain: schema.org

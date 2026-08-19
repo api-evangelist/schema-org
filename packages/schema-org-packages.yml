@@ -1,0 +1,109 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry (registry.npmjs.org), PyPI (pypi.org/pypi/.../json), the schemaorg GitHub
+  organization repo listing (api.github.com/orgs/schemaorg/repos), and
+  https://schema.org/docs/developers.html
+provider: Schema.org
+providerId: schema-org
+description: >-
+  Client-library and distribution inventory for Schema.org. The finding is the headline:
+  the Schema.org project publishes NO first-party client libraries on any package registry.
+  Its nine public GitHub repositories (schemaorg, sdopythonapp, SchemaPages, docsite,
+  schemarama, gh_pages, quantity_datatype, doc_update, suggestions-questions-brainstorming)
+  are site software and vocabulary sources, none of which is released to npm, PyPI, Maven,
+  NuGet, RubyGems, crates.io, Packagist or pkg.go.dev under a schemaorg identity. The
+  vocabulary is instead distributed as versioned static files served from schema.org
+  itself, recorded in the `distributions` block below.
+official_package_count: 0
+packages:
+  - name: schema-dts
+    registry: npm
+    url: https://www.npmjs.com/package/schema-dts
+    repository: https://github.com/google/schema-dts
+    language: TypeScript
+    official: false
+    version: 2.0.0
+    published: '2026-03-23'
+    license: Apache-2.0
+    note: >-
+      TypeScript type definitions generated from the Schema.org vocabulary. Published by
+      Google (npm maintainer google-wombot, repo github.com/google/schema-dts), NOT by the
+      Schema.org project — github.com/schemaorg does not own or release it. Google is one of
+      the four founding sponsors of Schema.org, which is why this is the closest thing to a
+      canonical SDK, but it is a sponsor's project and official is therefore false. Its
+      2.0.0 release (2026-03-23) tracks vocabulary release 30.0 (2026-03-19) closely, so it
+      is current rather than abandoned.
+  - name: schemaorg
+    registry: pypi
+    url: https://pypi.org/project/schemaorg/
+    repository: https://github.com/openschemas/schemaorg
+    language: Python
+    official: false
+    version: 0.1.1
+    published: '2021-11-15'
+    license: AGPL-3.0-or-later
+    note: >-
+      Community Python helper for applying Schema.org definitions, authored by Vanessa
+      Sochat under the openschemas GitHub organization. Unaffiliated with the Schema.org
+      project. Last released 2021-11-15 — five years and roughly eleven vocabulary releases
+      behind current version 30.0 — so it is recorded as an abandonment signal, not a
+      recommended dependency.
+distributions:
+  note: >-
+    Schema.org's real "package" is the versioned vocabulary file set. Every file below is
+    published by the project at both a floating /version/latest/ path and a pinned
+    /version/<release>/ path; the pinned form is what a consumer should use, because the
+    floating form silently changes on each release.
+  current_version: '30.0'
+  current_published: '2026-03-19'
+  version_manifest: https://raw.githubusercontent.com/schemaorg/schemaorg/main/versions.json
+  files:
+    - name: schemaorg-current-https
+      formats: [jsonld, ttl, nt, nq, rdf, csv]
+      pinned_example: https://schema.org/version/30.0/schemaorg-current-https.jsonld
+      floating: https://schema.org/version/latest/schemaorg-current-https.jsonld
+      version: '30.0'
+      published: '2026-03-19'
+      probed_status: 200
+      note: All currently-defined terms across every section of the vocabulary.
+    - name: schemaorg-all-https
+      formats: [jsonld, ttl, nt, nq, rdf, csv]
+      floating: https://schema.org/version/latest/schemaorg-all-https.jsonld
+      version: '30.0'
+      published: '2026-03-19'
+      note: Current terms plus terms retired to the attic.
+    - name: schemaorg-current-http / schemaorg-all-http
+      formats: [jsonld, ttl, nt, nq, rdf, csv]
+      version: '30.0'
+      published: '2026-03-19'
+      note: >-
+        Identical definitions expressed with http:// rather than https:// term IRIs, kept
+        for deployed installations. See https://schema.org/docs/faq.html#19.
+    - name: jsonldcontext.json
+      formats: [jsonld]
+      url: https://schema.org/docs/jsonldcontext.json
+      version: null
+      published: null
+      probed_status: 200
+      note: >-
+        The canonical JSON-LD context. Unpinned and unversioned — the URL always serves the
+        current context, and a consumer cannot tell from the URL which release they got.
+        Recorded as null/null deliberately: checked, nothing to record. Served as
+        application/ld+json with CORS access-control-allow-origin: *.
+    - name: schemaorg.owl
+      formats: [owl]
+      url: https://schema.org/docs/schemaorg.owl
+      version: null
+      published: null
+      probed_status: 200
+      note: >-
+        Experimental OWL rendering. The project labels it experimental and states the OWL
+        mapping is an approximation, not an authoritative definition.
+    - name: tree.jsonld
+      formats: [jsonld]
+      url: https://schema.org/docs/tree.jsonld
+      version: null
+      published: null
+      probed_status: 200
+      note: Experimental D3-shaped single-inheritance simplification of the type hierarchy.

@@ -4,105 +4,74 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Schema.org
 providerId: schema-org
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+generated: '2026-08-13'
+method: probed
+source: >-
+  Live unauthenticated probes of https://schema.org/ and
+  https://validator.schema.org/validate on 2026-08-13, plus the maintainer statement in
+  https://github.com/schemaorg/schemaorg/discussions/3261
 tags:
   - Schema.org
   - Structured Data
-  - Linked Data
-  - JSON-LD
-  - Vocabulary
-  - SEO
-  - Web Standards
-  - RDF
-  - Ontology
   - Rate Limiting
-  - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Schema.org API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: >-
+  Rate-limit posture for Schema.org. This file replaces a 2026-05-04 bulk-sweep scaffold
+  that asserted invented free/pro tiers, X-RateLimit-* headers and a 1,000-requests-per-month
+  quota. None of that exists. Schema.org publishes no rate limits and returns no rate-limit
+  headers on its vocabulary and documentation hosts. The one throttled surface is
+  validator.schema.org, which is Google-operated, undocumented, and which the project asks
+  people not to call programmatically.
+limit_count: 0
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Schema.org Vocabulary
-      - Schema.org JSON-LD Context
-      - Schema.org Markup Validator
-      - Schema.org WebAPI Type
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Schema.org Vocabulary
-      - Schema.org JSON-LD Context
-      - Schema.org Markup Validator
-      - Schema.org WebAPI Type
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Schema.org Vocabulary
-      - Schema.org JSON-LD Context
-      - Schema.org Markup Validator
-      - Schema.org WebAPI Type
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Schema.org Vocabulary
-      - Schema.org JSON-LD Context
-      - Schema.org Markup Validator
-      - Schema.org WebAPI Type
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Schema.org Vocabulary
-      - Schema.org JSON-LD Context
-      - Schema.org Markup Validator
-      - Schema.org WebAPI Type
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+observed_response_headers:
+  - host: schema.org
+    request: GET https://schema.org/
+    status: 200
+    rate_limit_headers_present: false
+    headers_observed:
+      - 'cache-control: public, max-age=600'
+      - 'etag: "AxXBLg"'
+      - 'expires: <now+600s>'
+      - 'access-control-allow-origin: *'
+      - 'server: Google Frontend'
+    note: >-
+      No X-RateLimit-*, no RateLimit-*, no Retry-After. Caching, not throttling, is the
+      documented load-management mechanism for the static vocabulary files.
+limits: []
+surfaces:
+  - surface: schema.org vocabulary + documentation files
+    published_limits: false
+    detail: >-
+      No limits documented anywhere on schema.org, in the GitHub repository, or in
+      /docs/developers.html. The vocabulary is distributed as static files under
+      /version/<release>/ and the project encourages downloading the bulk files rather than
+      fetching term pages repeatedly. robots.txt (probed 200) disallows only
+      /docs/search_results.html.
+  - surface: validator.schema.org
+    published_limits: false
+    throttled: true
+    status_code_on_exhaustion: 429
+    detail: >-
+      Undocumented throttling. A Schema.org maintainer states in GitHub discussion #3261
+      that validator.schema.org "is a service run and hosted by Google as a contribution to
+      the project", that it has "a lot of safeguards against scraping", and that there are
+      "no resources or plans for Google to make an API" — in response to a user reporting
+      429 errors from repeated calls. No limit value, window, burst or Retry-After contract
+      is published, so an integrator has no way to stay inside the limit by design.
+    provider_guidance: >-
+      Do not call it programmatically. The project points programmatic validators at
+      https://github.com/google/schemarama instead.
+retry_guidance: >-
+  For the vocabulary files: use conditional GET with If-None-Match against the published
+  ETag and honour the ten-minute cache-control window rather than polling. For validation:
+  run schemarama locally instead of calling validator.schema.org.
+note: >-
+  limit_count: 0 is an honest measurement, not a gap. A vocabulary served as cacheable
+  static files does not need per-consumer quotas, and Schema.org has never published any.

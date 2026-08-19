@@ -1,0 +1,114 @@
+generated: '2026-08-13'
+method: probed
+source: live unauthenticated GET probes of every Schema.org host in apis.yml
+provider: Schema.org
+providerId: schema-org
+description: >-
+  Probe record of the standard /.well-known/ discovery paths across every host Schema.org
+  operates. Every path on every host returned 404 with a Google Frontend HTML error body.
+  Schema.org publishes no well-known discovery documents: no security.txt, no OAuth or
+  OpenID metadata (there is no authenticated surface to describe), no api-catalog, no
+  ai-plugin.json, and no A2A agent card. This file records that absence as measured data.
+  No WellKnown, SecurityTxt or AgentCard pointer is emitted in apis.yml, because nothing
+  was served.
+hosts:
+  - host: schema.org
+    role: vocabulary + documentation host
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 404
+        file: null
+  - host: validator.schema.org
+    role: Schema Markup Validator (hosted by Google for the project)
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 404
+        file: null
+  - host: blog.schema.org
+    role: project blog (WordPress)
+    paths:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+      - path: /llms.txt
+        status: 404
+        file: null
+summary:
+  hosts_probed: 3
+  paths_probed: 27
+  hits: 0
+  note: >-
+    Zero hits. Schema.org does, however, publish real machine-readable discovery in a
+    different form: an RFC 8288 Link header on every HTML page pointing at the JSON-LD
+    context (Link: </docs/jsonldcontext.jsonld>; rel="alternate"; type="application/ld+json"),
+    and a versioned file tree under /version/. Those are recorded in
+    conventions/schema-org-conventions.yml, not here.

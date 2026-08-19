@@ -1,0 +1,637 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  json-schema/*.json in this repo (40 JSON Schema 2020-12 documents modelling Schema.org
+  types), cross-checked against https://schema.org/docs/tree.jsonld and
+  https://schema.org/docs/datamodel.html
+provider: Schema.org
+providerId: schema-org
+description: >-
+  Entity-relationship graph for the Schema.org types modelled in this repo. There is no
+  OpenAPI to derive an object graph from, so the graph is computed from the $ref edges
+  between the 40 JSON Schema documents in json-schema/ — each $ref from one type's property
+  into another type's schema is a real, machine-checkable relationship, and the property
+  carrying it is the `via` field. Cardinality is read from the JSON Schema shape: a property
+  whose value is (or may be) an array of the referenced type is has_many, otherwise has_one.
+  The full Schema.org vocabulary is far larger (830+ types); this is the modelled subset,
+  and the hierarchy block below places it inside the real tree.
+scope:
+  modelled_types: 40
+  vocabulary_types_total: '830+ (release 30.0)'
+  note: >-
+    The modelled subset covers the types most commonly marked up on the open web — the ones
+    search engines consume — plus WebAPI, which is how Schema.org describes APIs themselves.
+hierarchy:
+  root: Thing
+  source: https://schema.org/docs/tree.jsonld (probed 200, 2026-08-13)
+  top_level_branches:
+    - name: Action
+      direct_subtypes: 16
+    - name: BioChemEntity
+      direct_subtypes: 4
+    - name: CreativeWork
+      direct_subtypes: 74
+    - name: Event
+      direct_subtypes: 24
+    - name: Intangible
+      direct_subtypes: 64
+    - name: MedicalEntity
+      direct_subtypes: 19
+    - name: Organization
+      direct_subtypes: 20
+    - name: Person
+      direct_subtypes: 1
+    - name: Place
+      direct_subtypes: 10
+    - name: Product
+      direct_subtypes: 8
+    - name: Taxon
+      direct_subtypes: 0
+  note: >-
+    Twelve direct children of Thing are published in tree.jsonld; one of them, StupidType, is
+    a deliberate test/marker type the project keeps in the vocabulary and is not a real
+    modelling branch. tree.jsonld is an experimental single-inheritance simplification —
+    Schema.org's actual model allows a type to have multiple supertypes, so treat this as a
+    navigation aid rather than the authoritative hierarchy (see /docs/datamodel.html).
+identifiers:
+  pattern: >-
+    Schema.org entities are identified by the @type keyword plus an optional @id IRI. There
+    are no vendor id prefixes, no opaque record ids and no id namespace — instances are
+    identified by whatever IRI the publisher assigns, or not at all.
+  context_field: '@context (default https://schema.org)'
+  type_field: '@type'
+relationships:
+  - entity: Action
+    schema: json-schema/schema-org-action-schema.json
+    properties: 17
+    required: ["@type"]
+    edges:
+      - via: agent
+        has_one: Organization
+      - via: agent
+        has_one: Person
+      - via: location
+        has_one: Place
+      - via: location
+        has_one: PostalAddress
+      - via: participant
+        has_one: Organization
+      - via: participant
+        has_one: Person
+  - entity: Article
+    schema: json-schema/schema-org-article-schema.json
+    properties: 26
+    required: ["@type", "headline"]
+    edges:
+      - via: author
+        has_many: Organization
+      - via: author
+        has_many: Person
+      - via: image
+        has_many: ImageObject
+      - via: mainEntityOfPage
+        has_one: WebPage
+      - via: publisher
+        has_one: Organization
+      - via: publisher
+        has_one: Person
+  - entity: BlogPosting
+    schema: json-schema/schema-org-blog-posting-schema.json
+    properties: 20
+    required: ["@type", "headline"]
+    edges:
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: image
+        has_one: ImageObject
+      - via: mainEntityOfPage
+        has_one: WebPage
+      - via: publisher
+        has_one: Organization
+      - via: publisher
+        has_one: Person
+  - entity: Book
+    schema: json-schema/schema-org-book-schema.json
+    properties: 21
+    required: ["@type", "name"]
+    edges:
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: author
+        has_many: Person
+      - via: illustrator
+        has_one: Person
+      - via: image
+        has_one: ImageObject
+      - via: offers
+        has_many: Offer
+      - via: publisher
+        has_one: Organization
+      - via: review
+        has_many: Review
+  - entity: Course
+    schema: json-schema/schema-org-course-schema.json
+    properties: 23
+    required: ["@type", "name"]
+    edges:
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: image
+        has_one: ImageObject
+      - via: offers
+        has_many: Offer
+      - via: provider
+        has_one: Organization
+      - via: provider
+        has_one: Person
+      - via: review
+        has_many: Review
+  - entity: CreativeWork
+    schema: json-schema/schema-org-creative-work-schema.json
+    properties: 41
+    required: ["@type"]
+    edges:
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: author
+        has_many: Organization
+      - via: author
+        has_many: Person
+      - via: contributor
+        has_many: Organization
+      - via: contributor
+        has_many: Person
+      - via: copyrightHolder
+        has_one: Organization
+      - via: copyrightHolder
+        has_one: Person
+      - via: creator
+        has_one: Organization
+      - via: creator
+        has_one: Person
+      - via: editor
+        has_one: Person
+      - via: encoding
+        has_one: MediaObject
+      - via: image
+        has_one: ImageObject
+      - via: offers
+        has_many: Offer
+      - via: publisher
+        has_one: Organization
+      - via: publisher
+        has_one: Person
+      - via: review
+        has_many: Review
+  - entity: Drug
+    schema: json-schema/schema-org-drug-schema.json
+    properties: 31
+    required: ["@type", "name"]
+    edges:
+      - via: manufacturer
+        has_one: Organization
+  - entity: Event
+    schema: json-schema/schema-org-event-schema.json
+    properties: 30
+    required: ["@type", "name"]
+    edges:
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: image
+        has_one: ImageObject
+      - via: location
+        has_one: Place
+      - via: location
+        has_one: PostalAddress
+      - via: offers
+        has_many: Offer
+      - via: organizer
+        has_one: Organization
+      - via: organizer
+        has_one: Person
+      - via: performer
+        has_many: Organization
+      - via: performer
+        has_many: Person
+      - via: review
+        has_many: Review
+      - via: sponsor
+        has_one: Organization
+      - via: sponsor
+        has_one: Person
+  - entity: FAQPage
+    schema: json-schema/schema-org-faq-page-schema.json
+    properties: 12
+    required: ["@type", "mainEntity"]
+    edges:
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: publisher
+        has_one: Organization
+      - via: publisher
+        has_one: Person
+  - entity: GeoCoordinates
+    schema: json-schema/schema-org-geo-coordinates-schema.json
+    properties: 8
+    required: ["@type", "latitude", "longitude"]
+    edges:
+      - via: address
+        has_one: PostalAddress
+  - entity: HowTo
+    schema: json-schema/schema-org-how-to-schema.json
+    properties: 18
+    required: ["@type", "name", "step"]
+    edges:
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: image
+        has_one: ImageObject
+      - via: video
+        has_one: VideoObject
+  - entity: ImageObject
+    schema: json-schema/schema-org-image-object-schema.json
+    properties: 22
+    required: ["@type"]
+    edges:
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: copyrightHolder
+        has_one: Organization
+      - via: copyrightHolder
+        has_one: Person
+      - via: exifData
+        has_many: PropertyValue
+  - entity: Invoice
+    schema: json-schema/schema-org-invoice-schema.json
+    properties: 18
+    required: ["@type"]
+    edges:
+      - via: broker
+        has_one: Organization
+      - via: broker
+        has_one: Person
+      - via: customer
+        has_one: Organization
+      - via: customer
+        has_one: Person
+      - via: provider
+        has_one: Organization
+      - via: provider
+        has_one: Person
+      - via: referencesOrder
+        has_one: Order
+  - entity: JobPosting
+    schema: json-schema/schema-org-job-posting-schema.json
+    properties: 26
+    required: ["@type", "title", "datePosted", "description"]
+    edges:
+      - via: hiringOrganization
+        has_one: Organization
+      - via: identifier
+        has_one: PropertyValue
+      - via: jobLocation
+        has_many: Place
+  - entity: LocalBusiness
+    schema: json-schema/schema-org-local-business-schema.json
+    properties: 29
+    required: ["@type", "name"]
+    edges:
+      - via: address
+        has_one: PostalAddress
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: founder
+        has_one: Person
+      - via: geo
+        has_one: GeoCoordinates
+      - via: image
+        has_one: ImageObject
+      - via: logo
+        has_one: ImageObject
+      - via: review
+        has_many: Review
+  - entity: MediaObject
+    schema: json-schema/schema-org-media-object-schema.json
+    properties: 20
+    required: ["@type"]
+    edges:
+      - via: associatedArticle
+        has_one: Article
+      - via: productionCompany
+        has_one: Organization
+  - entity: MedicalProcedure
+    schema: json-schema/schema-org-medical-procedure-schema.json
+    properties: 19
+    required: ["@type", "name"]
+    edges:
+      - via: drug
+        has_many: Drug
+  - entity: Offer
+    schema: json-schema/schema-org-offer-schema.json
+    properties: 31
+    required: ["@type"]
+    edges:
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: offeredBy
+        has_one: Organization
+      - via: offeredBy
+        has_one: Person
+      - via: review
+        has_many: Review
+      - via: seller
+        has_one: Organization
+      - via: seller
+        has_one: Person
+  - entity: Order
+    schema: json-schema/schema-org-order-schema.json
+    properties: 22
+    required: ["@type"]
+    edges:
+      - via: acceptedOffer
+        has_many: Offer
+      - via: billingAddress
+        has_one: PostalAddress
+      - via: broker
+        has_one: Organization
+      - via: broker
+        has_one: Person
+      - via: customer
+        has_one: Organization
+      - via: customer
+        has_one: Person
+      - via: orderedItem
+        has_one: Product
+      - via: seller
+        has_one: Organization
+      - via: seller
+        has_one: Person
+  - entity: Organization
+    schema: json-schema/schema-org-organization-schema.json
+    properties: 33
+    required: ["@type", "name"]
+    edges:
+      - via: address
+        has_one: PostalAddress
+      - via: contactPoint
+        has_many: ContactPoint
+      - via: founder
+        has_many: Person
+      - via: foundingLocation
+        has_one: Place
+      - via: image
+        has_one: ImageObject
+      - via: logo
+        has_one: ImageObject
+      - via: member
+        has_many: Person
+  - entity: Person
+    schema: json-schema/schema-org-person-schema.json
+    properties: 31
+    required: ["@type", "name"]
+    edges:
+      - via: address
+        has_one: PostalAddress
+      - via: affiliation
+        has_one: Organization
+      - via: alumniOf
+        has_many: Organization
+      - via: birthPlace
+        has_one: Place
+      - via: contactPoint
+        has_many: ContactPoint
+      - via: image
+        has_one: ImageObject
+      - via: worksFor
+        has_one: Organization
+  - entity: Place
+    schema: json-schema/schema-org-place-schema.json
+    properties: 26
+    required: ["@type", "name"]
+    edges:
+      - via: address
+        has_one: PostalAddress
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: geo
+        has_one: GeoCoordinates
+      - via: image
+        has_one: ImageObject
+      - via: photo
+        has_many: ImageObject
+      - via: review
+        has_many: Review
+  - entity: Product
+    schema: json-schema/schema-org-product-schema.json
+    properties: 35
+    required: ["@type", "name"]
+    edges:
+      - via: additionalProperty
+        has_many: PropertyValue
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: brand
+        has_one: Organization
+      - via: image
+        has_one: ImageObject
+      - via: manufacturer
+        has_one: Organization
+      - via: offers
+        has_many: Offer
+      - via: review
+        has_many: Review
+  - entity: QuantitativeValue
+    schema: json-schema/schema-org-quantitative-value-schema.json
+    properties: 10
+    required: ["@type"]
+    edges:
+      - via: additionalProperty
+        has_one: PropertyValue
+  - entity: Review
+    schema: json-schema/schema-org-review-schema.json
+    properties: 15
+    required: ["@type"]
+    edges:
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: publisher
+        has_one: Organization
+  - entity: Service
+    schema: json-schema/schema-org-service-schema.json
+    properties: 24
+    required: ["@type", "name"]
+    edges:
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: availableChannel
+        has_one: PostalAddress
+      - via: image
+        has_one: ImageObject
+      - via: logo
+        has_one: ImageObject
+      - via: offers
+        has_many: Offer
+      - via: provider
+        has_one: Organization
+      - via: provider
+        has_one: Person
+      - via: review
+        has_many: Review
+  - entity: SoftwareApplication
+    schema: json-schema/schema-org-software-application-schema.json
+    properties: 31
+    required: ["@type", "name"]
+    edges:
+      - via: aggregateRating
+        has_one: AggregateRating
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: image
+        has_one: ImageObject
+      - via: offers
+        has_many: Offer
+      - via: review
+        has_many: Review
+      - via: screenshot
+        has_many: ImageObject
+  - entity: VideoObject
+    schema: json-schema/schema-org-video-object-schema.json
+    properties: 27
+    required: ["@type", "name"]
+    edges:
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: publisher
+        has_one: Organization
+      - via: publisher
+        has_one: Person
+  - entity: WebPage
+    schema: json-schema/schema-org-web-page-schema.json
+    properties: 22
+    required: ["@type", "name"]
+    edges:
+      - via: author
+        has_one: Organization
+      - via: author
+        has_one: Person
+      - via: breadcrumb
+        has_one: BreadcrumbList
+      - via: isPartOf
+        has_one: WebSite
+      - via: primaryImageOfPage
+        has_one: ImageObject
+      - via: publisher
+        has_one: Organization
+      - via: publisher
+        has_one: Person
+      - via: reviewedBy
+        has_one: Organization
+      - via: reviewedBy
+        has_one: Person
+  - entity: WebSite
+    schema: json-schema/schema-org-web-site-schema.json
+    properties: 11
+    required: ["@type", "name", "url"]
+    edges:
+      - via: image
+        has_one: ImageObject
+      - via: potentialAction
+        has_one: SearchAction
+      - via: publisher
+        has_one: Organization
+      - via: publisher
+        has_one: Person
+standalone_entities:
+  - entity: AggregateRating
+    schema: json-schema/schema-org-aggregate-rating-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: BreadcrumbList
+    schema: json-schema/schema-org-breadcrumb-list-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: ContactPoint
+    schema: json-schema/schema-org-contact-point-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: ItemList
+    schema: json-schema/schema-org-item-list-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: MedicalCondition
+    schema: json-schema/schema-org-medical-condition-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: PostalAddress
+    schema: json-schema/schema-org-postal-address-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: PropertyValue
+    schema: json-schema/schema-org-property-value-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: SearchAction
+    schema: json-schema/schema-org-search-action-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: Thing
+    schema: json-schema/schema-org-thing-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+  - entity: WebAPI
+    schema: json-schema/schema-org-web-api-schema.json
+    note: leaf value type — referenced by other entities, references none itself.
+graph_summary:
+  entities: 40
+  relationship_edges: 172
+  most_referenced:
+    - entity: Organization
+      inbound_edges: 47
+    - entity: Person
+      inbound_edges: 43
+    - entity: ImageObject
+      inbound_edges: 21
+    - entity: AggregateRating
+      inbound_edges: 10
+    - entity: Review
+      inbound_edges: 10
+    - entity: PostalAddress
+      inbound_edges: 9
+    - entity: Offer
+      inbound_edges: 8
+    - entity: Place
+      inbound_edges: 5
+  most_referencing:
+    - entity: CreativeWork
+      outbound_edges: 16
+    - entity: Event
+      outbound_edges: 12
+    - entity: Order
+      outbound_edges: 9
+    - entity: WebPage
+      outbound_edges: 9
+    - entity: Service
+      outbound_edges: 8
+    - entity: Book
+      outbound_edges: 7
+    - entity: Invoice
+      outbound_edges: 7
+    - entity: LocalBusiness
+      outbound_edges: 7
+render:
+  subway: null
+  note: >-
+    No subway/ diagram exists in this repo. The project's own renders are
+    https://schema.org/docs/full.html (full type hierarchy) and
+    https://schema.org/docs/tree.jsonld (D3-shaped tree).
+cross_links:
+  json_schema: json-schema/
+  json_structure: json-structure/
+  json_ld_context: json-ld/schema-org-context.jsonld
+  vocabulary: vocabulary/schema-org-vocabulary.yml
+  examples: examples/

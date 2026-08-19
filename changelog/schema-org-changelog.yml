@@ -1,0 +1,114 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://schema.org/docs/releases.html and
+  https://raw.githubusercontent.com/schemaorg/schemaorg/main/versions.json
+provider: Schema.org
+providerId: schema-org
+description: >-
+  Release history for the Schema.org vocabulary. Schema.org maintains a dated, per-release
+  changelog at /docs/releases.html covering all 53 releases back to the project's 2011
+  launch, and a machine-readable version manifest (versions.json) in the source repository
+  that maps every release number to its publication date. Every entry links the GitHub
+  issues and pull requests that produced it, which makes this one of the better-evidenced
+  changelogs in the catalog.
+changelog_url: https://schema.org/docs/releases.html
+machine_readable: https://raw.githubusercontent.com/schemaorg/schemaorg/main/versions.json
+machine_readable_format: >-
+  JSON object with `schemaversion` (current release string) and `releaseLog` (map of
+  release number to ISO publication date).
+scheme: >-
+  Numeric MAJOR.MINOR release numbering (e.g. 30.0, 29.4, 27.02). Numbers are assigned at
+  publication; pre-release work carries internal code names (e.g. "sdo-phobos"). There is
+  no semver contract and no dated or header-based API versioning, because the versioned
+  artifact is a vocabulary file set rather than a request/response API.
+current_version: '30.0'
+current_released: '2026-03-19'
+release_count: 53
+cadence: >-
+  "Several substantial updates a year" per https://schema.org/docs/howwework.html. Observed
+  cadence over the last three years is roughly three to four releases annually. Between
+  releases, "Early Access Fixes" — documentation improvements, bug fixes and minor
+  enhancements approved by the steering committee — can ship immediately and are folded
+  into the next full release.
+staging: >-
+  staging.schema.org is a 1:1 representation of the main development branch, published for
+  review before a release is cut.
+entries:
+  - version: '30.0'
+    date: '2026-03-19'
+    breaking: true
+    highlights:
+      - Added GS1, Dublin Core and Open Graph equivalence annotations and exports (PR #4689, #4639, #4620, #4642, #4648, #4622).
+      - Added EU Digital Product Passport examples aligned with UN/CEFACT codes (PR #4662, #4663).
+      - New Credential class for hasCredential, widening it beyond educational credentials (PR #4700).
+      - New Error class with an errorCode property (PR #4589).
+      - Quantity now inherits from DataType instead of Intangible (PR #4776) — a hierarchy change consumers relying on the Intangible branch must handle.
+      - CompoundPriceSpecification may now take the more generic PriceSpecification as child (PR #4619).
+      - floorLevel extended to LocalBusiness and Residence; jobDuration added to JobPosting; previousStartDate range extended to DateTime; suitableForDiet range extended to Diet.
+  - version: '29.4'
+    date: '2025-12-08'
+    breaking: true
+    highlights:
+      - New ConferenceEvent type with hasParticipationOffer and hasSponsorshipOffer (Issue #4495).
+      - New PerformingArtsEvent and InstantaneousEvent types; SequentialArt added as a subtype of VisualArtwork and Book.
+      - New authentication action concepts AuthenticateAction, LoginAction and ResetPasswordAction as subtypes of ControlAction (Issue #4507).
+      - OrderItem re-parented from Intangible to StructuredValue to align with TypeAndQuantityNode (PR #4576) — a hierarchy change.
+      - OWL equivalences added for UN/CEFACT, OWL, OMG and GS1 ontologies (PR #4571, #4580, #4608, #4613).
+      - New displayLocation property on CreativeWork and Product; lifeEvent added to Person; Place added as a supertype of DefinedRegion.
+  - version: '29.3'
+    date: '2025-09-04'
+    breaking: false
+    highlights:
+      - Expanded vocabulary for recipe ingredient lists and marketplaces, plus small updates.
+  - version: '29.2'
+    date: '2025-05-13'
+    breaking: false
+    highlights:
+      - Patch release fixing a bug introduced in 29.0; a few new properties and documentation updates.
+  - version: '29.1'
+    date: '2025-04-24'
+    breaking: false
+    highlights:
+      - Point release; see releases.html for the itemized issue list.
+  - version: '29.0'
+    date: '2025-03-24'
+    breaking: false
+    highlights:
+      - New and updated vocabulary for financial incentives, legislation and product shipping; build and documentation fixes.
+  - version: '28.1'
+    date: '2024-11-22'
+    breaking: false
+    highlights:
+      - Various small additions, fixes, build improvements and site updates.
+  - version: '28.0'
+    date: '2024-09-17'
+    breaking: false
+    highlights:
+      - Added support for member programs; build improvements and site updates.
+  - version: '27.02'
+    date: '2024-07-01'
+    breaking: false
+    highlights:
+      - Migrated the staging site from webschemas.org to staging.schema.org.
+  - version: '27.01'
+    date: '2024-06-24'
+    breaking: false
+    highlights:
+      - Site redesign.
+  - version: '27.0'
+    date: '2024-05-20'
+    breaking: false
+    highlights:
+      - Added support for GS1 Digital Link, plus smaller updates.
+  - version: '26.0'
+    date: '2024-02-12'
+    breaking: false
+    highlights:
+      - Restored Physician as a subtype of MedicalBusiness.
+note: >-
+  Window is the twelve most recent releases. The `breaking` flag is our reading of the
+  published notes, not a label Schema.org applies — the project publishes no formal
+  breaking-change classification. Re-parenting a type in the hierarchy (Quantity in 30.0,
+  OrderItem in 29.4) is the change class most likely to break a consumer doing subtype
+  reasoning, which is why those two releases carry the flag.
