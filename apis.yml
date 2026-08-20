@@ -93,6 +93,12 @@ apis:
   humanURL: https://schema.org/WebAPI
   baseURL: https://schema.org
   tags:
+  - Web API
+  - API Description
+  - Structured Data
+  - Linked Data
+  - Schema
+  tags_raw:
   - WebAPI
   - API Description
   - Structured Data
