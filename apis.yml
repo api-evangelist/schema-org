@@ -1,3 +1,16 @@
+deliveryModel:
+  model: open-core
+  license: Apache-2.0
+  open_source: true
+  commercial: true
+  callable_host: false
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 accessModel:
   pricing: freemium
@@ -111,6 +124,8 @@ apis:
     url: json-schema/schema-org-web-api-schema.json
 
 common:
+- type: Releases
+  url: https://github.com/schemaorg/schemaorg/releases
 - type: License
   name: Apache-2.0
   url: https://github.com/schemaorg/schemaorg/blob/main/LICENSE
