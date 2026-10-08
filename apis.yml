@@ -121,6 +121,8 @@ apis:
     url: json-schema/schema-org-web-api-schema.json
 
 common:
+- type: FinOps
+  url: finops/schema-org-finops.yml
 - type: Releases
   url: https://github.com/schemaorg/schemaorg/releases
 - type: License
