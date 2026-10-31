@@ -64,141 +64,198 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Schema.org is a collaborative, community-driven project that creates and maintains a shared vocabulary for structured data on the web. Founded by Google, Microsoft, Yahoo, and Yandex in 2011, it provides types and properties that developers and webmasters use to annotate content in formats like JSON-LD, RDFa, and Microdata, enabling search engines and applications to better understand web content. The vocabulary covers 800+ Types and 1500+ Properties spanning commerce, healthcare, organizations, events, creative works, and more.
+Schema.org is a collaborative, community-driven project that creates and maintains a shared vocabulary for structured data on the web. Founded by Google, Microsoft, Yahoo, and Yandex in 2011, it provides types and properties that developers and webmasters use to annotate content in formats like JSON-LD, RDFa, and Microdata, enabling search engines and applications to better understand web content. The vocabulary currently consists of 800+ Types, 1500+ Properties, and covers domains including commerce, healthcare, organizations, events, creative works, and more. The Schema.org WebAPI type provides a standardized vocabulary for describing APIs in structured data.
 
-**URL:** [https://schema.org/](https://schema.org/)
+**Areas:** Schema.org · Structured Data · Linked Data · JSON-LD · Vocabulary · SEO · Web Standards · RDF · Ontology
 
-## Tags
+## Schema.org on APIs.io
 
- - Schema.org, Structured Data, Linked Data, JSON-LD, Vocabulary, SEO, Web Standards, RDF, Ontology
+Everything profiled for Schema.org is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/schema-org/](https://apis.io/providers/schema-org/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-05-02
-- **Modified:** 2026-05-02
+- [Schema.org Vocabulary](https://apis.io/apis/schema-org/schemaorg-vocabulary/) — Schema.org is a collaborative, community-driven vocabulary for structured data on the internet. It provides a collection of shared vocabularies that…
+- [Schema.org JSON-LD Context](https://apis.io/apis/schema-org/schemaorg-json-ld-context/) — The Schema.org JSON-LD Context provides the canonical JSON-LD context file for the Schema.org vocabulary. This context file maps Schema.org terms to their…
+- [Schema.org Markup Validator](https://apis.io/apis/schema-org/schemaorg-markup-validator/) — The Schema.org Markup Validator tests and validates structured data markup against the Schema.org vocabulary. It supports JSON-LD, Microdata, and RDFa…
+- [Schema.org WebAPI Type](https://apis.io/apis/schema-org/schemaorg-webapi-type/) — The Schema.org WebAPI type defines a Web API accessible over Web and Internet technologies. It provides standardized properties for describing APIs…
 
-## APIs
+### Published properties
 
-### Schema.org Vocabulary
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Schema.org is a collaborative, community-driven vocabulary for structured data on the internet. It provides a collection of shared vocabularies that webmasters and developers can use to mark up pages in ways recognized by major search engines including Google, Microsoft, Yahoo, and Yandex. Machine-readable definitions are available in RDF/Turtle, JSON-LD, CSV, and other formats.
+#### JSON Schema (40)
 
-**Human URL:** [https://schema.org/docs/developers.html](https://schema.org/docs/developers.html)
+The data models the API reads and writes.
 
-#### Tags
+- [Schema.org Action](https://apis.io/schemas/schema-org/schema-org-action/)
+- [Schema.org AggregateRating](https://apis.io/schemas/schema-org/schema-org-aggregate-rating/)
+- [Schema.org Article](https://apis.io/schemas/schema-org/schema-org-article/)
+- [Schema.org BlogPosting](https://apis.io/schemas/schema-org/schema-org-blog-posting/)
+- [Schema.org Book](https://apis.io/schemas/schema-org/schema-org-book/)
+- [Schema.org BreadcrumbList](https://apis.io/schemas/schema-org/schema-org-breadcrumb-list/)
+- [Schema.org ContactPoint](https://apis.io/schemas/schema-org/schema-org-contact-point/)
+- [Schema.org Course](https://apis.io/schemas/schema-org/schema-org-course/)
+- [Schema.org CreativeWork](https://apis.io/schemas/schema-org/schema-org-creative-work/)
+- [Schema.org Drug](https://apis.io/schemas/schema-org/schema-org-drug/)
+- [Schema.org Event](https://apis.io/schemas/schema-org/schema-org-event/)
+- [Schema.org FAQPage](https://apis.io/schemas/schema-org/schema-org-faq-page/)
+- [Schema.org GeoCoordinates](https://apis.io/schemas/schema-org/schema-org-geo-coordinates/)
+- [Schema.org HowTo](https://apis.io/schemas/schema-org/schema-org-how-to/)
+- [Schema.org ImageObject](https://apis.io/schemas/schema-org/schema-org-image-object/)
+- [Schema.org Invoice](https://apis.io/schemas/schema-org/schema-org-invoice/)
+- [Schema.org ItemList](https://apis.io/schemas/schema-org/schema-org-item-list/)
+- [Schema.org JobPosting](https://apis.io/schemas/schema-org/schema-org-job-posting/)
+- [Schema.org LocalBusiness](https://apis.io/schemas/schema-org/schema-org-local-business/)
+- [Schema.org MediaObject](https://apis.io/schemas/schema-org/schema-org-media-object/)
+- [Schema.org MedicalCondition](https://apis.io/schemas/schema-org/schema-org-medical-condition/)
+- [Schema.org MedicalProcedure](https://apis.io/schemas/schema-org/schema-org-medical-procedure/)
+- [Schema.org Offer](https://apis.io/schemas/schema-org/schema-org-offer/)
+- [Schema.org Order](https://apis.io/schemas/schema-org/schema-org-order/)
+- [Schema.org Organization](https://apis.io/schemas/schema-org/schema-org-organization/)
+- …and 15 more published on APIs.io
 
- - Schema.org, Vocabulary, Structured Data, Linked Data, JSON-LD, RDF, Microdata, RDFa, SEO, Web Standards
+#### JSON Structure (40)
 
-#### Properties
+Data models expressed in JSON Structure.
 
-- [Documentation](https://schema.org/docs/developers.html)
-- [Reference](https://schema.org/docs/schemas.html)
-- [Data Model](https://schema.org/docs/datamodel.html)
-- [Change Log](https://schema.org/docs/releases.html)
-- [GitHub Repository](https://github.com/schemaorg/schemaorg)
-- [JSON Schema](json-schema/schema-org-thing-schema.json)
+- [Schema Org Action](https://apis.io/json-structure/schema-org/schema-org-action/)
+- [Schema Org Aggregate Rating](https://apis.io/json-structure/schema-org/schema-org-aggregate-rating/)
+- [Schema Org Article](https://apis.io/json-structure/schema-org/schema-org-article/)
+- [Schema Org Blog Posting](https://apis.io/json-structure/schema-org/schema-org-blog-posting/)
+- [Schema Org Book](https://apis.io/json-structure/schema-org/schema-org-book/)
+- [Schema Org Breadcrumb List](https://apis.io/json-structure/schema-org/schema-org-breadcrumb-list/)
+- [Schema Org Contact Point](https://apis.io/json-structure/schema-org/schema-org-contact-point/)
+- [Schema Org Course](https://apis.io/json-structure/schema-org/schema-org-course/)
+- [Schema Org Creative Work](https://apis.io/json-structure/schema-org/schema-org-creative-work/)
+- [Schema Org Drug](https://apis.io/json-structure/schema-org/schema-org-drug/)
+- [Schema Org Event](https://apis.io/json-structure/schema-org/schema-org-event/)
+- [Schema Org Faq Page](https://apis.io/json-structure/schema-org/schema-org-faq-page/)
+- [Schema Org Geo Coordinates](https://apis.io/json-structure/schema-org/schema-org-geo-coordinates/)
+- [Schema Org How To](https://apis.io/json-structure/schema-org/schema-org-how-to/)
+- [Schema Org Image Object](https://apis.io/json-structure/schema-org/schema-org-image-object/)
+- [Schema Org Invoice](https://apis.io/json-structure/schema-org/schema-org-invoice/)
+- [Schema Org Item List](https://apis.io/json-structure/schema-org/schema-org-item-list/)
+- [Schema Org Job Posting](https://apis.io/json-structure/schema-org/schema-org-job-posting/)
+- [Schema Org Local Business](https://apis.io/json-structure/schema-org/schema-org-local-business/)
+- [Schema Org Media Object](https://apis.io/json-structure/schema-org/schema-org-media-object/)
+- [Schema Org Medical Condition](https://apis.io/json-structure/schema-org/schema-org-medical-condition/)
+- [Schema Org Medical Procedure](https://apis.io/json-structure/schema-org/schema-org-medical-procedure/)
+- [Schema Org Offer](https://apis.io/json-structure/schema-org/schema-org-offer/)
+- [Schema Org Order](https://apis.io/json-structure/schema-org/schema-org-order/)
+- [Schema Org Organization](https://apis.io/json-structure/schema-org/schema-org-organization/)
+- …and 15 more published on APIs.io
 
-### Schema.org JSON-LD Context
+#### JSON-LD (1)
 
-The Schema.org JSON-LD Context provides the canonical JSON-LD context file for the Schema.org vocabulary. This context file maps Schema.org terms to their full IRIs, enabling JSON-LD processors to correctly interpret structured data markup. Google recommends JSON-LD as the preferred format for Schema.org structured data on websites.
+Linked-data contexts for the provider's vocabulary.
 
-**Human URL:** [https://schema.org/docs/developers.html](https://schema.org/docs/developers.html)
+- [Schema Org Context](https://apis.io/jsonld/schema-org/schema-org-context/)
 
-#### Tags
+#### Vocabulary (1)
 
- - JSON-LD, Linked Data, Context, Vocabulary, Structured Data
+The provider's domain terms, defined.
 
-#### Properties
+- [Schema.org Vocabulary](https://apis.io/vocabularies/schema-org/schema-org-vocabulary/)
 
-- [Documentation](https://schema.org/docs/developers.html)
-- [JSON-LD Context](https://schema.org/docs/jsonldcontext.json)
+#### Examples (2)
 
-### Schema.org Markup Validator
+Example requests and responses.
 
-The Schema.org Markup Validator tests and validates structured data markup against the Schema.org vocabulary. It supports JSON-LD, Microdata, and RDFa formats and helps ensure structured data will be correctly interpreted by search engines.
+- [Schema Org Product Example](https://apis.io/examples/schema-org/schema-org-product-example/)
+- [Schema Org Web Api Example](https://apis.io/examples/schema-org/schema-org-web-api-example/)
 
-**Human URL:** [https://validator.schema.org/](https://validator.schema.org/)
+#### Governance rules (2)
 
-#### Tags
+Spectral rulesets for the provider's contracts.
 
- - Validation, Structured Data, Testing, Schema, Markup
+- [Schema.org — jsonschema rules](https://apis.io/rules/schema-org/schema-org-jsonschema-spectral-rules/)
+- [Schema.org API Rules](https://apis.io/rules/schema-org/schema-org-rules/)
 
-#### Properties
+#### Security (1)
 
-- [Documentation](https://validator.schema.org/)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Schema.org WebAPI Type
+- [Schema Org Domain Security](https://apis.io/security/schema-org/schema-org-domain-security/)
 
-The Schema.org WebAPI type defines a Web API accessible over Web and Internet technologies. It provides standardized properties for describing APIs including documentation URL, terms of service, provider, and API entry point. The WebAPI type enables search engines and automated tools to discover and understand published APIs.
+#### Plans and pricing (1)
 
-**Human URL:** [https://schema.org/WebAPI](https://schema.org/WebAPI)
+Published plans, tiers and prices.
 
-#### Tags
+- [Schema Org Plans Pricing](https://apis.io/plans/schema-org/schema-org-plans-pricing/)
 
- - WebAPI, API Description, Structured Data, Linked Data, Schema
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://schema.org/WebAPI)
-- [JSON Schema](json-schema/schema-org-web-api-schema.json)
+- [Schema Org Rate Limits](https://apis.io/rate-limits/schema-org/schema-org-rate-limits/)
 
-## Common Properties
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Schema Org Finops](https://apis.io/finops/schema-org/schema-org-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://schema.org/)
 - [Documentation](https://schema.org/docs/documents.html)
-- [Blog](https://blog.schema.org/)
+- [Getting started](https://schema.org/docs/gs.html)
 - [Support](https://github.com/schemaorg/schemaorg/issues)
+- [Blog](https://blog.schema.org/)
+- [Terms of service](https://schema.org/docs/terms.html)
+- [GitHub](https://github.com/schemaorg)
 
-## Spectral Rules
+## API Evangelist rating
 
-| Ruleset | Description |
+**Kin Score 28.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| [schema-org-rules.yml](rules/schema-org-rules.yml) | Validation rules for Schema.org JSON-LD structured data |
+| Discoverability | 62.5 |
+| Contract quality | 13.9 |
+| Contract governance | 41.7 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 10.5 |
 
-## JSON Schema
+**Agent readiness 2.5** — human-only
 
-| Schema | Description |
+| Agent-readiness dimension | Result |
 |---|---|
-| [schema-org-thing-schema.json](json-schema/schema-org-thing-schema.json) | Schema.org Thing type — base for all Schema.org types |
-| [schema-org-web-api-schema.json](json-schema/schema-org-web-api-schema.json) | Schema.org WebAPI type for describing APIs |
-| [schema-org-person-schema.json](json-schema/schema-org-person-schema.json) | Schema.org Person type |
-| [schema-org-organization-schema.json](json-schema/schema-org-organization-schema.json) | Schema.org Organization type |
-| [schema-org-product-schema.json](json-schema/schema-org-product-schema.json) | Schema.org Product type for e-commerce |
-| [schema-org-event-schema.json](json-schema/schema-org-event-schema.json) | Schema.org Event type |
-| [schema-org-article-schema.json](json-schema/schema-org-article-schema.json) | Schema.org Article type |
-| [schema-org-local-business-schema.json](json-schema/schema-org-local-business-schema.json) | Schema.org LocalBusiness type |
-| [schema-org-job-posting-schema.json](json-schema/schema-org-job-posting-schema.json) | Schema.org JobPosting type |
-| [schema-org-course-schema.json](json-schema/schema-org-course-schema.json) | Schema.org Course type |
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-## JSON Structure
+**Regulatory alignment 14.7** — Horizontal (data, software, accessibility, platform)
 
-| Structure | Description |
-|---|---|
-| [schema-org-thing.json](json-structure/schema-org-thing.json) | Thing type structure documentation |
-| [schema-org-product.json](json-structure/schema-org-product.json) | Product type structure documentation |
-| [schema-org-person.json](json-structure/schema-org-person.json) | Person type structure documentation |
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/schema-org/](https://apis.io/providers/schema-org/).
 
-## JSON-LD
+## How this profile is made
 
-| Context | Description |
-|---|---|
-| [schema-org-context.jsonld](json-ld/schema-org-context.jsonld) | Canonical Schema.org JSON-LD context mapping all major types |
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-## Examples
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Schema.org: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-| Example | Description |
-|---|---|
-| [schema-org-web-api-example.json](examples/schema-org-web-api-example.json) | WebAPI type JSON-LD structured data for API description |
-| [schema-org-product-example.json](examples/schema-org-product-example.json) | Product type with offer and rating for e-commerce rich results |
+## Open an issue
 
-## Vocabulary
-
-| Vocabulary | Description |
-|---|---|
-| [schema-org-vocabulary.yml](vocabulary/schema-org-vocabulary.yml) | Schema.org core types and concepts vocabulary |
-
-## Maintainers
-
-**FN:** API Evangelist
-
-**Email:** info@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/schema-org/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
